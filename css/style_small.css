@@ -44,6 +44,9 @@ body {
 }
 
 .contentBlock {
+    padding:10px;
+    margin:10px 5px;
+    border:1px solid #909090;
 }
 
 .page {
@@ -57,11 +60,11 @@ p, h1, h2, h3 {
 
 h1 {
     margin-top:0px;
-    font-size: 36px;
+    font-size: 32px;
 }
 
 h2 {
-    font-size: 26px;
+    font-size: 24px;
     font-weight:400;
 }
 
@@ -111,6 +114,21 @@ p.subtitle a {
     padding:10px 0px;
 }
 
+.page img.projectLogo234 {
+    float:none;
+    position:relative;
+    border:3px double #909090;
+    margin:0px 30%;
+    margin-top:10px;
+    width:40%;
+}
+span.bullet {
+    font-size: 14px;
+    line-height:20px;
+    padding-left:35px;
+}
+
+
 .youtubeVideo {
     width:95%;
     height:200px;
@@ -120,4 +138,12 @@ p.subtitle a {
     margin-bottom:0px;
     padding:15px 0px;
     border:0px;
+}
+
+#footer .footerHalf {
+    width:95%;
+    padding:20px 0px;
+    display:inline-block;
+    text-align: center;
+    vertical-align: top;
 }

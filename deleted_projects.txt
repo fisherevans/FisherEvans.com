@@ -1,0 +1,37 @@
+
+
+##################################################
+Array
+(
+    [0] => test-project
+    [id] => test-project
+    [1] => goat-tag
+    [tag_id] => goat-tag
+    [2] => <p>This is a goat projects</p>
+<p class='quote'>Quote this!</p>
+
+    [intro_content] => <p>This is a goat projects</p>
+<p class='quote'>Quote this!</p>
+
+    [3] => <pre><code class='language-java'>here is goat code;
+System.exit(1337);
+</code></pre>
+<p>Testing 123</p>
+<img class='banner' src='/img/banner.png' />
+
+    [main_content] => <pre><code class='language-java'>here is goat code;
+System.exit(1337);
+</code></pre>
+<p>Testing 123</p>
+<img class='banner' src='/img/banner.png' />
+
+    [4] => Test Project
+    [name] => Test Project
+    [5] => /img/goat.png
+    [image_location] => /img/goat.png
+)
+##################################################
+
+
+##################################################
+##################################################

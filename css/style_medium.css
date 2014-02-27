@@ -45,3 +45,23 @@ p.quote {
     width:90%;
     height:300px;
 }
+
+.contentBlock.project {
+    text-align:center;
+}
+
+.projectSummary2 {
+    width:99%;
+    display:inline-block;
+    text-align:left;
+    vertical-align: middle;
+}
+
+.page img.projectSummaryLogo2 {
+    width:40%;
+    display:inline-block;
+    vertical-align: middle;
+}
+span.bullet {
+    padding-left:50px;
+}

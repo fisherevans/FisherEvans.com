@@ -1,0 +1,230 @@
+
+
+##################################################
+Array
+(
+    [0] => sample16
+    [id] => sample16
+    [1] => Sample intro content16
+    [intro_content] => Sample intro content16
+    [2] => Sample main content16
+    [main_content] => Sample main content16
+    [3] => Sample 16
+    [title] => Sample 16
+    [4] => 2018-01-16 00:00:00
+    [post_date] => 2018-01-16 00:00:00
+)
+Array
+(
+)
+##################################################
+
+
+##################################################
+Array
+(
+)
+##################################################
+
+
+##################################################
+Array
+(
+    [0] => sample19
+    [id] => sample19
+    [1] => <p>This is just another blog post....</p>
+
+    [intro_content] => <p>This is just another blog post....</p>
+
+    [2] => <h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<p>This paragraph has a <a href='http://google.com/'>link with spaces</a> in it.</p>
+<span class='bullet'>&#8226; Test</span>
+<span class='bullet'>&#8226; Tesint</span>
+<span class='bullet'>&#8226; Space?</span>
+<span class='bullet'>&#8226; No Space</span>
+<p class='quote'>Quote</p>
+<p class='subtitle'>Subtitle</p>
+<p><pre><code class='language-java</p>
+<p>'>System.out.println("Hello, World!");</p>
+</code></pre>
+
+    [main_content] => <h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<p>This paragraph has a <a href='http://google.com/'>link with spaces</a> in it.</p>
+<span class='bullet'>&#8226; Test</span>
+<span class='bullet'>&#8226; Tesint</span>
+<span class='bullet'>&#8226; Space?</span>
+<span class='bullet'>&#8226; No Space</span>
+<p class='quote'>Quote</p>
+<p class='subtitle'>Subtitle</p>
+<p><pre><code class='language-java</p>
+<p>'>System.out.println("Hello, World!");</p>
+</code></pre>
+
+    [3] => Sample 19
+    [title] => Sample 19
+    [4] => 2018-01-19 00:00:00
+    [post_date] => 2018-01-19 00:00:00
+)
+Array
+(
+    [0] => Array
+        (
+            [0] => fizzics
+            [id] => fizzics
+            [1] => Fizzics
+            [name] => Fizzics
+        )
+
+    [1] => Array
+        (
+            [0] => lrk
+            [id] => lrk
+            [1] => Lost Relics of Kazar
+            [name] => Lost Relics of Kazar
+        )
+
+)
+##################################################
+
+
+##################################################
+Array
+(
+)
+##################################################
+
+
+##################################################
+Array
+(
+    [0] => test-post-2
+    [id] => test-post-2
+    [1] => <p>for twc</p>
+
+    [intro_content] => <p>for twc</p>
+
+    [2] => <p>for twcdawdawdawdwadaw</p>
+
+    [main_content] => <p>for twcdawdawdawdwadaw</p>
+
+    [3] => Test post 2
+    [title] => Test post 2
+    [4] => 2014-02-25 18:48:17
+    [post_date] => 2014-02-25 18:48:17
+)
+Array
+(
+    [0] => Array
+        (
+            [0] => twc
+            [id] => twc
+            [1] => The Wayward Crown
+            [name] => The Wayward Crown
+        )
+
+)
+##################################################
+
+
+##################################################
+Array
+(
+)
+##################################################
+
+
+##################################################
+Array
+(
+    [0] => sample-post
+    [id] => sample-post
+    [1] => <p>ANd then he said</p>
+<p class='quote'>"some thing" - Some Guy</p>
+
+    [intro_content] => <p>ANd then he said</p>
+<p class='quote'>"some thing" - Some Guy</p>
+
+    [2] => <p>Not sure why this isn't working</p>
+<img class='banner' src='/img/banner.png' />
+<pre><code class='language-java'>    /**
+     * Gets the accessStatusId value for this AccessStatus.
+     * 
+     * @return accessStatusId
+     */
+    public java.lang.Integer getAccessStatusId() {
+        return accessStatusId;
+    }
+</code></pre>
+<p>This is anothe rparagraph</p>
+<p class='quote'>testing still</p>
+<img class='portrait' src='/img/goat.png' />
+<p class='subtitle'>Still tesitng</p>
+<iframe class='youtubeVideo' src='http://www.youtube.com/embed/fn9XK4oeBY8' frameborder='0' allowfullscreen></iframe>
+<p class='subtitle'>Just a video of something</p>
+<span class='bullet'>&#8226; Testing</span>
+<span class='bullet'>&#8226; 1 bullet</span>
+
+    [main_content] => <p>Not sure why this isn't working</p>
+<img class='banner' src='/img/banner.png' />
+<pre><code class='language-java'>    /**
+     * Gets the accessStatusId value for this AccessStatus.
+     * 
+     * @return accessStatusId
+     */
+    public java.lang.Integer getAccessStatusId() {
+        return accessStatusId;
+    }
+</code></pre>
+<p>This is anothe rparagraph</p>
+<p class='quote'>testing still</p>
+<img class='portrait' src='/img/goat.png' />
+<p class='subtitle'>Still tesitng</p>
+<iframe class='youtubeVideo' src='http://www.youtube.com/embed/fn9XK4oeBY8' frameborder='0' allowfullscreen></iframe>
+<p class='subtitle'>Just a video of something</p>
+<span class='bullet'>&#8226; Testing</span>
+<span class='bullet'>&#8226; 1 bullet</span>
+
+    [3] => Sample Blog Post
+    [title] => Sample Blog Post
+    [4] => 2014-02-03 00:00:00
+    [post_date] => 2014-02-03 00:00:00
+)
+Array
+(
+    [0] => Array
+        (
+            [0] => fizzics
+            [id] => fizzics
+            [1] => Fizzics
+            [name] => Fizzics
+        )
+
+    [1] => Array
+        (
+            [0] => just-another
+            [id] => just-another
+            [1] => Just Another
+            [name] => Just Another
+        )
+
+    [2] => Array
+        (
+            [0] => sample2
+            [id] => sample2
+            [1] => Sample 2 TAG
+            [name] => Sample 2 TAG
+        )
+
+)
+##################################################
+
+
+##################################################
+Array
+(
+)
+##################################################

@@ -22,9 +22,23 @@
         return $posts;
     }
     
+    function fetchAllPosts() {
+        global $pageSize;
+        $query = mysql_query("SELECT * FROM posts ORDER BY post_date DESC;");
+        $posts = array();
+        while($post = mysql_fetch_array($query))
+            array_push($posts, $post);
+        return $posts;
+    }
+    
     function fetchPost($postId) {
         global $pageSize;
         $query = mysql_query("SELECT * FROM posts WHERE id='$postId';");
+        return mysql_fetch_array($query);
+    }
+    
+    function fetchProjectIdByTag($tagId) {
+        $query = mysql_query("SELECT id, name FROM projects WHERE tag_id='$tagId';");
         return mysql_fetch_array($query);
     }
     
@@ -36,8 +50,24 @@
         return $tags;
     }
     
+    function fetchTags() {
+        $query = mysql_query("SELECT * from tags;");
+        $tags = array();
+        while($tag = mysql_fetch_array($query))
+            array_push($tags, $tag);
+        return $tags;
+    }
+    
     function fetchTagPosts($tagId) {
-        $query = mysql_query("SELECT p.id, p.title, p.intro_content, p.post_date FROM posts AS p, posts_to_tags AS ptt WHERE ptt.tag_id='$tagId' AND ptt.post_id=p.id;");
+        $query = mysql_query("SELECT p.id, p.title, p.intro_content, p.post_date FROM posts AS p, posts_to_tags AS ptt WHERE ptt.tag_id='$tagId' AND ptt.post_id=p.id order by post_date desc;");
+        $posts = array();
+        while($post = mysql_fetch_array($query))
+            array_push($posts, $post);
+        return $posts;
+    }
+    
+    function fetchTagPostsLimit($tagId, $limit) {
+        $query = mysql_query("SELECT p.id, p.title, p.intro_content, p.post_date FROM posts AS p, posts_to_tags AS ptt WHERE ptt.tag_id='$tagId' AND ptt.post_id=p.id order by post_date desc LIMIT $limit;");
         $posts = array();
         while($post = mysql_fetch_array($query))
             array_push($posts, $post);
@@ -80,22 +110,22 @@
         return ceil(mysql_result(mysql_query("SELECT COUNT(id) FROM posts_to_tags WHERE tag_id='$tagId';"),0)/$pageSize);
     }
     
-    function getPostSummaries($posts) {
+    function getPostSummaries($posts, $heading) {
         $content = "";
         foreach($posts as $post) {
-            $content .= '<div class="contentBlock"><h1 class="headerLink" onClick="javascript:' . "window.location.assign('/blog/post/" . $post['id'] . "');" . '">' . $post['title'] . '</h1>';
+            $content .= '<div class="contentBlock"><' . $heading . ' class="headerLink" onClick="javascript:' . "window.location.assign('/blog/post/" . $post['id'] . "');" . '">' . $post['title'] . '</' . $heading . '>';
             $content .= '<p class="blogPostTagline time">' . date("F jS, Y", strtotime($post['post_date'])) . '</p>';
             $content .= '<p class="blogPostTagline tags">' . getTagList($post['id']) . '</p>';
             $content .= '<div class="spacer"></div><p class="blogPostOpeneing">' . $post['intro_content'] . '</p>';
             $content .= '<p class="readMore"><a href="/blog/post/' . $post['id'] . '">Continue Reading...</a></div>';
-            $content .= '<div class="break"></div>';
+            //$content .= '<div class="break"></div>';
         }
         return $content;
     }
     
     function getRecentPosts($pageNumber) {
         $posts = fetchPosts($pageNumber);
-        return getPostSummaries($posts);
+        return getPostSummaries($posts, "h1");
     }
     
     function getPost($postId) {
@@ -104,20 +134,24 @@
         if($post == null)
             return get404();
         
-        $content = '<p class="topNotification">You are viewing a single blog post.</p>';
+        $content = '<p class="topNotification">You are viewing a single blog post. You can go back to view all of my recent <a href="/blog">Blog Posts</a>.</p>';
         $content .= '<div class="contentBlock"><h1>' . $post['title'] . '</h1>';
         $content .= '<p class="blogPostTagline time">' . date("F jS, Y", strtotime($post['post_date'])) . '</p>';
         $content .= '<p class="blogPostTagline tags">' . getTagList($post['id']) . '</p>';
         $content .= '<div class="spacer"></div><p class="blogPostOpeneing">' . $post['intro_content'] . '</p>';
         $content .= $post['main_content'];
-        $content .= '<p class="topNotification">Go back to my most recent <a href="/blog">Blog</a> posts...</p></div>';
+        $content .= '</div><p class="topNotification">Go back to my most recent <a href="/blog">Blog</a> posts...</p>';
         return $content;
     }
     
     function getTag($tagId) {
         $posts = fetchTagPosts($tagId);
-        $content = '<p class="topNotification">You are viewing posts tagged with <b>' . fetchTagName($tagId) . '</b>.</p>';
-        $content .= getPostSummaries(fetchTagPosts($tagId));
+        $projectText = "";
+        $project = fetchProjectIdByTag($tagId);
+        if($project != null)
+            $projectText = "You can view the project related to this tag <a href='/projects/" . $project['id'] . "'>here</a>.";
+        $content = '<p class="topNotification">You are viewing posts tagged with <b>' . fetchTagName($tagId) . '</b>. ' . $projectText . '</p>';
+        $content .= getPostSummaries(fetchTagPosts($tagId), "h1");
         return $content;
     }
     
@@ -165,7 +199,7 @@
                 if(getPageCount("posts") < $action) return get404();
                 $title = "Blog" . $title;
                 if($action == 1)
-                    $content = '<p>Throughout my high school experience, I won three state championships for Computer Maintenance, Inter-Networking and Web Design. I continued to compete nationally in Computer Maintenance and Inter-Networking, finishing in 38th and 13th place respectively.</p>';
+                    $content = '<h1>Blog</h1><p>Throughout my high school experience, I won three state championships for Computer Maintenance, Inter-Networking and Web Design. I continued to compete nationally in Computer Maintenance and Inter-Networking, finishing in 38th and 13th place respectively.</p>';
                 else
                     $content = getPageLinks("You are viewing blog posts from a past time.<br>", $action, "/blog/", "posts");
                 return $content . getRecentPosts($action - 1) . getPageLinks("Page Selection<br>", $action, "/blog/", "posts");
