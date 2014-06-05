@@ -1,138 +1,125 @@
 <?php
-    // Error Checking
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
+    // ###################  ERROR Checking
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
     /**/
     
-    function get404() {
-        global $title;
-        $title = "404" . $title;
-        return '<h1>404 - Not Found</h1><p>The page you are looking for was not found...</p>';
+    
+    ############################### GLOBAL VARIABLES
+    $blogPageSize = 4;
+    $defaultPage = "/blog";
+    $footRecentSize = 6;
+    $defaultProjectImage = "img/default_project.png";
+    
+    
+    ############################## GLOBAL INCLUDES
+    include('css/colors.php');
+    include('mobile_check.php'); // $mobile_browser > 0 IF on mobile device
+    include('functions.php');
+    
+    
+    ############################### NICE LOOKING URLS
+    $url = explode('?', $_SERVER['REQUEST_URI']);
+    if(sizeof($url) === 2)
+        $get = $url[1];
+    $uri = explode('/', $url[0]);
+    array_shift($uri);
+    $resource = array_shift($uri);
+    
+    if($resource === "")
+    {
+        $resource = 'blog';
+    }
+    else if($resource === "admin")
+    {
+        include("admin.php");
+        exit;
+    }
+    else if($resource === "d")
+    {
+        include("dir/index.php");
+        exit;
     }
     
-    $defaultBaseResource = "about";
-    $pageContent = "null";
-    $title = " | FisherEvans.com";
     
-    include('mysql_def.php');
-    include('global_functions.php');
+    ############################### MYSQL CONNECT
+    mysql_connect("localhost", "fisherev_old", "OlD123$%^!@#456") or die("failed to connect to sql");#mysql_error());
+    mysql_select_db("fisherev_old") or die("failed to connect to db");#mysql_error());
     
-    
-    mysql_connect($mySQLHostname, $mySQLUser, $mySQLPassword) or die("MySQL Error! Code: 0");
-    mysql_select_db($mySQLDatabase) or die("MySQL Error! Code: 1");
-    
-    $URL = explode('?', $_SERVER['REQUEST_URI']);
-    if(sizeof($URL) === 2)
-        $get = $URL[1];
-    $URL[0] = preg_replace("/[^0-9a-z\-\/]/", "", preg_replace("/^\//", "", strtolower($URL[0])));
-    $URI = explode('/', $URL[0]);
-    $baseResource = array_shift($URI);
-    if($baseResource == null)
-        $baseResource = $defaultBaseResource;
-    
-    
-    switch($baseResource) {
-        case "admin":
-            include("admin.php");
-            exit;
-            break;
-        case "blog":
-            include('blog.php');
-            $pageContent = getBlogContent($URI);
-            break;
-        case "projects":
-            include('projects.php');
-            $pageContent = getProjectsContent($URI);
-            break;
-        default:
-            $pageContent = getPageContent($baseResource);
-            if($pageContent == null)
-                $pageContent = get404();
-            else
-                $title = getPageTitle($baseResource) . $title;
-            break;
+    ############################# STANDARD METHOD CALLS
+	
+    if($resource === "rss")
+    {
+		header ("Content-Type:text/xml"); 
+        include("rss.php");
+        exit;
     }
+    
+    ############################## TITLE SWITCH
+    $title = "FisherEvans.com";
+    switch($resource)
+    {
+        case "blog": $title = "Blog | " . $title; break;
+        case "about": $title = "About | " . $title; break;
+        case "resume": $title = "Resume | " . $title; break;
+        case "projects": $title = "Projects | " . $title; break;
+        default: $title = "404 | " . $title; break;
+    }
+
+    
+    ############################ HTML HEADER
+    echo '<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" id="curedotorg"  xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#" lang="en-US">';
+    echo '<head>';
+    echo '<link rel="icon" type="image/gif" href="/favicon.gif">';
+    echo '<link href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,700,400italic" rel="stylesheet" type="text/css">';
+    echo '<link href="/css/base_css.php" rel="stylesheet" type="text/css">';
+    echo '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">';
+    if($mobile_browser > 0) { echo '<link href="/css/mobile_css.php" rel="stylesheet" type="text/css">'; }
+    echo '<title>' . $title . '</title>';
+    echo '<script type="text/javascript" language="Javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>';
+    echo '<script type="text/javascript" language="Javascript" src="/js/dynamic_window.js"></script>';
+    echo '</head>';
+    
+    
+    ######################### BODY
+    echo '<body onload="windowResize()">';
+
+
+    ######################### GOOGLE ANAL
+    include('google_anal.php');
+
+    
+    ######################### BANNER 
+    echo '<div id="banner"><div id="header"><div id="logo_text">';
+    echo '<a href="/"><span class="dark_green">FISHER</span> <span class="dark_red">EVANS</span></a></div>';
+    echo '<div id="nav">';
+    
+    echo '<a class="nav_link ' . (($resource === "blog")?' current':'') . '" href="/blog">BLOG</a>';
+    echo '<a class="nav_link ' . (($resource === "about")?' current':'') . '" href="/about">ABOUT</a>';
+    echo '<a class="nav_link ' . (($resource === "resume")?' current':'') . '" href="/resume">RESUME</a>';
+    echo '<a class="nav_link ' . (($resource === "projects")?' current':'') . '" href="/projects">PROJECTS</a>';
+    
+    echo '</div></div></div>';
+    
+    
+    ############################### CONTENT
+    echo '<div id="content">';
+    
+    $content_file = "pages/" . $resource . ".php";
+    if(!file_exists($content_file))
+        include("pages/404.php");
+    else
+        include($content_file);
+    
+    echo '</div>';
+    
+    
+    ################################## FOOTER
+    echo '<div id="footer">';
+    include('footer.php');
+    echo '</div>';
+    
+
+    ###################################### HTML END
+    echo '</body></html>';
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title><?php echo $title; ?></title>
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="/img/favicon.png">
-        
-        <link href='http://fonts.googleapis.com/css?family=Roboto:700,400,300,100|Roboto+Slab:700,400' rel='stylesheet' type='text/css'>
-        <link href="/css/prism.css" rel="stylesheet" />
-        <link href='/css/style_global.css' rel='stylesheet' type='text/css' media="all">
-        <link href='/css/style_big.css' rel='stylesheet' type='text/css' media="all and (max-width:1050px)">
-        <link href='/css/style_medium.css' rel='stylesheet' type='text/css' media="all and (max-width:700px)">
-        <link href='/css/style_small.css' rel='stylesheet' type='text/css' media="all and (max-width:500px)">
-        
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="/script/script.js"></script>
-    </head>
-    <body>
-        <div id="header">
-            <img id="menuIcon" src="/img/menu.png" />
-            <span id="title">Fisher Evans</span>
-            <div id="nav" class="fadeMaxHeight">
-                <?php
-                    foreach(fetchNavigation() as $nav) {
-                        echo getNavLink($nav['page_id'], getPagetitle($nav['page_id']));
-                    }
-                ?>
-            </div>
-        </div>
-        <div class="page">
-            <?php
-                echo $pageContent;
-            ?>
-        </div>
-        <div class="page" id="footer">
-            <div class="footerHalf">
-                <h4>CONTACT INFO</h4>
-                <table cell-spacing=0>
-                    <tr>
-                        <td class="left">Email</td>
-                        <td class="right"><a href="mailto:contact@fisherevans.com">contact@fisherevans.com</a></td>
-                    </tr>
-                    <tr>
-                        <td class="left">Phone</td>
-                        <td class="right"><a href="tel:8023637526">(802) 363-7526</a></td>
-                    </tr>
-                    <tr>
-                        <td class="left">Location</td>
-                        <td class="right"><a target="_blank" href="https://www.google.com/maps/place/Chittenden+County/@44.4380375,-73.0638627,108486m/data=!3m2!1e3!4b1!4m2!3m1!1s0x4cb587b3309b2fdf:0x24998da66abb959c?hl=en">Chittenden County, VT</a></td>
-                    </tr>
-                    <tr>
-                        <td class="left">Facebook</td>
-                        <td class="right"><a target="_blank" href="https://www.facebook.com/fisherevans">facebook.com/fisherevans</a></td>
-                    </tr>
-                    <tr>
-                        <td class="left">LinkedIn</td>
-                        <td class="right"><a target="_blank" href="http://www.linkedin.com/in/fisherevans/">linkedin.com/in/fisherevans</a></td>
-                    </tr>
-                    <tr>
-                        <td class="left">YouTube</td>
-                        <td class="right"><a target="_blank" href="http://www.youtube.com/user/DFisherEvans">youtube.com/user/DFisherEvans</a></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="footerHalf">
-            <h4>FRIENDS & FAVORITES</h4>
-            <table cell-spacing=0>
-                <tr>
-                    <td class="left">Philip Lipman</td>
-                    <td class="right"><a target="_blank" href="http://www.philiplipman.com/">philiplipman.com</a></td>
-                </tr>
-                <tr>
-                    <td class="left">Jason Bunn</td>
-                    <td class="right"><a target="_blank" href="http://wizardrymachine.com/">wizardrymachine.com</a></td>
-                </tr>
-            </table>
-            </div>
-            <p>All content within FisherEvans.com is Copyright &copy; 2014 David Fisher Evans unless explicitly stated otherwise.</p>
-        </div>
-        <script src="/script/prism.js"></script>
-    </body>
-</html>

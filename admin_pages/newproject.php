@@ -1,10 +1,9 @@
-<?php 
-    if($_SESSION['phrase'] != $correctAdminPhrase) { exit; }
-    
-    $insert = "INSERT INTO projects (id, name, tag_id, intro_content, main_content, image_location) VALUES ('" . $_POST['id'] . "', '" . $_POST['name'] . "', '" . mysql_escape_string($_POST['tag_id'])
-    . "', '" . mysql_escape_string(parse($_POST['intro_content'])) . "', '" . mysql_escape_string(parse($_POST['main_content'])) . "', '" .  mysql_escape_string($_POST['image_location']) . "');";
-    #echo $insert . '<br>';
-    mysql_query($insert) or die(mysql_error());
-?>
-<a href="/admin/projects">&lt;&lt;&lt; Back to Project Management</a><br><br>
-Project Created: <a target="_blank" href="<?php echo "/projects/" . $_POST['id']; ?>"><?php echo $_POST['name']; ?></a><br><br>
+<?php 
+    if($_SESSION['phrase'] != $correctPhrase) { exit; }
+    
+    $insert = "INSERT INTO projects (project_id, project_name, project_description, project_tag, project_page) VALUES ('" . $_POST['id'] . "', '" . $_POST['name'] . "', '" . mysql_escape_string($_POST['description']) . "', '" . $_POST['tag'] . "', '" .  mysql_escape_string($_POST['page']) . "');";
+    #echo $insert . '<br>';
+    mysql_query($insert) or die(mysql_error());
+?>
+<a href="/admin/projects">&lt;&lt;&lt; Back to Project Management</a><br><br>
+Project Created: <a target="_blank" href="<?php echo "/projects/view/" . $_POST['id']; ?>"><?php echo $_POST['name']; ?></a><br><br>
