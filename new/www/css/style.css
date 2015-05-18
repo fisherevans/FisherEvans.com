@@ -60,6 +60,7 @@ body {
     box-shadow: 0px 0px 15px #000;
     border-bottom: 5px solid #005092;
     border-right: 0px solid #005092;
+    z-index: 100;
   }
 
   .logo {
@@ -109,6 +110,7 @@ body {
   .centerPane {
     padding-top: 55px;
     margin-left: 0px;
+    padding-bottom: 10px;
   }
 
   .connect, .contact {
@@ -268,7 +270,7 @@ body {
   .centerPane {
     padding-top: 0px;
     margin-left: calc(205px + 5%);
-    max-width: 1000px;
+    max-width: 1100px;
   }
 
   @media screen and ( max-height: 510px ) {
@@ -289,10 +291,10 @@ body {
   .rightPane {
     display: block;
     position: absolute;
-    top: 30px;
+    top: 33px;
     height: auto;
-    left: calc(1000px + 205px + 5%);
-    width: 270px;
+    left: calc(1100px + 205px + 5%);
+    right: 43px;
     background-color: #555;
   }
 }
@@ -321,9 +323,53 @@ body {
     font-size: 24pt;
     line-height: 24pt;
     margin-top: 0px;
-    padding-bottom: 2%;
-    border-bottom: 1pt #ccc solid;
+    margin-bottom: 3%;
     color: #222;
+  }
+
+  .contentBlock .postInfo {
+    display: block;
+    position: relative;
+    margin: 3% 0;
+    font-size: 0;
+  }
+
+  .contentBlock .postInfo * {
+    font-family: 'Ubuntu', 'sans-serif';
+    color: #666;
+    font-size: 10pt;
+    line-height: 12pt;
+    vertical-align: middle;
+  }
+
+  .contentBlock .postDate {
+    display: inline-block;
+    position: relative;
+    width: 130pt;
+  }
+
+  .contentBlock .postTags {
+    display: inline-block;
+    position: relative;
+    width: calc(100% - 130pt);
+    text-align: right;
+  }
+
+  .contentBlock .postInfo .dateIcon {
+    padding-right: 10pt;
+    font-size: 12pt;
+    width: 16pt;
+  }
+
+  .contentBlock .postInfo .tagIcon {
+    padding-left: 10pt;
+    font-size: 12pt;
+    width: 16pt;
+  }
+
+  .contentBlock .postInfo .postInfoData {
+    display: inline-block;
+    width: calc(99% - 30pt);
   }
 
   .contentBlock h2 {
@@ -347,12 +393,43 @@ body {
     font-size: 11pt;
     line-height: 18pt;
     font-weight: 400;
-    margin-top: 2%;
+    margin-top: 3%;
     color: #111;
   }
 
+  .contentBlock p.quote {
+    color: #888;
+    text-align: center;
+    font-size: 12pt;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+  }
+
+  .contentBlock a {
+    text-decoration: none;
+    color: #0062b3;
+    font-weight: 700;
+    background-color: transparent;
+    -webkit-transition: color 0.35s ease, background 0.35s ease;
+       -moz-transition: color 0.35s ease, background 0.35s ease;
+        -ms-transition: color 0.35s ease, background 0.35s ease;
+         -o-transition: color 0.35s ease, background 0.35s ease;
+            transition: color 0.35s ease, background 0.35s ease;
+  }
+
+  .contentBlock a.tag {
+    font-weight: 400;
+  }
+
+  .contentBlock a:hover {
+    color: #0257a0;
+    background-color: #f0f0f0;
+  }
+
   .contentBlock pre {
-    margin-top: 2%;
+    margin-top: 3%;
     border: 1px solid #ccc;
     border-radius: 3px;
     background-color: #fcfcfc;
@@ -362,6 +439,23 @@ body {
   .contentBlock pre code {
     padding: 12pt;
     background-color: transparent;
+  }
+
+  .contentBlock img.portrait {
+    display: block;
+    position: relative;
+    max-width: 95%;
+    margin: 4% auto;
+    box-shadow: 0px 0px 3px #000;
+    border: 1px solid #000;
+  }
+
+  .centerPane footer {
+    display: block;
+    position: relative;
+    margin: 1% 2%;
+    padding: 3% 4%;
+    border: 1pt solid #ccc;
   }
 }
 
@@ -389,6 +483,11 @@ body {
   .contentBlock p {
     font-size: 11.5pt;
     line-height: 18pt;
+  }
+
+  .contentBlock p.quote {
+    width: 90%;
+    font-size: 13pt;
   }
 
   .contentBlock pre {
@@ -420,8 +519,17 @@ body {
     line-height: 24pt;
   }
 
+  .contentBlock p.quote {
+    width: 80%;
+    font-size: 14pt;
+  }
+
   .contentBlock pre {
     font-size: 11pt;
+  }
+
+  .contentBlock img.portrait {
+    max-width: 80%;
   }
 }
 

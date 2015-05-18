@@ -11,30 +11,34 @@
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
 	font-family: Flaticon;
-        font-size: 20px;
 font-style: normal;
-margin-left: 20px;
-}.flaticon-facebook29:before {
+}.flaticon-calendar51:before {
 	content: "\e000";
 }
-.flaticon-github8:before {
+.flaticon-facebook29:before {
 	content: "\e001";
 }
-.flaticon-gmail3:before {
+.flaticon-github8:before {
 	content: "\e002";
 }
-.flaticon-google110:before {
+.flaticon-gmail3:before {
 	content: "\e003";
 }
-.flaticon-linkedin12:before {
+.flaticon-google110:before {
 	content: "\e004";
 }
-.flaticon-magnifier13:before {
+.flaticon-linkedin12:before {
 	content: "\e005";
 }
-.flaticon-menu51:before {
+.flaticon-magnifier13:before {
 	content: "\e006";
 }
-.flaticon-twitter13:before {
+.flaticon-menu51:before {
 	content: "\e007";
+}
+.flaticon-shoppingstore7:before {
+	content: "\e008";
+}
+.flaticon-twitter13:before {
+	content: "\e009";
 }
