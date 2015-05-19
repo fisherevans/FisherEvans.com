@@ -1,0 +1,384 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+body {
+  background-image: url('../img/right_bg.png');
+}
+
+h1 {
+  font-size: 36pt;
+  line-height: 36pt;
+}
+
+h2 {
+  font-size: 24pt;
+  line-height: 24pt;
+}
+
+h3 {
+  font-size: 16pt;
+  line-height: 16pt;
+}
+
+p {
+  font-size: 12pt;
+  line-height: 12pt;
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    font-size: inherit;
+    margin-left: auto;
+}
+
+.fadeOpacityRotation {
+  -webkit-transition: opacity 0.35s ease, transform 0.35s ease;
+  -moz-transition: opacity 0.35s ease, transform 0.35s ease;
+  -ms-transition: opacity 0.35s ease, transform 0.35s ease;
+  -o-transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.fadeOpacityMaxHeight {
+  -webkit-transition: opacity 0.35s ease, max-height 0.35s ease;
+  -moz-transition: opacity 0.35s ease, max-height 0.35s ease;
+  -ms-transition: opacity 0.35s ease, max-height 0.35s ease;
+  -o-transition: opacity 0.35s ease, max-height 0.35s ease;
+  transition: opacity 0.35s ease, max-height 0.35s ease;
+}
+
+.fadeMaxHeightBorder {
+    -webkit-transition: max-height 0.35s ease, border 0.35s ease;
+       -moz-transition: max-height 0.35s ease, border 0.35s ease;
+        -ms-transition: max-height 0.35s ease, border 0.35s ease;
+         -o-transition: max-height 0.35s ease, border 0.35s ease;
+            transition: max-height 0.35s ease, border 0.35s ease;
+}
+
+.fadeColors {
+    -webkit-transition: color 0.35s ease, background 0.35s ease, opacity 0.35s ease;
+       -moz-transition: color 0.35s ease, background 0.35s ease, opacity 0.35s ease;
+        -ms-transition: color 0.35s ease, background 0.35s ease, opacity 0.35s ease;
+         -o-transition: color 0.35s ease, background 0.35s ease, opacity 0.35s ease;
+            transition: color 0.35s ease, background 0.35s ease, opacity 0.35s ease;
+}
+
+.fadeContentBox {
+    -webkit-transition: padding 0.35s ease, margin 0.35s ease, height 0.35s ease, width 0.35s ease, bottom 0.35s ease, top 0.35s ease, right 0.35s ease, left 0.35s ease;
+       -moz-transition: padding 0.35s ease, margin 0.35s ease, height 0.35s ease, width 0.35s ease, bottom 0.35s ease, top 0.35s ease, right 0.35s ease, left 0.35s ease;
+        -ms-transition: padding 0.35s ease, margin 0.35s ease, height 0.35s ease, width 0.35s ease, bottom 0.35s ease, top 0.35s ease, right 0.35s ease, left 0.35s ease;
+         -o-transition: padding 0.35s ease, margin 0.35s ease, height 0.35s ease, width 0.35s ease, bottom 0.35s ease, top 0.35s ease, right 0.35s ease, left 0.35s ease;
+            transition: padding 0.35s ease, margin 0.35s ease, height 0.35s ease, width 0.35s ease, bottom 0.35s ease, top 0.35s ease, right 0.35s ease, left 0.35s ease;
+}
+
+.noTextSelect {
+ -moz-user-select: none;
+ -khtml-user-select: none;
+ -webkit-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+}
+
+.noPointerEvents {
+  pointer-events: none;
+}
+
+/** NAVIGATION ############################################### **/
+
+.navPane {
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  background-image: url('../img/left_bg.png');
+  box-shadow: 0px 0px 15px #000;
+  z-index: 100;
+}
+
+.logo {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav {
+  display: block;
+  background-image: url('../img/left_bg.png');
+}
+
+.navElement {
+  text-transform: uppercase;
+  position: relative;
+  display: block;
+  font-family: 'Ubuntu', 'sans-serif';
+  font-size: 1em;
+  text-align: center;
+  padding: 10pt 0;
+  color: #CEE2F2;
+  text-decoration: none;
+  font-weight: 100;
+  text-shadow: 1px 1px #003C6D;
+  width: 100%;
+  background-color: transparent;
+  padding: 10pt 0;
+}
+
+.navElement.active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.navElement .arrowBox {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1em;
+  padding: 10pt;
+  vertical-align: middle;
+}
+
+.navElement.active .arrowBox {
+  display: block;
+}
+
+.navElement:hover {
+  background-color: rgba(0, 70, 128, 0.5);
+  color: #fff;
+}
+
+/** CONTENT ############################################### **/
+
+.contentPane {
+  padding-bottom: 12pt;
+}
+
+.contentBlock {
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: 0px 0px 15px #000;
+  border-radius: 2px;
+  border: 1pt solid #ccc;
+  font-family: 'Roboto Slab', 'serif';
+  letter-spacing: 0;
+}
+
+.contentBlock h1, .contentBlock h2, .contentBlock h3 {
+  text-transform: uppercase;
+  font-family: 'Ubuntu', 'sans-serif';
+}
+
+.contentBlock h1 {
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 3%;
+  color: #222;
+  font-size: 3em;
+}
+
+.contentBlock h2 {
+  font-weight: 400;
+  margin-top: 4%  ;
+  color: #222;
+}
+
+.contentBlock h3 {
+  font-weight: 400;
+  margin-top: 3%;
+  color: #333;
+}
+
+.contentBlock p {
+  font-weight: 400;
+  line-height: 2em;
+  margin-top: 3%;
+  color: #111;
+}
+
+.contentBlock p.quote {
+  color: #888;
+  text-align: center;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+}
+
+.contentBlock p a {
+  text-decoration: none;
+  color: #0062b3;
+  font-weight: 700;
+  background-color: transparent;
+  -webkit-transition: color 0.35s ease, background 0.35s ease;
+  -moz-transition: color 0.35s ease, background 0.35s ease;
+  -ms-transition: color 0.35s ease, background 0.35s ease;
+  -o-transition: color 0.35s ease, background 0.35s ease;
+  transition: color 0.35s ease, background 0.35s ease;
+}
+
+.contentBlock p a:hover {
+  color: #0257a0;
+  background-color: #f0f0f0;
+}
+
+.contentBlock pre {
+  margin-top: 3%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fcfcfc;
+}
+
+.contentBlock pre code {
+  padding: 12pt;
+  background-color: transparent;
+}
+
+.contentBlock img.portrait {
+  display: block;
+  position: relative;
+  max-width: 95%;
+  margin: 4% auto;
+  box-shadow: 0px 0px 3px #000;
+  border: 1px solid #000;
+}
+
+/** BLOG ############################################### **/
+
+.postListBlock {
+  display: inline-block;
+  position: relative;
+  width: 46%;
+  margin: 2%;
+  vertical-align: top;
+}
+
+@media (max-width: 900px) {
+  .postListBlock {
+    width: 100%;
+    margin: 0%;
+    margin-top: 5%;
+    padding-top: 8%;
+    border-top: 1pt solid #aaa;
+  }
+}
+
+.postListBlock .coverPhoto {
+  width: 100%;
+  opacity: 1;
+  -webkit-transform: translateZ(0);
+}
+
+.postListBlock .coverPhoto:hover {
+  opacity: 0.8;
+}
+
+.postListBlock a {
+  text-decoration: none;
+}
+
+.postListBlock a:hover h3 {
+  color: #666;
+}
+
+.postListBlock p {
+  font-size: 0.9em;
+  font-family: 'Ubuntu', 'sans-serif';
+  margin: 0;
+}
+
+.postListIntro {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentBlock .postInfo {
+  display: block;
+  position: relative;
+  margin: 1% 0;
+}
+
+.contentBlock .postInfo * {
+  font-family: 'Ubuntu', 'sans-serif';
+  color: #666;
+  vertical-align: middle;
+  line-height: 1.4em;
+}
+
+.contentBlock .postDate {
+  display: inline-block;
+  position: relative;
+  width: 90pt;
+}
+
+.contentBlock .postTags {
+  display: inline-block;
+  position: relative;
+  width: calc(100% - 90pt);
+  text-align: right;
+}
+
+.contentBlock .postTags .tag {
+  font-weight: 400;
+  text-decoration: none;
+  color: #888;
+  padding: 2pt;
+  background-color: transparent;
+}
+
+.contentBlock .postTags .tag:hover {
+  color: #222;
+  background-color: #e0e0e0;
+}
+
+.contentBlock .postInfo .dateIcon {
+  padding-right: 5pt;
+  width: 16pt;
+  color: #888;
+}
+
+.contentBlock .postInfo .tagIcon {
+  padding-left: 5pt;
+  width: 16pt;
+  color: #888;
+}
+
+.contentBlock .postInfo .postInfoData {
+  display: inline-block;
+  width: calc(99% - 30pt);
+  font-size: 0.8em;
+}
+
+.multipleTags {
+  display: inline-block;
+  position: relative;
+}
+
+.multipleTags .multipleTagsList {
+  position: absolute;
+  display: block;
+  top: -4pt;
+  right: -4pt;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 4pt;
+  text-align: right;
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  z-index: 110;
+  border-radius: 3px;
+}
+
+.multipleTags .multipleTagsList .tag {
+  white-space: nowrap;
+  display: block;
+  color: #444;
+}
+
+.multipleTags:hover .multipleTagsList, .multipleTagsList {
+  opacity: 1;
+  max-height: 100pt;
+}

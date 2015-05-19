@@ -3,8 +3,10 @@
     global $currentPage;
     $activeClass = $active ? 'active' : '';
     ?>
-      <a class="navElement fadeColors" href="<?=$link?>"><?=$label?>
-        <div class="currentNavElement <?=$activeClass?>"></div>
+      <a class="navElement fadeColors <?=$activeClass?>" href="<?=$link?>"><?=$label?>
+        <div class="arrowBox">
+            <span class="flaticon-fast44 arrow"></span>
+        </div>
       </a>
     <?php
   }
@@ -15,16 +17,21 @@
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700|Roboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css">
     <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/base.css" media="(min-width: 0px)" />
+    <link rel="stylesheet" type="text/css" href="/css/mobile.css" media="(max-width: 799px)" />
+    <link rel="stylesheet" type="text/css" href="/css/desktop.css" media="(min-width: 800px)" />
+    <link rel="stylesheet" type="text/css" href="/css/desktop_big.css" media="(min-width: 1100px)" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?php echo $title; ?> | Fisher Evans</title>
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title><?php echo isset($title) ? $title . ' | ' : ''; ?>Fisher Evans</title>
+    <link rel="icon" type="image/png" href="/img/favicon.png">
   </head>
   <body>
-    <div class="leftPane">
+    <div class="navPane">
       <img class="logo" src="/img/logo.png" />
-      <div class="menu fadeColors noTextSelect">
+      <div class="menuBox fadeColors noTextSelect">
         <img class="menuIcon fadeOpacityRotation" src="/img/menu.png"></img>
         <img class="closeMenuIcon fadeOpacityRotation" src="/img/close_menu.png"></img>
       </div>
@@ -48,10 +55,10 @@
       </div>
       <a class="contact fadeColors" href="/contact">Contact Me</a>
     </div>
-    <div class="centerPane">
+    <div class="contentPane">
       <?php echo $content_for_layout; ?>
     </div>
-    <div class="rightPane">
+    <div class="sidePane">
       Dummy data... Dummy data... Dummy data... Dummy data... Dummy data... Dummy data... 
     </div>
     <script type="text/javascript" src="/lib/highlight/highlight.pack.js"></script>

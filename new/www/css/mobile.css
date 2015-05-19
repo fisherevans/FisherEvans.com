@@ -1,0 +1,102 @@
+/** NAVIGATION ############################################### **/
+
+.navPane {
+  right: 0;
+  bottom: calc(100% - 50px);
+  border-bottom: 5px solid #005092;
+}
+
+.logo {
+  width: 36px;
+  padding: 7px 14px;
+}
+
+.menuBox {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  height: 46px;
+  width: 64px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.menuBox:hover {
+  background-color: #005092;
+}
+
+.menuIcon, .closeMenuIcon {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  height: 24px;
+  width: 28px;
+  padding: 11px 18px;
+  pointer-events:none;
+}
+
+.navPane.expanded .menuIcon, .navPane .closeMenuIcon {
+  opacity: 0;
+  transform: scale(0, 0);
+}
+
+.navPane .menuIcon, .navPane.expanded .closeMenuIcon {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.nav {
+  position: absolute;
+  width: 100%;
+  top: 50px;
+  max-height: 0;
+  border-bottom: 0px solid #005092;
+  overflow: hidden;
+}
+
+.navPane.expanded .nav {
+  max-height: 250px;
+  border-bottom: 5px solid #005092;
+}
+
+.connect, .contact {
+  display: none;
+}
+
+/** CONTENT ############################################### **/
+
+.contentPane {
+  padding-top: 50px;
+  margin-left: 0px;
+}
+
+.contentBlock {
+  margin: 2% 2%;
+  padding: 3% 4%;
+}
+
+.contentBlock h1 {
+}
+
+.contentBlock h2 {
+}
+
+.contentBlock h3 {
+}
+
+.contentBlock p {
+}
+
+.contentBlock p.quote {
+}
+
+.contentBlock pre {
+}
+
+/** SIDE PANE ############################################### **/
+
+.sidePane {
+  display: none;
+}

@@ -2,11 +2,11 @@ $(document).ready(function() {
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
-  $('.menu').on('click', function(event) {
-      $('.leftPane').toggleClass('expanded');
+  $('.menuBox').on('click', function(event) {
+      $('.navPane').toggleClass('expanded');
   });
   $(window).on('resize', function(event) {
     if($(window).width() > 800)
-      $('.leftPane').removeClass('expanded');
+      $('.navPane').removeClass('expanded');
   });
 });

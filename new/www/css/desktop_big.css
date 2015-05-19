@@ -1,0 +1,38 @@
+/** CONTENT ############################################### **/
+
+.contentBlock h1 {
+}
+
+.contentBlock h2 {
+}
+
+.contentBlock h3 {
+}
+
+.contentBlock p {
+}
+
+.contentBlock p.quote {
+  width: 80%;
+}
+
+.contentBlock pre {
+}
+
+.contentBlock img.portrait {
+  max-width: 80%;
+}
+
+/** SIDE PANE ############################################### **/
+
+@media (min-width: 1600px) {
+  .sidePane {
+    display: block;
+    position: absolute;
+    top: 33px;
+    height: auto;
+    left: calc(1100px + 205px + 5%);
+    right: 43px;
+    background-color: #555;
+  }
+}

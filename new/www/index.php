@@ -37,7 +37,7 @@ $app->bind("/blog/page", function() use($app) {
 // bind routes
 $app->bind("/blog/page/:page", function($params) use($app) {
     $collection = collection('Blog Posts');
-    $limit = 5;
+    $limit = 4;
     $page  = $params['page'];
     $count = $collection->count(["published"=>true]);
     $pages = ceil($count/$limit);
@@ -52,7 +52,7 @@ $app->bind("/blog/page/:page", function($params) use($app) {
     $posts->limit($limit)->skip(($page-1) * $limit);
 
     // apply sorting
-    $posts->sort(["created"=>1]);
+    $posts->sort(["created"=>-1]);
 
     $data = [
         'title'=>'Blog' . ($page != 1 ? ' | Page ' . $page : ''),
