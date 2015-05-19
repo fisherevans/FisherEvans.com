@@ -325,6 +325,12 @@ body {
   font-family: 'Ubuntu', 'sans-serif';
 }
 
+.centerPane footer {
+  display: block;
+  position: relative;
+  border: 1pt solid #ccc;
+}
+
 @media (min-width: 0px) {
   .contentBlock {
     margin: 1% 2%;
@@ -465,11 +471,8 @@ body {
   }
 
   .centerPane footer {
-    display: block;
-    position: relative;
     margin: 1% 2%;
     padding: 3% 4%;
-    border: 1pt solid #ccc;
   }
 }
 
@@ -506,6 +509,11 @@ body {
 
   .contentBlock pre {
     font-size: 10.5pt;
+  }
+
+  .centerPane footer {
+    margin: 3% 4%;
+    padding: 3% 4%;
   }
 }
 
