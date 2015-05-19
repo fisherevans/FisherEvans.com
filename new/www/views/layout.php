@@ -12,18 +12,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><?php echo $title; ?> | Fisher Evans</title>
-    <link rel="icon" type="image/png" href="img/favicon.png">
-
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700|Roboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css">
     <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css">
-    <script type="text/javascript" src="/lib/highlight/highlight.pack.js"></script>
-    <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title><?php echo $title; ?> | Fisher Evans</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
   </head>
   <body>
     <div class="leftPane">
@@ -58,5 +54,8 @@
     <div class="rightPane">
       Dummy data... Dummy data... Dummy data... Dummy data... Dummy data... Dummy data... 
     </div>
+    <script type="text/javascript" src="/lib/highlight/highlight.pack.js"></script>
+    <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
   </body>
 </html>
