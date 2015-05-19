@@ -148,6 +148,20 @@ body {
     background-color: transparent;
   }
 
+  .navElement .currentNavElement {
+    display: none;
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    width: 20px;
+    background-color: #fff;
+  }
+
+  .navElement .currentNavElement.active {
+    display: block;
+  }
+
   .navElement:hover {
     background-color: #005092;
     color: #fff;
