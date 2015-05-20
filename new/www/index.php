@@ -4,7 +4,7 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 
-$baseTitle = "Fisher Evans";
+$blogPostsPerPage = 4;
 
 
 //include cockpit
@@ -13,67 +13,89 @@ include_once('cockpit/bootstrap.php');
 
 $app = new Lime\App();
 
-function get404() {
+function get404($message = "Whatever you're looking for, it's not here...") {
     global $app;
     header("HTTP/1.0 404 Not Found");
     $data = [
-        'title'=>'404 | Not Found'
+      'title'=>'404 | Not Found',
+      'message'=>$message
     ];
     return $app->render('views/404.php with views/layout.php', $data);
 }
 
+function getBlogPosts($filter, $page) {
+  global $blogPostsPerPage;
+  $collection = collection('Blog Posts');
+  $count = $collection->count($filter);
+  $pages = ceil($count/$blogPostsPerPage);
+  if($page > $pages && $page != 0)
+    return null;
+  $posts = $collection->find($filter);
+  $posts->limit($blogPostsPerPage)->skip(($page-1) * $blogPostsPerPage);
+  $posts->sort(["created"=>-1]);
+  return [
+    'posts'=>$posts->toArray(),
+    'page'=>$page,
+    'pages'=>$pages
+  ];
+}
+
 $app->bind("/", function() use($app) {
-    $this->reroute("/blog/page/1");
+  $this->reroute("/blog/recent/1");
 });
 
 $app->bind("/blog", function() use($app) {
-    $this->reroute("/blog/page/1");
+  $data = [
+    'title'=>'Blog Index',
+    'currentPage'=>'blog'
+  ];
+  return $app->render('views/blog/blogIndex.php with views/layout.php', $data);
 });
 
-$app->bind("/blog/page", function() use($app) {
-    $this->reroute("/blog/page/1");
+$app->bind("/blog/recent", function() use($app) {
+  $this->reroute("/blog/recent/1");
 });
 
 // bind routes
-$app->bind("/blog/page/:page", function($params) use($app) {
-    $collection = collection('Blog Posts');
-    $limit = 4;
-    $page  = $params['page'];
-    $count = $collection->count(["published"=>true]);
-    $pages = ceil($count/$limit);
+$app->bind("/blog/recent/:page", function($params) use($app) {
+  $blog = getBlogPosts(["published"=>true], $params['page']);
+  if($blog == null)
+    return get404("There aren't THAT many posts... Try a lower page number.");
+  $blog['title'] = 'Blog' . ($blog['page'] != 1 ? ' | Page ' . $blog['page'] : '');
+  $blog['currentPage'] = 'blog';
+  return $app->render('views/blog/postList.php with views/layout.php', $blog);
+});
 
-    if($page > $pages)
-        return get404();
+$app->bind("/blog/tag/:slug", function($params) use($app) {
+  $this->reroute("/blog/tag/" . $params["slug"] . "/1");
+});
 
-    // get posts
-    $posts = $collection->find(["published"=>true]);
-
-    // apply pagination
-    $posts->limit($limit)->skip(($page-1) * $limit);
-
-    // apply sorting
-    $posts->sort(["created"=>-1]);
-
-    $data = [
-        'title'=>'Blog' . ($page != 1 ? ' | Page ' . $page : ''),
-        'currentPage'=>'blog',
-        'posts'=>$posts->toArray(),
-        'pages'=>$pages,
-        'page'=>$page
-    ];
-    return $app->render('views/postList.php with views/layout.php', $data);
+$app->bind("/blog/tag/:slug/:page", function($params) use($app) {
+  $tag = collection('Tags')->findOne(['name_slug'=>$params['slug']]);
+  $tagIds = [$tag['_id']];
+  if(!isset($tag))
+    return get404("Looks like that tag doesn't exist. Whoops.");
+  $blog = getBlogPosts(function($post) use($tagIds) {
+    return count(array_intersect($tagIds, $post['tags']))===count($tagIds) && $post['published'] == true;
+  }, $params['page']);
+  if($blog == null)
+    return get404();
+  $blog['title'] = 'Blog' . ($blog['page'] != 1 ? ' | ' . $tag['name'] . ' | Page ' . $blog['page'] : '');
+  $blog['currentPage'] = 'blog';
+  $blog['filterTag'] = $tag;
+  return $app->render('views/blog/postList.php with views/layout.php', $blog);
 });
 
 $app->bind("/blog/post/:slug", function($params) use($app) {
     $post = collection('Blog Posts')->findOne(["title_slug"=>$params['slug']]);
-    if($post['published'] == false)
+    if(!isset($post) || $post['published'] == false)
         return get404();
     $data = [
         'title'=>$post['title'] . ' | Blog ',
         'currentPage'=>'blog',
         'post'=>$post
     ];
-    return $app->render('views/post.php with views/layout.php', $data);
+    return $app->render('views/blog/post.php with views/layout.php', $data);
 });
 
 $app->bind("*", function($params) use($app) {

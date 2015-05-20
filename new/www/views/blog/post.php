@@ -2,11 +2,18 @@
   $parsedown = new Parsedown();
 ?>
 <div class="contentBlock blogPost">
+  <div class="cookieCrumbs">
+    <a href="<?=$this->route("/blog");?>" class="cookieCrumb fadeColors">Blog Index</a>
+    <div class="cookieCrumb separator flaticon-fast44"></div>
+    <a href="<?=$this->route("/blog/recent/1");?>" class="cookieCrumb fadeColors">Recent Posts</a>
+    <div class="cookieCrumb separator flaticon-fast44"></div>
+    <div class="cookieCrumb current">View Post</div>
+  </div>
   <h1><?php echo $post['title']; ?></h1>
   <?php include('snippets/postInfo.php'); ?>
-  <div class="postIntro">
+  <!--<div class="postIntro">
     <?php echo $parsedown->text($post['intro']); ?>
-  </div>
+  </div>-->
   <div class="postContent">
     <?php echo $parsedown->text($post['content']); ?>
   </div>

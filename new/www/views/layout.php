@@ -38,7 +38,7 @@
       <div class="nav fadeMaxHeightBorder">
         <?php
           printNav("Fisher Evans", "/",            isset($currentPage) && $currentPage == "about");
-          printNav("Blog",         "/blog/page/1", isset($currentPage) && $currentPage == "blog");
+          printNav("Blog",         "/blog/recent/1", isset($currentPage) && $currentPage == "blog");
           printNav("Projects",     "/projects",    isset($currentPage) && $currentPage == "projects");
           printNav("Resume",       "/resume",      isset($currentPage) && $currentPage == "resume");
           printNav("Resources",    "/resources",   isset($currentPage) && $currentPage == "resources");

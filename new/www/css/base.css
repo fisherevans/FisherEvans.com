@@ -127,7 +127,7 @@ p {
 }
 
 .navElement.active {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.075);
 }
 
 .navElement .arrowBox {
@@ -138,6 +138,7 @@ p {
   font-size: 1em;
   padding: 10pt;
   vertical-align: middle;
+  opacity: 0.65;
 }
 
 .navElement.active .arrowBox {
@@ -165,6 +166,44 @@ p {
   letter-spacing: 0;
 }
 
+.cookieCrumbs {
+  padding-bottom: 20pt;
+  margin-bottom: 20pt;
+  border-bottom: 1pt solid #aaa;
+  height: 10pt;
+}
+
+.cookieCrumbs .cookieCrumb {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Ubuntu', 'sans-serif';
+  text-transform: uppercase;
+  font-size: 0.9em;
+  line-height: 10pt;
+  height: 10pt;
+  margin-right: 10pt;
+  vertical-align: middle;
+}
+
+.cookieCrumbs div.cookieCrumb {
+  color: #888;
+}
+
+.cookieCrumbs a.cookieCrumb {
+  color: hsl(207, 100%, 50%);
+  font-weight: 700;
+  opacity: 0.75;
+}
+
+.cookieCrumbs a.cookieCrumb:hover {
+  opacity: 1;
+}
+
+.cookieCrumbs .cookieCrumb.separator {
+  font-size: 0.7em;
+  color: #aaa;
+}
+
 .contentBlock h1, .contentBlock h2, .contentBlock h3 {
   text-transform: uppercase;
   font-family: 'Ubuntu', 'sans-serif';
@@ -175,7 +214,8 @@ p {
   margin-top: 0px;
   margin-bottom: 3%;
   color: #222;
-  font-size: 3em;
+  font-size: 2.5em;
+  font-weight: 100;
 }
 
 .contentBlock h2 {
@@ -216,6 +256,7 @@ p {
   -ms-transition: color 0.35s ease, background 0.35s ease;
   -o-transition: color 0.35s ease, background 0.35s ease;
   transition: color 0.35s ease, background 0.35s ease;
+  border-radius: 3px;
 }
 
 .contentBlock p a:hover {
@@ -244,23 +285,39 @@ p {
   border: 1px solid #000;
 }
 
+.blogPost img {
+  max-width: 80%;
+  margin: 0px auto;
+  display: block;
+  position: relative;
+}
+
 /** BLOG ############################################### **/
 
 .postListBlock {
+  text-align: left;
   display: inline-block;
   position: relative;
-  width: 46%;
-  margin: 2%;
+  width: 48%;
+  margin-bottom: 4%;
   vertical-align: top;
+}
+
+.postListBlock.left {
+  margin-right: 2%;
+}
+
+.postListBlock.right {
+  margin-left: 2%;
 }
 
 @media (max-width: 900px) {
   .postListBlock {
     width: 100%;
     margin: 0%;
-    margin-top: 5%;
-    padding-top: 8%;
-    border-top: 1pt solid #aaa;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+    border-bottom: 1pt solid #aaa;
   }
 }
 
@@ -326,6 +383,7 @@ p {
   color: #888;
   padding: 2pt;
   background-color: transparent;
+  border-radius: 3px;
 }
 
 .contentBlock .postTags .tag:hover {
@@ -359,8 +417,8 @@ p {
 .multipleTags .multipleTagsList {
   position: absolute;
   display: block;
-  top: -4pt;
-  right: -4pt;
+  top: -6pt;
+  right: -2pt;
   background-color: #f8f8f8;
   border: 1px solid #ccc;
   padding: 4pt;
