@@ -1,7 +1,7 @@
 <div class="postInfo">
   <div class="postDate">
     <span class="flaticon-calendar51 dateIcon"></span>
-    <div class="postInfoData"><?php echo date('M j, Y', $post['created']); ?></div>
+    <div class="postInfoData"><?php echo date('M j, Y', strtotime($post['posted_date'])); ?></div>
   </div><!--
   --><div class="postTags">
     <div class="postInfoData">

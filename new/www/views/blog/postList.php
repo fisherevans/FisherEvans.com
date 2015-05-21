@@ -1,21 +1,26 @@
 <?php
-  $parsedown = new Parsedown();
+  $parsedown = new ParsedownExtra();
 ?>
 <div class="contentBlock">
   <div class="cookieCrumbs">
     <a href="<?=$this->route("/blog");?>" class="cookieCrumb fadeColors">Blog Index</a>
     <div class="cookieCrumb separator flaticon-fast44"></div>
     <?php if(isset($filterTag)) { ?>
-      <div class="cookieCrumb current">Tagged: <?php echo $filterTag['name']; ?></div>
+      <a href="<?=$this->route("/blog/recent/1");?>" class="cookieCrumb fadeColors">Recent Posts</a>
+      <div class="cookieCrumb separator flaticon-fast44"></div>
+      <h1 class="cookieCrumb current">Tagged: <?php echo $filterTag['name']; ?></h1>
     <?php } else { ?>
-      <div class="cookieCrumb current">Recent Posts</div>
+      <h1 class="cookieCrumb current">Recent Posts</h1>
     <?php } ?>
   </div>
     <!--
     <?php
-      $left = true;
-      foreach ($posts as $post) { ?>
-     --><div class="postListBlock <?php echo ($left ? 'left' : 'right'); ?>">
+      if(count($posts) == 0) {
+        ?>--><h2>Empty...</h2><p>Looks like I haven't posted anything here yet.<!--<?php
+      } else {
+          $left = true;
+          foreach ($posts as $post) { ?>
+           --><div class="postListBlock <?php echo ($left ? 'left' : 'right'); ?>">
           <a href="<?=$this->route("/blog/post/" . $post['title_slug']);?>">
             <img class="coverPhoto fadeColors" src="<?php echo str_replace("site:", "/", $post['image']);?>" />
           </a>
@@ -27,8 +32,9 @@
             <?php echo $parsedown->text($post['intro']); ?>
           </div>
         </div><!--
-    <?php
+          <?php
         $left = !$left;
+        }
       }
     ?>
     -->

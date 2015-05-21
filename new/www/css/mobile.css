@@ -77,22 +77,59 @@
   padding: 3% 4%;
 }
 
+.cookieCrumbs .cookieCrumb {
+  font-size: 0.7em;
+  margin-right: 2pt;
+  line-height: 0.7em;
+}
+
+.cookieCrumbs .cookieCrumb.separator {
+  font-size: 0.5em;
+}
+
 .contentBlock h1 {
+  font-size: 2em;
 }
 
 .contentBlock h2 {
+  font-size: 1.66em;
 }
 
 .contentBlock h3 {
+  font-size: 1.33em;
 }
 
-.contentBlock p {
+.contentBlock h4 {
+  font-size: 1em;
 }
 
-.contentBlock p.quote {
+.blogPost .postContent img {
+  max-height: 80vw;
 }
 
-.contentBlock pre {
+.contentBlock p, .contentBlock li {
+  font-size: 0.85em;
+}
+
+.contentBlock blockquote  p {
+  font-size: 1em;
+}
+
+.contentBlock pre code {
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+/** BLOG ############################################### **/
+
+.postPhoto {
+  width: 95%;
+}
+
+.indexTag .indexTagTriangle, .indexTag .indexTagName, .indexTag .indexTagCount {
+  font-size: 0.8em;
+  line-height: 20pt;
+  height: 20pt;
 }
 
 /** SIDE PANE ############################################### **/

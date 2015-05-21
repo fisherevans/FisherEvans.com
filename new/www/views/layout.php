@@ -14,14 +14,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700|Roboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Roboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css">
     <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css">
 
-    <link rel="stylesheet" type="text/css" href="/css/base.css" media="(min-width: 0px)" />
+    <link rel="stylesheet" type="text/css" href="/css/base.css" />
     <link rel="stylesheet" type="text/css" href="/css/mobile.css" media="(max-width: 799px)" />
     <link rel="stylesheet" type="text/css" href="/css/desktop.css" media="(min-width: 800px)" />
-    <link rel="stylesheet" type="text/css" href="/css/desktop_big.css" media="(min-width: 1100px)" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -63,6 +62,19 @@
     </div>
     <script type="text/javascript" src="/lib/highlight/highlight.pack.js"></script>
     <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/js/script.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+        $('.menuBox').on('click', function(event) {
+          $('.navPane').toggleClass('expanded');
+        });
+        $(window).on('resize', function(event) {
+          if($(window).width() > 800)
+            $('.navPane').removeClass('expanded');
+        });
+      });
+    </script>
   </body>
 </html>

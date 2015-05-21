@@ -1,5 +1,5 @@
 <?php
-  $parsedown = new Parsedown();
+  $parsedown = new ParsedownExtra();
 ?>
 <div class="contentBlock blogPost">
   <div class="cookieCrumbs">
@@ -11,9 +11,10 @@
   </div>
   <h1><?php echo $post['title']; ?></h1>
   <?php include('snippets/postInfo.php'); ?>
-  <!--<div class="postIntro">
+  <div class="postIntro">
     <?php echo $parsedown->text($post['intro']); ?>
-  </div>-->
+  </div>
+  <img class="postPhoto" src="<?php echo str_replace("site:", "/", $post['image']);?>" />
   <div class="postContent">
     <?php echo $parsedown->text($post['content']); ?>
   </div>

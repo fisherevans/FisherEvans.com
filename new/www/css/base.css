@@ -8,26 +8,6 @@ body {
   background-image: url('../img/right_bg.png');
 }
 
-h1 {
-  font-size: 36pt;
-  line-height: 36pt;
-}
-
-h2 {
-  font-size: 24pt;
-  line-height: 24pt;
-}
-
-h3 {
-  font-size: 16pt;
-  line-height: 16pt;
-}
-
-p {
-  font-size: 12pt;
-  line-height: 12pt;
-}
-
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
     font-size: inherit;
@@ -113,13 +93,13 @@ p {
   text-transform: uppercase;
   position: relative;
   display: block;
-  font-family: 'Ubuntu', 'sans-serif';
+  font-family: 'Lato', 'sans-serif';
   font-size: 1em;
   text-align: center;
   padding: 10pt 0;
   color: #CEE2F2;
   text-decoration: none;
-  font-weight: 100;
+  font-weight: 300;
   text-shadow: 1px 1px #003C6D;
   width: 100%;
   background-color: transparent;
@@ -167,22 +147,19 @@ p {
 }
 
 .cookieCrumbs {
-  padding-bottom: 20pt;
-  margin-bottom: 20pt;
+  padding-bottom: 10pt;
+  margin-bottom: 10pt;
   border-bottom: 1pt solid #aaa;
-  height: 10pt;
+  height: auto;
 }
 
 .cookieCrumbs .cookieCrumb {
   display: inline-block;
   text-decoration: none;
-  font-family: 'Ubuntu', 'sans-serif';
+  font-family: 'Lato', 'sans-serif';
   text-transform: uppercase;
-  font-size: 0.9em;
-  line-height: 10pt;
-  height: 10pt;
-  margin-right: 10pt;
   vertical-align: middle;
+  height: auto;
 }
 
 .cookieCrumbs div.cookieCrumb {
@@ -191,8 +168,8 @@ p {
 
 .cookieCrumbs a.cookieCrumb {
   color: hsl(207, 100%, 50%);
-  font-weight: 700;
-  opacity: 0.75;
+  font-weight: 400;
+  opacity: 0.8;
 }
 
 .cookieCrumbs a.cookieCrumb:hover {
@@ -200,32 +177,40 @@ p {
 }
 
 .cookieCrumbs .cookieCrumb.separator {
-  font-size: 0.7em;
   color: #aaa;
 }
 
-.contentBlock h1, .contentBlock h2, .contentBlock h3 {
-  text-transform: uppercase;
-  font-family: 'Ubuntu', 'sans-serif';
+.cookieCrumbs h1.cookieCrumb {
+  margin: 0 10pt 0 0 !important;
+  font-weight: 400 !important;
+  color: #888;
+}
+
+.contentBlock h1, .contentBlock h2, .contentBlock h3, .contentBlock h4 {
+  font-family: 'Lato', 'sans-serif';
 }
 
 .contentBlock h1 {
-  font-weight: 400;
+  font-weight: 900;
   margin-top: 0px;
   margin-bottom: 3%;
   color: #222;
-  font-size: 2.5em;
-  font-weight: 100;
 }
 
 .contentBlock h2 {
-  font-weight: 400;
-  margin-top: 4%  ;
+  font-weight: 900;
+  margin-top: 4%;
   color: #222;
 }
 
 .contentBlock h3 {
-  font-weight: 400;
+  font-weight: 900;
+  margin-top: 3%;
+  color: #333;
+}
+
+.contentBlock h4 {
+  font-weight: 900;
   margin-top: 3%;
   color: #333;
 }
@@ -233,11 +218,14 @@ p {
 .contentBlock p {
   font-weight: 400;
   line-height: 2em;
-  margin-top: 3%;
+  margin: 3% 0;
   color: #111;
 }
 
-.contentBlock p.quote {
+.contentBlock ul, .contentBlock ol {
+}
+
+.contentBlock blockquote  p {
   color: #888;
   text-align: center;
   width: 95%;
@@ -246,7 +234,7 @@ p {
   font-style: italic;
 }
 
-.contentBlock p a {
+.contentBlock p a, .contentBlock li a {
   text-decoration: none;
   color: #0062b3;
   font-weight: 700;
@@ -276,48 +264,51 @@ p {
   background-color: transparent;
 }
 
-.contentBlock img.portrait {
-  display: block;
-  position: relative;
-  max-width: 95%;
-  margin: 4% auto;
-  box-shadow: 0px 0px 3px #000;
-  border: 1px solid #000;
+.contentBlock ol, .contentBlock ul {
+  padding-left: 5%;
+  line-height: 2em;
 }
 
-.blogPost img {
-  max-width: 80%;
-  margin: 0px auto;
-  display: block;
-  position: relative;
+.contentBlock .indent {
+  margin-left: 5%;
 }
 
 /** BLOG ############################################### **/
 
 .postListBlock {
-  text-align: left;
-  display: inline-block;
-  position: relative;
-  width: 48%;
-  margin-bottom: 4%;
-  vertical-align: top;
+  width: 100%;
+  margin: 0;
+  margin-top: 15pt;
+  margin-bottom: 5%;
+  padding-bottom: 5%;
+  border-bottom: 1pt solid #aaa;
 }
 
 .postListBlock.left {
-  margin-right: 2%;
+  margin-right: 0;
 }
 
 .postListBlock.right {
-  margin-left: 2%;
+  margin-left: 0;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 900px) {
   .postListBlock {
-    width: 100%;
-    margin: 0%;
-    margin-bottom: 5%;
-    padding-bottom: 5%;
-    border-bottom: 1pt solid #aaa;
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    width: 48%;
+    margin-top: 0;
+    margin-bottom: 4%;
+    vertical-align: top;
+  }
+
+  .postListBlock.left {
+    margin-right: 2%;
+  }
+
+  .postListBlock.right {
+    margin-left: 2%;
   }
 }
 
@@ -325,6 +316,8 @@ p {
   width: 100%;
   opacity: 1;
   -webkit-transform: translateZ(0);
+  border: 1px #aaa solid;
+  box-shadow: 0px 0px 5px #888;
 }
 
 .postListBlock .coverPhoto:hover {
@@ -341,7 +334,7 @@ p {
 
 .postListBlock p {
   font-size: 0.9em;
-  font-family: 'Ubuntu', 'sans-serif';
+  font-family: 'Lato', 'sans-serif';
   margin: 0;
 }
 
@@ -351,6 +344,24 @@ p {
   overflow: hidden;
 }
 
+.postPhoto {
+  margin: 0px auto;
+  margin-top: 3%;
+  display: block;
+  position: relative;
+  border: 1px #aaa solid;
+  box-shadow: 0px 0px 5px #888;
+}
+
+.blogPost .postContent img {
+  max-width: 95%;
+  margin: 0px auto;
+  display: block;
+  position: relative;
+  border: 1px #aaa solid;
+  box-shadow: 0px 0px 5px #888;
+}
+
 .contentBlock .postInfo {
   display: block;
   position: relative;
@@ -358,7 +369,7 @@ p {
 }
 
 .contentBlock .postInfo * {
-  font-family: 'Ubuntu', 'sans-serif';
+  font-family: 'Lato', 'sans-serif';
   color: #666;
   vertical-align: middle;
   line-height: 1.4em;
@@ -439,4 +450,84 @@ p {
 .multipleTags:hover .multipleTagsList, .multipleTagsList {
   opacity: 1;
   max-height: 100pt;
+}
+
+.indexTags {
+  margin: 2% 0;
+  text-align: center;
+}
+
+.indexTag {
+  display: inline-block;
+  position: relative;
+  margin: 2%;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Lato', 'sans-serif';
+  opacity: 1;
+}
+
+.indexTag:hover {
+  opacity: 0.8;
+}
+
+.indexTag .indexTagTriangle, .indexTag .indexTagName, .indexTag .indexTagCount {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.indexTag .indexTagTriangle {
+  background-color: #fff;
+}
+
+.indexTag .indexTagName {
+  background-color: #0777d3;
+  padding-right: 10pt;
+  padding-left: 5pt;
+}
+
+.indexTag .indexTagCount {
+  background-color: #0777d3;
+  color: #B3D6F2;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding-right: 10pt;
+}
+
+.archivedPostHeader {
+  margin-bottom: 10pt;
+  position: relative;
+}
+
+.archivedPosts {
+}
+
+.archivedPost {
+  padding: 10pt;
+  margin-bottom: 10pt;
+  background-color: #f8f8f8;
+}
+
+.archivedPosts .archiveTitleHeader {
+  margin: 0;
+}
+
+.archivedPosts .archiveTitleHeader:hover {
+  color: #666;
+}
+
+.archivedPosts .archiveTitle {
+  text-decoration: none;
+}
+
+.archivedPosts .archiveIntro p {
+  margin: 0;
+}
+
+.archivedPosts .archiveReadMore {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.8em;
+  color: #0062b3;
 }
