@@ -1,0 +1,30 @@
+.printSitePlug {
+  float: right;
+  text-align: right;
+  font-size: 0.7em;
+  color: #888;
+}
+
+[class^="flaticon-"] {
+  display: none;
+}
+
+.navPane, .cookieCrumbs {
+  display: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Roboto Slab', 'serif';
+}
+
+p, li, ul {
+  font-family: 'Roboto Slab', 'serif';
+  font-size: 0.8em;
+  line-height: 2em;
+}
+
+img {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+}

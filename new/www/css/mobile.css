@@ -132,6 +132,20 @@
   height: 20pt;
 }
 
+.paginationLabel {
+  font-size: 0.8em;
+  margin-bottom: 8pt;
+}
+
+.pagination {
+  font-size: 0.9em;
+}
+
+.pagination .pageNumber {
+  padding: 2pt 5pt;
+  margin: 1pt;
+}
+
 /** SIDE PANE ############################################### **/
 
 .sidePane {

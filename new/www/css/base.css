@@ -14,6 +14,14 @@ body {
     margin-left: auto;
 }
 
+.printSitePlug {
+  display: none;
+}
+
+.printHeader {
+  display: none;
+}
+
 .fadeOpacityRotation {
   -webkit-transition: opacity 0.35s ease, transform 0.35s ease;
   -moz-transition: opacity 0.35s ease, transform 0.35s ease;
@@ -81,7 +89,6 @@ body {
 .logo {
   display: block;
   position: relative;
-  cursor: pointer;
 }
 
 .nav {
@@ -128,6 +135,13 @@ body {
 .navElement:hover {
   background-color: rgba(0, 70, 128, 0.5);
   color: #fff;
+}
+
+.newTabIcon {
+  display: inline-block;
+  position: relative;
+  font-size: 0.75em;
+  transform: rotate(90deg) translate(-2pt, -4pt);
 }
 
 /** CONTENT ############################################### **/
@@ -540,4 +554,34 @@ body {
   font-weight: 700;
   font-size: 0.8em;
   color: #0062b3;
+}
+
+.paginationLabel {
+  text-align: center;
+  font-family: 'Lato', 'sans-serif';
+  text-transform: uppercase;
+  color: #444;
+}
+
+.pagination {
+  text-align: center;
+  font-family: 'Lato', 'sans-serif';
+  color: #888;
+}
+
+.pagination .pageNumber {
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  border-radius: 3pt;
+}
+
+.pagination a.pageNumber {
+  background-color: #f0f0f0;
+  color: #0080EB;
+}
+
+.pagination a.pageNumber:hover {
+  background-color: #CCE0F0;
+  color: #0065B8;
 }

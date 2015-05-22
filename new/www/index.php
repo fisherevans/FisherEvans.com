@@ -17,8 +17,9 @@ function get404($message = "Whatever you're looking for, it's not here...") {
     global $app;
     header("HTTP/1.0 404 Not Found");
     $data = [
-      'title'=>'404 Not Found',
-      'message'=>$message
+        'title'=>'404 Not Found',
+        'description'=>'This page was not found. Please let me know if you this is in error.',
+        'message'=>$message
     ];
     return $app->render('views/404.php with views/layout.php', $data);
 }
@@ -44,13 +45,15 @@ $app->bind("/", function() use($app) {
   $staticContent = collection('Static Content')->findOne(['name_slug'=>'about-page']);
   return $app->render('views/static_content.php with views/layout.php', [
     'title'=>'About',
-    'content'=>$staticContent['content']
+    'content'=>$staticContent['content'],
+    'currentPage'=>'about'
   ]);
 });
 
 $app->bind("/blog", function() use($app) {
   $data = [
-    'title'=>'Blog Index',
+      'title'=>'Blog Index',
+      'description'=>"The index of Fisher Evans' Blog. Find his most recent musings, browse by tag, or browse the whole archive.",
     'currentPage'=>'blog'
   ];
   return $app->render('views/blog/blogIndex.php with views/layout.php', $data);
@@ -67,6 +70,7 @@ $app->bind("/blog/recent/:page", function($params) use($app) {
     return get404("There aren't THAT many posts... Try a lower page number.");
   $blog['title'] = 'Recent Posts | Blog' . ($blog['page'] != 1 ? ' | Page ' . $blog['page'] : '');
   $blog['currentPage'] = 'blog';
+  $blog['description'] = "The most recent posts that Fisher Evans has made to his Blog.";
   return $app->render('views/blog/postList.php with views/layout.php', $blog);
 });
 
@@ -85,6 +89,7 @@ $app->bind("/blog/tag/:slug/:page", function($params) use($app) {
   if($blog == null)
     return get404();
   $blog['title'] = 'Blog' . ($blog['page'] != 1 ? ' | ' . $tag['name'] . ' | Page ' . $blog['page'] : '');
+  $blog['description'] = "The most recent posts tagged under " . $tag['name'] . " that Fisher Evans has made to his Blog.";
   $blog['currentPage'] = 'blog';
   $blog['filterTag'] = $tag;
   return $app->render('views/blog/postList.php with views/layout.php', $blog);
@@ -95,7 +100,8 @@ $app->bind("/blog/post/:slug", function($params) use($app) {
     if(!isset($post) || $post['published'] == false)
         return get404();
     $data = [
-        'title'=>$post['title'] . ' | Blog ',
+        'title'=>$post['title'] . ' | Blog',
+        'description'=>"Posted: " . $post['posted_date'] . ". " . $post['intro'],
         'currentPage'=>'blog',
         'post'=>$post
     ];
@@ -106,14 +112,8 @@ $app->bind("/projects", function() use($app) {
   $staticContent = collection('Static Content')->findOne(['name_slug'=>'wip']);
   return $app->render('views/static_content.php with views/layout.php', [
       'title'=>'Projects',
-      'content'=>$staticContent['content']
-  ]);
-});
-
-$app->bind("/resume", function() use($app) {
-  $staticContent = collection('Static Content')->findOne(['name_slug'=>'wip']);
-  return $app->render('views/static_content.php with views/layout.php', [
-      'title'=>'Resume',
+      'description'=>"A listing of Fisher Evans' more prominent and complete projects.",
+      'currentPage'=>'projects',
       'content'=>$staticContent['content']
   ]);
 });
@@ -122,6 +122,8 @@ $app->bind("/resources", function() use($app) {
   $staticContent = collection('Static Content')->findOne(['name_slug'=>'resources']);
   return $app->render('views/static_content.php with views/layout.php', [
       'title'=>'Resources',
+      'description'=>"Fisher Evans' favorite libraries, tools and frameworks. Resources that aid from game development to web services.",
+      'currentPage'=>'resources',
       'content'=>$staticContent['content']
   ]);
 });
@@ -129,7 +131,9 @@ $app->bind("/resources", function() use($app) {
 $app->bind("/contact", function() use($app) {
   $staticContent = collection('Static Content')->findOne(['name_slug'=>'wip']);
   return $app->render('views/static_content.php with views/layout.php', [
-      'title'=>'Contact Me',
+      'title'=>'Contact',
+      'description'=>"It's easy to connect with Fisher Evans: email, Twitter, LinkedIn, GitHub, the works!",
+      'currentPage'=>'contact',
       'content'=>$staticContent['content']
   ]);
 });

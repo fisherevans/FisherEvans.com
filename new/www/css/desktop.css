@@ -217,6 +217,20 @@
   }
 }
 
+.paginationLabel {
+  font-size: 0.9em;
+  margin-bottom: 10pt;
+}
+
+.pagination {
+  font-size: 1em;
+}
+
+.pagination .pageNumber {
+  padding: 4pt 7pt;
+  margin: 2pt;
+}
+
 /** SIDE PANE ############################################### **/
 
 .sidePane {

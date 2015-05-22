@@ -1,9 +1,21 @@
 <?php
-  function printNav($label, $link, $active) {
+  if(!isset($description))
+    $description = 'The website of Fisher Evans, a full-stack Software Engineer in the greater Burlington, Vermont area.';
+  if(isset($title))
+    $title = $title . ' | Fisher Evans';
+  else
+    $title = 'Fisher Evans';
+  function printNav($label, $link, $active, $newTab = false) {
     global $currentPage;
     $activeClass = $active ? 'active' : '';
+    $tagret = $newTab ? '_blank' : '_self';
+    $title = $newTab ? 'Opens a new tab' : '';
     ?>
-      <a class="navElement fadeColors <?=$activeClass?>" href="<?=$link?>"><?=$label?>
+      <a class="navElement fadeColors <?=$activeClass?>" title="<?=$title?>" target="<?=$tagret?>" href="<?=$link?>"><?=$label?>
+        <?php
+        if($newTab)
+          echo '<span class="flaticon-back57 newTabIcon"></span>';
+        ?>
         <div class="arrowBox">
             <span class="flaticon-fast44 arrow"></span>
         </div>
@@ -14,20 +26,33 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title><?=$title?></title>
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <!-- SEO -->
+    <meta name="description" content="<?=$description?>">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <link rel="author" href="https://plus.google.com/+FisherEvans"/>
+    <!-- Facebook -->
+    <meta property="og:title" content="<?=$title?>"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:description"  content="<?=$description?>">
+    <!-- Twitter -->
+    <meta name="twitter:title" content="<?=$title?>">
+    <meta name="twitter:description"  content="<?=$description?>">
+    <!-- Actual Resources -->
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Roboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css">
     <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css">
 
-    <link rel="stylesheet" type="text/css" href="/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/css/mobile.css" media="(max-width: 799px)" />
-    <link rel="stylesheet" type="text/css" href="/css/desktop.css" media="(min-width: 800px)" />
+    <link rel="stylesheet" type="text/css" href="/css/base.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/css/mobile.css" media="screen and (max-width: 799px)" />
+    <link rel="stylesheet" type="text/css" href="/css/desktop.css" media="screen and (min-width: 800px)" />
+    <link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title><?php echo isset($title) ? $title . ' | ' : ''; ?>Fisher Evans</title>
-    <link rel="icon" type="image/png" href="/img/favicon.png">
   </head>
   <body>
+    <h4 class="printHeader"><?=$title?></h4>
     <div class="navPane">
       <img class="logo" src="/img/logo.png" />
       <div class="menuBox fadeColors noTextSelect">
@@ -39,26 +64,23 @@
           printNav("Fisher Evans", "/",            isset($currentPage) && $currentPage == "about");
           printNav("Blog",         "/blog/recent/1", isset($currentPage) && $currentPage == "blog");
           printNav("Projects",     "/projects",    isset($currentPage) && $currentPage == "projects");
-          printNav("Resume",       "/resume",      isset($currentPage) && $currentPage == "resume");
           printNav("Resources",    "/resources",   isset($currentPage) && $currentPage == "resources");
+        printNav("Resume",       "http://resume.fisherevans.com/",      isset($currentPage) && $currentPage == "resume", true);
         ?>
       </div>
       <div class="connect">
-        <a class="icon fadeColors flaticon-gmail3"      target="_blank" alt="Email Address"       href="mailto:contact@fisherevans.com"></a>
-        <a class="icon fadeColors flaticon-linkedin12"  target="_blank" alt="LinkedIn Profile"    href="https://www.linkedin.com/in/fisherevans/"></a>
-        <a class="icon fadeColors flaticon-github8"     target="_blank" alt="GitHub Account"      href="https://github.com/fisherevans"></a>
-        <a class="icon fadeColors flaticon-twitter13"   target="_blank" alt="Twitter Feed"        href="https://twitter.com/FisherEvans"></a>
-        <a class="icon fadeColors flaticon-facebook29"  target="_blank" alt="Facebook Page"       href="https://www.facebook.com/fisherevans"></a>
-        <a class="icon fadeColors flaticon-google110"   target="_blank" alt="Google Plus Profile" href="https://plus.google.com/+FisherEvans/posts"></a>
-        <a class="icon fadeColors flaticon-magnifier13" target="_blank" alt="Google Search Me"    href="http://lmgtfy.com/?q=Fisher+Evans+software+engineer"></a>
+        <a class="icon fadeColors flaticon-gmail3"      target="_blank" alt="Email Address"       title="Email Address"       href="mailto:contact@fisherevans.com"></a>
+        <a class="icon fadeColors flaticon-linkedin12"  target="_blank" alt="LinkedIn Profile"    title="LinkedIn Profile"    href="https://www.linkedin.com/in/fisherevans/"></a>
+        <a class="icon fadeColors flaticon-github8"     target="_blank" alt="GitHub Account"      title="GitHub Account"      href="https://github.com/fisherevans"></a>
+        <a class="icon fadeColors flaticon-twitter13"   target="_blank" alt="Twitter Feed"        title="Twitter Feed"        href="https://twitter.com/FisherEvans"></a>
+        <a class="icon fadeColors flaticon-facebook29"  target="_blank" alt="Facebook Page"       title="Facebook Page"       href="https://www.facebook.com/fisherevans"></a>
+        <a class="icon fadeColors flaticon-google110"   target="_blank" alt="Google Plus Profile" title="Google Plus Profile" href="https://plus.google.com/+FisherEvans/posts"></a>
+        <a class="icon fadeColors flaticon-magnifier13" target="_blank" alt="Google Search Me"    title="Google Search Me"    href="http://lmgtfy.com/?q=Fisher+Evans+software+engineer"></a>
       </div>
       <a class="contact fadeColors" href="/contact">Contact Me</a>
     </div>
     <div class="contentPane">
       <?php echo $content_for_layout; ?>
-    </div>
-    <div class="sidePane">
-      Dummy data... Dummy data... Dummy data... Dummy data... Dummy data... Dummy data... 
     </div>
     <script type="text/javascript" src="/lib/highlight/highlight.pack.js"></script>
     <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js"></script>
@@ -76,5 +98,6 @@
         });
       });
     </script>
+    <p class="printSitePlug">Copyright <?php echo date('Y'); ?> Fisher Evans<br>fisherevans.com<?=$_SERVER['REQUEST_URI']?></p>
   </body>
 </html>

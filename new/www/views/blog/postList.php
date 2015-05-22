@@ -38,16 +38,15 @@
       }
     ?>
     -->
+  <div class="paginationLabel">Page Selection</div>
   <div class="pagination">
     <?php for($i=1;$i<=$pages;$i++) { ?>
       <?php if($page==$i) { ?>
-          <span><?=$i;?></span>
+          <span class="pageNumber"><?=$i;?></span>
       <?php } else if(isset($filterTag)) { ?>
-        <a href="<?=$this->route("/blog/tag/" . $filterTag['name_slug'] . "/" . $i);?>"><?=$i;?></a>
+        <a class="pageNumber fadeColors" href="<?=$this->route("/blog/tag/" . $filterTag['name_slug'] . "/" . $i);?>"><?=$i;?></a>
         <?php } else { ?>
-        <a href="<?=$this->route("/blog/recent/" . $i);?>"><?=$i;?></a>
+        <a class="pageNumber fadeColors" href="<?=$this->route("/blog/recent/" . $i);?>"><?=$i;?></a>
         <?php } ?>
     <?php } ?>
   </div>
-</div>
-<textarea><?php print_r($posts); ?></textarea>
