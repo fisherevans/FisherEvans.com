@@ -191,6 +191,10 @@
     width: 90%;
     font-size: 1.15em;
   }
+
+  .contentBlock .halfBlock {
+    width: 43%;
+  }
 }
 
 /** BLOG ############################################### **/

@@ -273,6 +273,16 @@ body {
   margin-left: 5%;
 }
 
+.contentBlock .halfBlock {
+  display: inline-block;
+  position: relative;
+  width: 95%;
+  margin: 2% 1%;
+  padding: 1% 2%;
+  background-color: #f0f0f0;
+  vertical-align: top;
+}
+
 /** BLOG ############################################### **/
 
 .postListBlock {
