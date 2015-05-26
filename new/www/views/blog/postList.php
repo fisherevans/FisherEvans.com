@@ -38,15 +38,18 @@
       }
     ?>
     -->
-  <div class="paginationLabel">Page Selection</div>
-  <div class="pagination">
-    <?php for($i=1;$i<=$pages;$i++) { ?>
-      <?php if($page==$i) { ?>
-          <span class="pageNumber"><?=$i;?></span>
-      <?php } else if(isset($filterTag)) { ?>
-        <a class="pageNumber fadeColors" href="<?=$this->route("/blog/tag/" . $filterTag['name_slug'] . "/" . $i);?>"><?=$i;?></a>
-        <?php } else { ?>
-        <a class="pageNumber fadeColors" href="<?=$this->route("/blog/recent/" . $i);?>"><?=$i;?></a>
-        <?php } ?>
+  <?php if($pages > 0) { ?>
+    <div class="paginationLabel">Page Selection</div>
+    <div class="pagination">
+      <?php for($i=1;$i<=$pages;$i++) { ?>
+        <?php if($page==$i) { ?>
+            <span class="pageNumber"><?=$i;?></span>
+        <?php } else if(isset($filterTag)) { ?>
+          <a class="pageNumber fadeColors" href="<?=$this->route("/blog/tag/" . $filterTag['name_slug'] . "/" . $i);?>"><?=$i;?></a>
+          <?php } else { ?>
+          <a class="pageNumber fadeColors" href="<?=$this->route("/blog/recent/" . $i);?>"><?=$i;?></a>
+          <?php } ?>
+      <?php } ?>
+      </div>
     <?php } ?>
   </div>

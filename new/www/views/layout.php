@@ -5,13 +5,14 @@
     $title = $title . ' | Fisher Evans';
   else
     $title = 'Fisher Evans';
-  function printNav($label, $link, $active, $newTab = false) {
+  function printNav($label, $link, $active, $newTab = false, $mobileOnly = false) {
     global $currentPage;
+    $mobileClass = $mobileOnly ? 'mobileOnly' : '';
     $activeClass = $active ? 'active' : '';
-    $tagret = $newTab ? '_blank' : '_self';
+    $target = $newTab ? '_blank' : '_self';
     $title = $newTab ? 'Opens a new tab' : '';
     ?>
-      <a class="navElement fadeColors <?=$activeClass?>" title="<?=$title?>" target="<?=$tagret?>" href="<?=$link?>"><?=$label?>
+      <a class="navElement fadeColors <?=$activeClass?> <?=$mobileClass?>" title="<?=$title?>" target="<?=$target?>" href="<?=$link?>"><?=$label?>
         <?php
         if($newTab)
           echo '<span class="flaticon-back57 newTabIcon"></span>';
@@ -29,7 +30,7 @@
     <title><?=$title?></title>
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <!-- SEO -->
-    <meta name="description" content="<?=$description?>">
+    <meta name="description" content="Fisher Evans, Software Engineer - <?=$description?>">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <link rel="author" href="https://plus.google.com/+FisherEvans"/>
     <!-- Facebook -->
@@ -65,7 +66,8 @@
           printNav("Blog",         "/blog/recent/1", isset($currentPage) && $currentPage == "blog");
           printNav("Projects",     "/projects",    isset($currentPage) && $currentPage == "projects");
           printNav("Resources",    "/resources",   isset($currentPage) && $currentPage == "resources");
-        printNav("Resume",       "http://resume.fisherevans.com/",      isset($currentPage) && $currentPage == "resume", true);
+          printNav("Resume",       "http://resume.fisherevans.com/",      isset($currentPage) && $currentPage == "resume", true);
+          printNav("Contact Me",       "/contact",      isset($currentPage) && $currentPage == "contact", false, true);
         ?>
       </div>
       <div class="connect">
@@ -81,7 +83,16 @@
     </div>
     <div class="contentPane">
       <?php echo $content_for_layout; ?>
+      <footer>
+        This site and its contents are Copyright &copy; <span class="noBreak">David Fisher Evans <?=date('Y')?>.</span><br>
+        Credit where credit is due; here's some <span class="noBreak"><a href="/credits">licensing information</a>.</span>
+      </footer>
     </div>
+    <p class="printSitePlug">
+      Copyright <?php echo date('Y'); ?> Fisher Evans<br>
+      Page accessed: <?php echo date('Y-m-d g:i A'); ?><br>
+      fisherevans.com<?=$_SERVER['REQUEST_URI']?>
+    </p>
     <script type="text/javascript" src="/lib/highlight/highlight.pack.js"></script>
     <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js"></script>
     <script>
@@ -98,6 +109,5 @@
         });
       });
     </script>
-    <p class="printSitePlug">Copyright <?php echo date('Y'); ?> Fisher Evans<br>fisherevans.com<?=$_SERVER['REQUEST_URI']?></p>
   </body>
 </html>

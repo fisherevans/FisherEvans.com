@@ -57,12 +57,16 @@
 }
 
 .navPane.expanded .nav {
-  max-height: 250px;
+  max-height: 300px;
   border-bottom: 5px solid #005092;
 }
 
 .connect, .contact {
   display: none;
+}
+
+.navElement.mobileOnly {
+  display: block;
 }
 
 /** CONTENT ############################################### **/
@@ -107,7 +111,7 @@
   max-height: 80vw;
 }
 
-.contentBlock p, .contentBlock li {
+.contentBlock p, .contentBlock li, .contentBlock td, .contentBlock strong {
   font-size: 0.85em;
 }
 
@@ -118,6 +122,12 @@
 .contentBlock pre code {
   font-size: 1em;
   line-height: 1.25em;
+}
+
+footer {
+  font-size: 0.8em;
+  margin: 1% 2%;
+  padding: 1% 4%;
 }
 
 /** BLOG ############################################### **/

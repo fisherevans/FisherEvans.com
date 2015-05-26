@@ -141,7 +141,7 @@
   }
 }
 
-.contentBlock p, .contentBlock li {
+.contentBlock p, .contentBlock li, .contentBlock td, .contentBlock strong {
   font-size: 0.95em;
 }
 
@@ -195,6 +195,11 @@
   .contentBlock .halfBlock {
     width: 43%;
   }
+}
+footer {
+  font-size: 0.9em;
+  margin: 1% 4%;
+  padding: 1% 4%;
 }
 
 /** BLOG ############################################### **/

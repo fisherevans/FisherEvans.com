@@ -88,7 +88,7 @@ $app->bind("/blog/tag/:slug/:page", function($params) use($app) {
   }, $params['page']);
   if($blog == null)
     return get404();
-  $blog['title'] = 'Blog' . ($blog['page'] != 1 ? ' | ' . $tag['name'] . ' | Page ' . $blog['page'] : '');
+  $blog['title'] =  $tag['name'] . ' | Blog' . ($blog['page'] != 1 ? ' | Page ' . $blog['page'] : '');
   $blog['description'] = "The most recent posts tagged under " . $tag['name'] . " that Fisher Evans has made to his Blog.";
   $blog['currentPage'] = 'blog';
   $blog['filterTag'] = $tag;
@@ -109,12 +109,32 @@ $app->bind("/blog/post/:slug", function($params) use($app) {
 });
 
 $app->bind("/projects", function() use($app) {
-  $staticContent = collection('Static Content')->findOne(['name_slug'=>'wip']);
-  return $app->render('views/static_content.php with views/layout.php', [
+  $featured = array();
+  $nonFeatured = array();
+  $projects = collection('Projects')->find(["published"=>true]);
+  $projects->sort(["name"=>1]);
+  foreach($projects->toArray() as $project) {
+    if(isset($project['featured']) && $project['featured'] == true)
+      $featured[] = $project;
+    else
+      $nonFeatured[] = $project;
+  }
+  return $app->render('views/projects/projectList.php with views/layout.php', [
       'title'=>'Projects',
       'description'=>"A listing of Fisher Evans' more prominent and complete projects.",
       'currentPage'=>'projects',
-      'content'=>$staticContent['content']
+      'featured'=>$featured,
+      'nonFeatured'=>$nonFeatured
+  ]);
+});
+
+$app->bind("/projects/:slug", function($params) use($app) {
+  $project = collection('Projects')->findOne(["published"=>true,"name_slug"=>$params['slug']]);
+  return $app->render('views/projects/project.php with views/layout.php', [
+      'title'=>$project['name'] . ' | Projects',
+      'description'=>$project['description'],
+      'currentPage'=>'projects',
+      'project'=>$project,
   ]);
 });
 
@@ -129,11 +149,21 @@ $app->bind("/resources", function() use($app) {
 });
 
 $app->bind("/contact", function() use($app) {
-  $staticContent = collection('Static Content')->findOne(['name_slug'=>'wip']);
+  $staticContent = collection('Static Content')->findOne(['name_slug'=>'contact-me']);
   return $app->render('views/static_content.php with views/layout.php', [
       'title'=>'Contact',
-      'description'=>"It's easy to connect with Fisher Evans: email, Twitter, LinkedIn, GitHub, the works!",
+      'description'=>"It's easy to connect with Fisher Evans: E-Mail, Twitter, LinkedIn, GitHub, the works!",
       'currentPage'=>'contact',
+      'content'=>$staticContent['content']
+  ]);
+});
+
+$app->bind("/credits", function() use($app) {
+  $staticContent = collection('Static Content')->findOne(['name_slug'=>'credits']);
+  return $app->render('views/static_content.php with views/layout.php', [
+      'title'=>'Credits',
+      'description'=>"I wouldn't have been able to make this site without a little help...",
+      'currentPage'=>'',
       'content'=>$staticContent['content']
   ]);
 });
