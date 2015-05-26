@@ -62,14 +62,17 @@
       </div>
       <div class="nav fadeMaxHeightBorder">
         <?php
-          printNav("Fisher Evans", "/",            isset($currentPage) && $currentPage == "about");
-          printNav("Blog",         "/blog/recent/1", isset($currentPage) && $currentPage == "blog");
-          printNav("Projects",     "/projects",    isset($currentPage) && $currentPage == "projects");
-          printNav("Resources",    "/resources",   isset($currentPage) && $currentPage == "resources");
-          printNav("Resume",       "http://resume.fisherevans.com/",      isset($currentPage) && $currentPage == "resume", true);
-          printNav("Contact Me",       "/contact",      isset($currentPage) && $currentPage == "contact", false, true);
+          printNav("Fisher Evans", "/",                              isset($currentPage) && $currentPage == "about");
+          printNav("Blog",         "/blog/recent/1",                 isset($currentPage) && $currentPage == "blog");
+          printNav("Projects",     "/projects",                      isset($currentPage) && $currentPage == "projects");
+          printNav("Resources",    "/resources",                     isset($currentPage) && $currentPage == "resources");
+          printNav("Resume",       "http://resume.fisherevans.com/", isset($currentPage) && $currentPage == "resume",  true);
+          printNav("Contact Me",   "/contact",                       isset($currentPage) && $currentPage == "contact", false, true);
         ?>
       </div>
+      <a class="subscribe fadeColors" href="http://eepurl.com/bowcor" target="_blank">
+        Subscribe to my blog
+      </a>
       <div class="connect">
         <a class="icon fadeColors flaticon-gmail3"      target="_blank" alt="Email Address"       title="Email Address"       href="mailto:contact@fisherevans.com"></a>
         <a class="icon fadeColors flaticon-linkedin12"  target="_blank" alt="LinkedIn Profile"    title="LinkedIn Profile"    href="https://www.linkedin.com/in/fisherevans/"></a>
@@ -84,17 +87,18 @@
     <div class="contentPane">
       <?php echo $content_for_layout; ?>
       <footer>
-        This site and its contents are Copyright &copy; <span class="noBreak">David Fisher Evans <?=date('Y')?>.</span><br>
+        This site and its contents are Copyright &copy; <span class="noBreak">David Fisher Evans <?=date('Y')?>, all rights reserved.</span><br>
         Credit where credit is due; here's some <span class="noBreak"><a href="/credits">licensing information</a>.</span>
       </footer>
     </div>
     <p class="printSitePlug">
-      Copyright <?php echo date('Y'); ?> Fisher Evans<br>
+      Copyright &copy; <?php echo date('Y'); ?> David Fisher Evans<br>
       Page accessed: <?php echo date('Y-m-d g:i A'); ?><br>
       fisherevans.com<?=$_SERVER['REQUEST_URI']?>
     </p>
     <script type="text/javascript" src="/lib/highlight/highlight.pack.js"></script>
     <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="http://s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
     <script>
       $(document).ready(function() {
         $('pre code').each(function(i, block) {
@@ -109,5 +113,6 @@
         });
       });
     </script>
+    <?=collection('Static Code')->findOne('footer')['code']?>
   </body>
 </html>

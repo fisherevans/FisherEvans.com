@@ -34,6 +34,27 @@
   }
 }
 
+.subscribe {
+  position: absolute;
+  display: block;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  opacity: 1;
+  color: #A8D4F7;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Lato', 'sans-serif';
+  font-size: 12px;
+}
+
+.subscribe:hover {
+  color: #E1ECF5;
+}
+
 .connect {
   position: absolute;
   display: block;
@@ -196,10 +217,20 @@
     width: 43%;
   }
 }
+
+.embeddedMedia {
+  width: 75%;
+  padding-bottom: 46.875%;
+}
+
 footer {
   font-size: 0.9em;
   margin: 1% 4%;
   padding: 1% 4%;
+}
+
+.subscribeText {
+  font-size: 0.85em !important;
 }
 
 /** BLOG ############################################### **/

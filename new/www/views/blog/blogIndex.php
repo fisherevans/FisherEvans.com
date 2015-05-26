@@ -2,7 +2,8 @@
   <div class="cookieCrumbs">
     <h1 class="cookieCrumb current">Blog Index</h1>
   </div>
-  <h2>Recent Posts</h2>
+  <p class="subscribeText"><a class="fadeColors" href="http://eepurl.com/bowcor" target="_blank" title="Subcribe to my blog">Subscribe</a> to my blog.</p>
+  <h2 class="noTopMargin">Recent Posts</h2>
   <p>To find the posts I've recently made in all tag categories, click here: <a href="<?=$this->route("/blog/recent/1")?>">View Recent Posts</a></p>
   <h2>Browse by Tag</h2>
   <div class="indexTags">

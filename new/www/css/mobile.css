@@ -61,7 +61,7 @@
   border-bottom: 5px solid #005092;
 }
 
-.connect, .contact {
+.connect, .contact, .subscribe {
   display: none;
 }
 
@@ -124,10 +124,19 @@
   line-height: 1.25em;
 }
 
+.embeddedMedia {
+  width: 95%;
+  padding-bottom: 59.375%;
+}
+
 footer {
   font-size: 0.8em;
   margin: 1% 2%;
   padding: 1% 4%;
+}
+
+.subscribeText {
+  font-size: 0.7em !important;
 }
 
 /** BLOG ############################################### **/

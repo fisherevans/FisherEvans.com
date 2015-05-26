@@ -13,6 +13,18 @@
       <h1 class="cookieCrumb current">Recent Posts</h1>
     <?php } ?>
   </div>
+  <?php
+    if(isset($filterTag)) {
+      $project = collection('Projects')->findOne(["published"=>true, "tag"=>$filterTag['_id']]);
+      if(isset($project)) {
+        ?>
+        <h2><?=$project['name']?></h2>
+        <p>This tag is related to the project <a href="/projects/<?=$project['name_slug']?>"><?=$project['name']?></a>. <?=$project['description']?></p>
+        <?php
+      }
+    }
+  ?>
+  <div class="postListBlocks">
     <!--
     <?php
       if(count($posts) == 0) {
@@ -38,6 +50,7 @@
       }
     ?>
     -->
+  </div>
   <?php if($pages > 0) { ?>
     <div class="paginationLabel">Page Selection</div>
     <div class="pagination">

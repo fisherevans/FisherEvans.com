@@ -16,13 +16,33 @@
   <h1 class="projectName"><?=$project['name']?></h1>
   <div class="projectIntro"><?=$parsedown->text($project['description'])?></div>
   <div class="projectContent"><?=$parsedown->text($project['content'])?></div>
-  <?php if($postCount > 0) { ?>
+  <div class="clearFix"></div>
+  <?php if($postCount > 0) {
+    $posts = collection("Blog Posts")->find(function($post) use($tagIds) {
+      return count(array_intersect($tagIds, $post['tags']))===count($tagIds) && isset($post['published']) && $post['published'] == true;
+    });
+    $posts->limit(3);
+    $posts->sort(["posted_date"=>-1]);
+    ?>
     <div class="hr"></div>
     <h3>Recent Blog Posts</h3>
     <p>
       Here are the most recent posts I've made relating to this project.
       You can see all posts tagged with <?=$tag['name']?> <a href="/blog/tag/<?=$tag['name_slug']?>/1">here</a>.
     </p>
-
+    <div class="archivedPosts">
+      <?php
+      foreach($posts->toArray() as $post) {
+        echo "<div class='archivedPost'><a class='archiveTitle fadeColors' href='";
+        $this->route("/blog/post/".$post['title_slug']);
+        echo "'><h4 class='archiveTitleHeader fadeColors'>{$post['title']}</h4></a>";
+        require('/views/blog/snippets/postInfo.php');
+        echo '<div class="archiveIntro">' . $parsedown->text($post['intro']) . '<a class="archiveReadMore" href="';
+        $this->route("/blog/post/".$post['title_slug']);
+        echo '">Read more...</a></div>';
+        echo "</div>";
+      }
+      ?>
+    </div>
   <?php } ?>
 </div>

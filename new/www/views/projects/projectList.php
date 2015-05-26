@@ -38,7 +38,7 @@
   <p>
     Below is a list of personal (and maybe some group) projects that I thought deserved their own page. Feel free to <a href="/contact">contact me</a> if you'd like to know more about a certain project or endeavor.
   </p>
-  <h3>Featured Projects</h3>
+  <h3>Featured Project<?=count($featured) > 1 ? 's' : ''?></h3>
   <?php displayProjects($featured); ?>
   <h3>Other Projects</h3>
   <?php displayProjects($nonFeatured); ?>

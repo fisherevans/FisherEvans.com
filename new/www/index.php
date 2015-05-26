@@ -84,7 +84,7 @@ $app->bind("/blog/tag/:slug/:page", function($params) use($app) {
   if(!isset($tag))
     return get404("Looks like that tag doesn't exist. Whoops.");
   $blog = getBlogPosts(function($post) use($tagIds) {
-    return count(array_intersect($tagIds, $post['tags']))===count($tagIds) && $post['published'] == true;
+    return count(array_intersect($tagIds, $post['tags']))===count($tagIds) && isset($post['published']) && $post['published'] == true;
   }, $params['page']);
   if($blog == null)
     return get404();

@@ -18,6 +18,7 @@
   <div class="postContent">
     <?php echo $parsedown->text($post['content']); ?>
   </div>
+  <p class="centered noBottomMargin">Like this content? Think about <a href="http://eepurl.com/bowcor" target="_blank" title="Subcribe to my blog">subscribing</a>.</p>
 </div>
 <div class="contentBlock blogDiscussion">
   <div id="disqus_thread"></div>
