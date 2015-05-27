@@ -34,7 +34,7 @@
   $lastYear = null;
   $lastMonth = null;
   foreach($posts as $post) {
-    $postDate = new DateTime("@" . $post['created']);
+    $postDate = new DateTime("@" . strtotime($post['posted_date']));
     $thisYear = $postDate->format('Y');
     $thisMonth = $postDate->format('F');
     if ($thisYear != $lastYear || $thisMonth != $lastMonth) {
