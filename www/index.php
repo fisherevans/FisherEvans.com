@@ -172,4 +172,4 @@ $app->bind("*", function($params) use($app) {
     return get404();
 });
 
-$app->run();
+$app->run($_SERVER['ORIG_PATH_INFO']);
