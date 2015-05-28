@@ -36,7 +36,7 @@
         echo "<div class='archivedPost'><a class='archiveTitle fadeColors' href='";
         $this->route("/blog/post/".$post['title_slug']);
         echo "'><h4 class='archiveTitleHeader fadeColors'>{$post['title']}</h4></a>";
-        require('/views/blog/snippets/postInfo.php');
+        include(dirname(__DIR__).'/blog/snippets/postInfo.php');
         echo '<div class="archiveIntro">' . $parsedown->text($post['intro']) . '<a class="archiveReadMore" href="';
         $this->route("/blog/post/".$post['title_slug']);
         echo '">Read more...</a></div>';
