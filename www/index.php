@@ -1,8 +1,8 @@
 <?php
 
-//ini_set('display_errors',1);
-//ini_set('display_startup_errors',1);
-//error_reporting(-1);
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(-1);
 
 $blogPostsPerPage = 4;
 
@@ -167,7 +167,19 @@ $app->bind("/credits", function() use($app) {
   ]);
 });
 
-$app->bind("*", function($params) use($app) {
+$app->bind("/resume", function() use($app) {
+  global $app;
+  $app->response->status = "301";
+  header('Location: http://resume.fisherevans.com/');
+  $data = [
+      'title'=>'404 Not Found',
+      'description'=>'This page was not found. Please let me know if you this is in error.',
+      'message'=>'My resume is now located here: <a href="http://resume.fisherevans.com/">resume.fisherevans.com/</a>.'
+  ];
+  return $app->render('views/404.php with views/layout.php', $data);
+});
+
+$app->bind("*", function() use($app) {
     return get404();
 });
 
