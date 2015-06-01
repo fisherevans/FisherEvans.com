@@ -1,3 +1,7 @@
+.noMobile {
+  display: none;
+}
+
 /** NAVIGATION ############################################### **/
 
 .navPane {

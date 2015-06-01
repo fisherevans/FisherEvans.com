@@ -171,4 +171,9 @@ $app->bind("*", function($params) use($app) {
     return get404();
 });
 
-$app->run($_SERVER['ORIG_PATH_INFO']);
+if(isset($_SERVER['ORIG_PATH_INFO']))
+  $app->run($_SERVER['ORIG_PATH_INFO']);
+else if(isset($_SERVER['REQUEST_URI']))
+  $app->run($_SERVER['REQUEST_URI']);
+else
+  $app->run('/');

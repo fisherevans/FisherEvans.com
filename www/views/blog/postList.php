@@ -30,8 +30,13 @@
       if(count($posts) == 0) {
         ?>--><h2>Empty...</h2><p>Looks like I haven't posted anything here yet.<!--<?php
       } else {
+          $first = true;
           $left = true;
-          foreach ($posts as $post) { ?>
+          foreach ($posts as $post) {
+            if($left && !$first) {
+              echo '--><div class="hhr"></div><div class="hhr"></div><!--';
+            }
+            ?>
            --><div class="postListBlock <?php echo ($left ? 'left' : 'right'); ?>">
           <a href="<?=$this->route("/blog/post/" . $post['title_slug']);?>">
             <img class="coverPhoto fadeColors" src="<?php echo str_replace("site:", "/", $post['image']);?>" alt="<?=$post['title']?> Banner Image" />
@@ -46,6 +51,7 @@
         </div><!--
           <?php
         $left = !$left;
+        $first = false;
         }
       }
     ?>
