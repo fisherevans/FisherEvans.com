@@ -23,7 +23,7 @@
           <div class="clearFix"></div>
         </div>
         <a class="cover" href="/projects/<?=$project['name_slug']?>">
-          <img src="<?php echo str_replace("site:", "/", $project['image']);?>" />
+          <img src="<?php echo str_replace("site:", "/", $project['image']);?>" alt="<?=$project['name']?> Logo" />
         </a>
       </div>
     <?php

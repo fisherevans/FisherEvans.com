@@ -14,7 +14,7 @@
   <div class="postIntro">
     <?php echo $parsedown->text($post['intro']); ?>
   </div>
-  <img class="postPhoto" src="<?php echo str_replace("site:", "/", $post['image']);?>" />
+  <img class="postPhoto" src="<?php echo str_replace("site:", "/", $post['image']);?>" alt="<?=$post['title']?> Banner Image"/>
   <div class="postContent">
     <?php echo $parsedown->text($post['content']); ?>
   </div>

@@ -4,11 +4,6 @@
 //ini_set('display_startup_errors',1);
 //error_reporting(-1);
 
-if(preg_match('/^www/', $_SERVER['SERVER_NAME'])) {
-    header('Location: http://fisherevans.com' . $_SERVER['ORIG_PATH_INFO']);
-    exit;
-}
-
 $blogPostsPerPage = 4;
 
 //include cockpit
@@ -19,7 +14,7 @@ $app = new Lime\App();
 
 function get404($message = "Whatever you're looking for, it's not here...") {
     global $app;
-    header("HTTP/1.0 404 Not Found");
+    $app->response->status = "404";
     $data = [
         'title'=>'404 Not Found',
         'description'=>'This page was not found. Please let me know if you this is in error.',

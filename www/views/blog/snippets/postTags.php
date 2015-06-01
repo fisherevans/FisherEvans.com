@@ -3,7 +3,7 @@
   if(count($tags) == 1) {
     $tag = collection('Tags')->findOne(['_id'=>$tags[0]]);
     echo "<a class='tag fadeColors' href='";
-    $this->route("/blog/tag/".$tag['name_slug']);
+    $this->route("/blog/tag/".$tag['name_slug']."/1");
     echo "'>{$tag['name']}</a>";
   } else if(count($tags) == 0) {
     echo "Not tagged";
@@ -12,7 +12,7 @@
     foreach($post['tags'] as $tagId) {
       $tag = collection('Tags')->findOne(['_id'=>$tagId]);
       echo "<a class='tag fadeColors' href='";
-      $this->route("/blog/tag/".$tag['name_slug']);
+      $this->route("/blog/tag/".$tag['name_slug']."/1");
       echo "'>{$tag['name']}</a>";
     }
     echo '</div></div>';

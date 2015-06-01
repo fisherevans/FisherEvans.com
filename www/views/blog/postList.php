@@ -34,7 +34,7 @@
           foreach ($posts as $post) { ?>
            --><div class="postListBlock <?php echo ($left ? 'left' : 'right'); ?>">
           <a href="<?=$this->route("/blog/post/" . $post['title_slug']);?>">
-            <img class="coverPhoto fadeColors" src="<?php echo str_replace("site:", "/", $post['image']);?>" />
+            <img class="coverPhoto fadeColors" src="<?php echo str_replace("site:", "/", $post['image']);?>" alt="<?=$post['title']?> Banner Image" />
           </a>
           <a href="<?=$this->route("/blog/post/" . $post['title_slug']);?>">
             <h3 class="fadeColors"><?php echo $post['title']; ?></h3>

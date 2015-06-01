@@ -10,9 +10,9 @@
   <div class="cookieCrumbs">
     <a href="<?=$this->route("/projects");?>" class="cookieCrumb fadeColors">Projects</a>
     <div class="cookieCrumb separator flaticon-fast44"></div>
-    <h1 class="cookieCrumb current"><?=$project['name']?></h1>
+    <div class="cookieCrumb current"><?=$project['name']?></div>
   </div>
-  <img class="projectPhoto" src="<?php echo str_replace("site:", "/", $project['image']);?>" />
+  <img class="projectPhoto" src="<?php echo str_replace("site:", "/", $project['image']);?>" alt="<?=$project['name']?> Logo" />
   <h1 class="projectName"><?=$project['name']?></h1>
   <div class="projectIntro"><?=$parsedown->text($project['description'])?></div>
   <div class="projectContent"><?=$parsedown->text($project['content'])?></div>

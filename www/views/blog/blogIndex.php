@@ -18,9 +18,9 @@
       if($count == 0)
         continue;
       echo "<a class='indexTag fadeColors' href='";
-      $this->route("/blog/tag/".$tag['name_slug']);
+      $this->route("/blog/tag/".$tag['name_slug']."/1");
       echo "'>";
-      echo "<img src='/img/left_tag.png' class='indexTagTriangle' />";
+      echo "<img src='/img/left_tag.png' class='indexTagTriangle' alt='Tag Background Image' />";
       echo "<span class='indexTagName'>{$tag['name']}</span>";
       echo "<span class='indexTagCount'>{$count}</span></a>";
     }
