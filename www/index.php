@@ -1,11 +1,15 @@
 <?php
 
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-error_reporting(-1);
+//ini_set('display_errors',1);
+//ini_set('display_startup_errors',1);
+//error_reporting(-1);
+
+if(preg_match('/^www/', $_SERVER['SERVER_NAME'])) {
+    header('Location: http://fisherevans.com' . $_SERVER['ORIG_PATH_INFO']);
+    exit;
+}
 
 $blogPostsPerPage = 4;
-
 
 //include cockpit
 include_once('lib/parsedown/Parsedown.php');
