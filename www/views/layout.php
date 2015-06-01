@@ -30,7 +30,7 @@
     <title><?=$title?></title>
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <!-- SEO -->
-    <meta name="description" content="Fisher Evans, Software Engineer - <?=$description?>">
+    <meta name="description" content="<?=$description?>">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <link rel="author" href="https://plus.google.com/+FisherEvans"/>
     <!-- Facebook -->
@@ -55,10 +55,10 @@
   <body>
     <h4 class="printHeader"><?=$title?></h4>
     <div class="navPane">
-      <img class="logo" src="/img/logo.png" />
+      <img class="logo" src="/img/logo.png" alt="FisherEvans.com Logo" />
       <div class="menuBox fadeColors noTextSelect">
-        <img class="menuIcon fadeOpacityRotation" src="/img/menu.png"></img>
-        <img class="closeMenuIcon fadeOpacityRotation" src="/img/close_menu.png"></img>
+        <img class="menuIcon fadeOpacityRotation" src="/img/menu.png" alt="Open Menu"></img>
+        <img class="closeMenuIcon fadeOpacityRotation" src="/img/close_menu.png" alt="Close Menu"></img>
       </div>
       <div class="nav fadeMaxHeightBorder">
         <?php
