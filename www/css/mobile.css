@@ -4,9 +4,9 @@
 
 /** NAVIGATION ############################################### **/
 
-.navPane {
+.sideBar {
   right: 0;
-  bottom: calc(100% - 50px);
+  top: 0px;
   border-bottom: 5px solid #005092;
 }
 
@@ -15,43 +15,43 @@
   padding: 7px 14px;
 }
 
-.menuBox {
+.navToggle {
   position: absolute;
   display: block;
   right: 0;
   top: 0;
-  height: 46px;
+  height: 50px;
   width: 64px;
   cursor: pointer;
   background-color: transparent;
 }
 
-.menuBox:hover {
+.navToggle:hover {
   background-color: #005092;
 }
 
-.menuIcon, .closeMenuIcon {
+.openMenuIcon, .closeMenuIcon {
   position: absolute;
   display: block;
   right: 0;
   top: 0;
   height: 24px;
   width: 28px;
-  padding: 11px 18px;
+  padding: 13px 18px;
   pointer-events:none;
 }
 
-.navPane.expanded .menuIcon, .navPane .closeMenuIcon {
+.sideBar.expanded .openMenuIcon, .sideBar .closeMenuIcon {
   opacity: 0;
   transform: scale(0, 0);
 }
 
-.navPane .menuIcon, .navPane.expanded .closeMenuIcon {
+.sideBar .openMenuIcon, .sideBar.expanded .closeMenuIcon {
   opacity: 1;
   transform: scale(1, 1);
 }
 
-.nav {
+.navigation {
   position: absolute;
   width: 100%;
   top: 50px;
@@ -60,7 +60,7 @@
   overflow: hidden;
 }
 
-.navPane.expanded .nav {
+.sideBar.expanded .navigation {
   max-height: 300px;
   border-bottom: 5px solid #005092;
 }
@@ -75,8 +75,8 @@
 
 /** CONTENT ############################################### **/
 
-.contentPane {
-  padding-top: 50px;
+.article {
+  padding-top: 55px;
   margin-left: 0px;
 }
 
@@ -137,6 +137,8 @@
   font-size: 0.8em;
   margin: 1% 2%;
   padding: 1% 4%;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .subscribeText {

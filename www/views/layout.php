@@ -35,7 +35,7 @@
     <meta name="twitter:title" content="<?=$title?>">
     <meta name="twitter:description"  content="<?=$description?>">
     <!-- Third Party Resources -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Roboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900%7CRoboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css">
     <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css">
     <!-- Styling -->
@@ -46,35 +46,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <!-- Navigation -->
-    <div class="navPane">
-      <img class="logo" src="/img/logo.png" alt="FisherEvans.com Logo" />
-      <div class="menuBox fadeColors noTextSelect">
-        <img class="fadeOpacityRotation menuIcon"      src="/img/menu.png"       alt="Open Menu"/>
-        <img class="fadeOpacityRotation closeMenuIcon" src="/img/close_menu.png" alt="Close Menu"/>
-      </div>
-      <div class="nav fadeMaxHeightBorder">
-<?php
-  printNav("Fisher Evans", "/",                              isset($currentPage) && $currentPage == "about");
-  printNav("Blog",         "/blog/recent/1",                 isset($currentPage) && $currentPage == "blog");
-  printNav("Projects",     "/projects",                      isset($currentPage) && $currentPage == "projects");
-  printNav("Resources",    "/resources",                     isset($currentPage) && $currentPage == "resources");
-  printNav("Resume",       "http://resume.fisherevans.com/", isset($currentPage) && $currentPage == "resume",  true);
-  printNav("Contact Me",   "/contact",                       isset($currentPage) && $currentPage == "contact", false, true);
-?>
-      </div>
-      <a class="subscribe fadeColors" href="http://eepurl.com/bowcor" target="_blank">Subscribe to my blog</a>
-      <div class="connect">
-        <a class="icon fadeColors flaticon-gmail3"      target="_blank" alt="Email Address"       title="Email Address"       href="mailto:contact@fisherevans.com"></a>
-        <a class="icon fadeColors flaticon-linkedin12"  target="_blank" alt="LinkedIn Profile"    title="LinkedIn Profile"    href="https://www.linkedin.com/in/fisherevans/"></a>
-        <a class="icon fadeColors flaticon-github8"     target="_blank" alt="GitHub Account"      title="GitHub Account"      href="https://github.com/fisherevans"></a>
-        <a class="icon fadeColors flaticon-twitter13"   target="_blank" alt="Twitter Feed"        title="Twitter Feed"        href="https://twitter.com/FisherEvans"></a>
-        <a class="icon fadeColors flaticon-facebook29"  target="_blank" alt="Facebook Page"       title="Facebook Page"       href="https://www.facebook.com/fisherevans"></a>
-        <a class="icon fadeColors flaticon-google110"   target="_blank" alt="Google Plus Profile" title="Google Plus Profile" href="https://plus.google.com/+FisherEvans/posts"></a>
-        <a class="icon fadeColors flaticon-magnifier13" target="_blank" alt="Google Search Me"    title="Google Search Me"    href="http://lmgtfy.com/?q=Fisher+Evans+software+engineer"></a>
-      </div>
-      <a class="contact fadeColors" href="/contact">Contact Me</a>
-    </div>
     <!-- Content -->
     <div class="printHeader"><?=$title?></div>
     <div class="article">
@@ -90,6 +61,35 @@
       Page accessed: <?php echo date('Y-m-d g:i A'); ?><br>
       fisherevans.com<?=$_SERVER['REQUEST_URI']?>
     </p>
+    <!-- Navigation -->
+    <div class="sideBar">
+      <img class="logo" src="/img/logo.png" alt="FisherEvans.com Logo" />
+      <div class="navToggle fadeColors noTextSelect">
+        <img class="fadeOpacityRotation openMenuIcon"      src="/img/menu.png"       alt="Open Menu"/>
+        <img class="fadeOpacityRotation closeMenuIcon" src="/img/close_menu.png" alt="Close Menu"/>
+      </div>
+      <div class="navigation fadeMaxHeightBorder">
+        <?php
+        printNav("Fisher Evans", "/",                              isset($currentPage) && $currentPage == "about");
+        printNav("Blog",         "/blog/recent/1",                 isset($currentPage) && $currentPage == "blog");
+        printNav("Projects",     "/projects",                      isset($currentPage) && $currentPage == "projects");
+        printNav("Resources",    "/resources",                     isset($currentPage) && $currentPage == "resources");
+        printNav("Resume",       "http://resume.fisherevans.com/", isset($currentPage) && $currentPage == "resume",  true);
+        printNav("Contact Me",   "/contact",                       isset($currentPage) && $currentPage == "contact", false, true);
+        ?>
+      </div>
+      <a class="subscribe fadeColors" href="http://eepurl.com/bowcor" target="_blank">Subscribe to my blog</a>
+      <div class="connect">
+        <a class="icon fadeColors flaticon-gmail3"      target="_blank" title="Email Address"       href="mailto:contact@fisherevans.com"></a>
+        <a class="icon fadeColors flaticon-linkedin12"  target="_blank" title="LinkedIn Profile"    href="https://www.linkedin.com/in/fisherevans/"></a>
+        <a class="icon fadeColors flaticon-github8"     target="_blank" title="GitHub Account"      href="https://github.com/fisherevans"></a>
+        <a class="icon fadeColors flaticon-twitter13"   target="_blank" title="Twitter Feed"        href="https://twitter.com/FisherEvans"></a>
+        <a class="icon fadeColors flaticon-facebook29"  target="_blank" title="Facebook Page"       href="https://www.facebook.com/fisherevans"></a>
+        <a class="icon fadeColors flaticon-google110"   target="_blank" title="Google Plus Profile" href="https://plus.google.com/+FisherEvans/posts"></a>
+        <a class="icon fadeColors flaticon-magnifier13" target="_blank" title="Google Search Me"    href="http://lmgtfy.com/?q=Fisher+Evans+software+engineer"></a>
+      </div>
+      <a class="contact fadeColors" href="/contact">Contact Me</a>
+    </div>
     <!-- Scripts -->
     <script type="text/javascript" src="/lib/highlight/highlight.pack.js"></script>
     <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js"></script>
@@ -99,8 +99,8 @@
         $('pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
-        $('.menuBox').on('click', function(event) {
-          $('.navPane').toggleClass('expanded');
+        $('.navToggle').on('click', function(event) {
+          $('.sideBar').toggleClass('expanded');
         });
         $(window).on('resize', function(event) {
           if($(window).width() > 800)
