@@ -1,7 +1,7 @@
 <?php
   $parsedown = new ParsedownExtra();
 ?>
-<div class="contentBlock">
+<div class="section">
   <div class="cookieCrumbs">
     <a href="<?=$this->route("/blog");?>" class="cookieCrumb fadeColors">Blog Index</a>
     <div class="cookieCrumb separator flaticon-fast44"></div>

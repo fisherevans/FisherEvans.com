@@ -1,6 +1,7 @@
-<div class="contentBlock">
-  <?php
-    $parsedown = new ParsedownExtra();
-    echo $parsedown->text($content);
-  ?>
+<div class="section">
+<?php
+  $parsedown = new ParsedownExtra();
+  echo $parsedown->text($content);
+?>
+
 </div>

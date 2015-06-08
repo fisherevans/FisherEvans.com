@@ -1,4 +1,4 @@
-<div class="contentBlock">
+<div class="section">
   <div class="cookieCrumbs">
     <h1 class="cookieCrumb current">Blog Index</h1>
   </div>
