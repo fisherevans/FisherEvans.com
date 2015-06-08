@@ -21,7 +21,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png?2015.06.08">
     <title><?=$title?></title>
     <!-- SEO -->
     <meta name="description" content="<?=$description?>">
@@ -36,13 +36,13 @@
     <meta name="twitter:description"  content="<?=$description?>">
     <!-- Third Party Resources -->
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900%7CRoboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css">
-    <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css">
+    <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css?2015.06.08">
+    <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css?2015.06.08">
     <!-- Styling -->
-    <link rel="stylesheet" type="text/css" href="/css/base.css"    media="screen" />
-    <link rel="stylesheet" type="text/css" href="/css/mobile.css"  media="screen and (max-width: 799px)" />
-    <link rel="stylesheet" type="text/css" href="/css/desktop.css" media="screen and (min-width: 800px)" />
-    <link rel="stylesheet" type="text/css" href="/css/print.css"   media="print" />
+    <link rel="stylesheet" type="text/css" href="/css/base.css?2015.06.08"    media="screen" />
+    <link rel="stylesheet" type="text/css" href="/css/mobile.css?2015.06.08"  media="screen and (max-width: 799px)" />
+    <link rel="stylesheet" type="text/css" href="/css/desktop.css?2015.06.08" media="screen and (min-width: 800px)" />
+    <link rel="stylesheet" type="text/css" href="/css/print.css?2015.06.08"   media="print" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -91,9 +91,9 @@
       <a class="contact fadeColors" href="/contact">Contact Me</a>
     </div>
     <!-- Scripts -->
-    <script type="text/javascript" src="/lib/highlight/highlight.pack.js"></script>
-    <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="http://s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+    <script type="text/javascript" src="/lib/highlight/highlight.pack.js?2015.06.08"></script>
+    <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js?2015.06.08"></script>
+    <script type="text/javascript" src="http://s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js?2015.06.08" data-dojo-config="usePlainJson: true, isDebug: false"></script>
     <script>
       $(document).ready(function() {
         $('pre code').each(function(i, block) {
