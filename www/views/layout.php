@@ -95,7 +95,6 @@
     <!-- Scripts -->
     <script type="text/javascript" src="/lib/highlight/highlight.pack.js?2015.06.08"></script>
     <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js?2015.06.08"></script>
-    <script type="text/javascript" src="http://s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js?2015.06.08" data-dojo-config="usePlainJson: true, isDebug: false"></script>
     <script>
       $(document).ready(function() {
         $('pre code').each(function(i, block) {
