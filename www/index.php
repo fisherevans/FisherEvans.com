@@ -179,6 +179,14 @@ $app->bind("/resume", function() use($app) {
   return $app->render('views/404.php with views/layout.php', $data);
 });
 
+$app->bind("/sitemap.xml", function() use($app) {
+  return $app->render('views/indexes/sitemap.php', ['app'=>$app]);
+});
+
+$app->bind("/blog/rss", function() use($app) {
+  return $app->render('views/indexes/rss.php', ['app'=>$app]);
+});
+
 $app->bind("*", function() use($app) {
     return get404();
 });

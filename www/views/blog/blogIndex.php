@@ -4,7 +4,7 @@
   </div>
   <p class="subscribeText"><a class="fadeColors" href="http://eepurl.com/bowcor" target="_blank" title="Subcribe to my blog">Subscribe</a> to my blog.</p>
   <h2 class="noTopMargin">Recent Posts</h2>
-  <p>To find the posts I've recently made in all tag categories, click here: <a href="<?=$this->route("/blog/recent/1")?>">View Recent Posts</a></p>
+  <p>To find the posts I've recently made in all tag categories, click here: <a href="<?=$this->route("/blog/recent/1")?>">View Recent Posts</a>. There is also an <a href="/blog/rss">RSS Feed</a> if you'd like to follow my blog in a feed reader.</p>
   <h2>Browse by Tag</h2>
   <div class="indexTags">
     <?php
