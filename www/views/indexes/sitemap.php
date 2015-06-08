@@ -14,7 +14,7 @@ function getDateString($epoch) {
 }
 $app->response->mime = 'xml';
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-echo '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 $url = "http://fisherevans.com/";
 $pages = array();
 
@@ -143,4 +143,4 @@ foreach($pages as $page) {
   echo "  </url>\n";
 }
 
-echo '</sitemapindex>';
+echo '</urlset>';
