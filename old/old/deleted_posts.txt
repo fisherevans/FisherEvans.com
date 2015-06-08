@@ -1,0 +1,57 @@
+
+
+##################################################
+Array
+(
+)
+##################################################
+
+    [1] => I like Test Posts
+    [post_title] => I like Test Posts
+    [2] => 2013-04-08 11:53:21
+    [post_time] => 2013-04-08 11:53:21
+    [3] => <p>Hey there sexy.</p>
+<p class="subtitle">Subtle, huh?</p>
+    [post_content] => <p>Hey there sexy.</p>
+<p class="subtitle">Subtle, huh?</p>
+)
+Array
+(
+    [0] => opengl
+    [1] => web-dev
+)
+##################################################
+d add some more content
+</p>
+)
+Array
+(
+    [0] => school
+    [1] => school
+)
+##################################################
+
+
+##################################################
+Array
+(
+    [0] => simple-pool-simulation
+    [post_id] => simple-pool-simulation
+    [1] => Simple Pool Simulation
+    [post_title] => Simple Pool Simulation
+    [2] => 2013-04-30 11:41:44
+    [post_time] => 2013-04-30 11:41:44
+    [3] => 
+    [post_content] => 
+)
+Array
+(
+)
+##################################################
+
+
+##################################################
+Array
+(
+)
+##################################################
