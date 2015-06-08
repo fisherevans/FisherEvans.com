@@ -80,7 +80,7 @@
   margin-left: 0px;
 }
 
-.contentBlock {
+.section {
   margin: 2% 2%;
   padding: 3% 4%;
 }
@@ -95,19 +95,19 @@
   font-size: 0.5em;
 }
 
-.contentBlock h1 {
+.section h1 {
   font-size: 2em;
 }
 
-.contentBlock h2 {
+.section h2 {
   font-size: 1.66em;
 }
 
-.contentBlock h3 {
+.section h3 {
   font-size: 1.33em;
 }
 
-.contentBlock h4 {
+.section h4 {
   font-size: 1em;
 }
 
@@ -115,15 +115,15 @@
   max-height: 80vw;
 }
 
-.contentBlock p, .contentBlock li, .contentBlock td, .contentBlock strong {
+.section p, .section li, .section td, .section strong {
   font-size: 0.85em;
 }
 
-.contentBlock blockquote  p {
+.section blockquote  p {
   font-size: 1em;
 }
 
-.contentBlock pre code {
+.section pre code {
   font-size: 1em;
   line-height: 1.25em;
 }
@@ -133,7 +133,7 @@
   padding-bottom: 59.375%;
 }
 
-footer {
+.footer {
   font-size: 0.8em;
   margin: 1% 2%;
   padding: 1% 4%;

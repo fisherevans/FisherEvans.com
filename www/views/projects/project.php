@@ -6,7 +6,7 @@
     return count(array_intersect($tagIds, $post['tags']))===count($tagIds) && $post['published'] == true;
   });
 ?>
-<div class="contentBlock">
+<div class="section">
   <div class="cookieCrumbs">
     <a href="<?=$this->route("/projects");?>" class="cookieCrumb fadeColors">Projects</a>
     <div class="cookieCrumb separator flaticon-fast44"></div>

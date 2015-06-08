@@ -31,7 +31,7 @@
   }
 ?>
 
-<div class="contentBlock">
+<div class="section">
   <div class="cookieCrumbs">
       <h1 class="cookieCrumb current">Projects</h1>
   </div>

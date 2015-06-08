@@ -1,7 +1,7 @@
 <?php
   $parsedown = new ParsedownExtra();
 ?>
-<div class="contentBlock blogPost">
+<div class="section blogPost">
   <div class="cookieCrumbs">
     <a href="<?=$this->route("/blog");?>" class="cookieCrumb fadeColors">Blog Index</a>
     <div class="cookieCrumb separator flaticon-fast44"></div>
@@ -20,7 +20,7 @@
   </div>
   <p class="centered noBottomMargin">Like this content? Think about <a href="http://eepurl.com/bowcor" target="_blank" title="Subcribe to my blog">subscribing</a>.</p>
 </div>
-<div class="contentBlock blogDiscussion">
+<div class="section blogDiscussion">
   <div id="disqus_thread"></div>
 </div>
 <script type="text/javascript">

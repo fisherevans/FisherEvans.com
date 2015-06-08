@@ -1,4 +1,4 @@
-.printSitePlug {
+.printFooter {
   float: right;
   text-align: right;
   font-size: 0.7em;
@@ -23,7 +23,7 @@ p, li, ul {
   line-height: 2em;
 }
 
-footer {
+.footer {
   display: none;
 }
 
