@@ -248,6 +248,8 @@ body {
 
 .cookieCrumbs .cookieCrumb.separator {
   color: #aaa;
+  vertical-align: middle;
+  font-family: "Arial", "sans-serif";
 }
 
 .cookieCrumbs h1.cookieCrumb {

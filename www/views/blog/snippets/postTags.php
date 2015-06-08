@@ -1,8 +1,9 @@
 <?php
+  global $url;
   $tags = $post['tags'];
   if(count($tags) == 1) {
     $tag = collection('Tags')->findOne(['_id'=>$tags[0]]);
-    echo "<a class='tag fadeColors' href='";
+    echo "<a class='tag fadeColors' href='" . $url;
     $this->route("/blog/tag/".$tag['name_slug']."/1");
     echo "'>{$tag['name']}</a>";
   } else if(count($tags) == 0) {
@@ -11,7 +12,7 @@
     echo '<div class="multipleTags">Multiple Tags<div class="multipleTagsList fadeOpacityMaxHeight">';
     foreach($post['tags'] as $tagId) {
       $tag = collection('Tags')->findOne(['_id'=>$tagId]);
-      echo "<a class='tag fadeColors' href='";
+      echo "<a class='tag fadeColors' href='" . $url;
       $this->route("/blog/tag/".$tag['name_slug']."/1");
       echo "'>{$tag['name']}</a>";
     }

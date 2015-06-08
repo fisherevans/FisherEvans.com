@@ -41,10 +41,10 @@
     <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css?2015.06.08">
     <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css?2015.06.08">
     <!-- Styling -->
-    <link rel="stylesheet" type="text/css" href="/css/base.css?2015.06.08"    media="screen" />
-    <link rel="stylesheet" type="text/css" href="/css/mobile.css?2015.06.08"  media="screen and (max-width: 799px)" />
-    <link rel="stylesheet" type="text/css" href="/css/desktop.css?2015.06.08" media="screen and (min-width: 800px)" />
-    <link rel="stylesheet" type="text/css" href="/css/print.css?2015.06.08"   media="print" />
+    <link rel="stylesheet" type="text/css" href="/css/base.css?2015.06.08-2"    media="screen" />
+    <link rel="stylesheet" type="text/css" href="/css/mobile.css?2015.06.08-2"  media="screen and (max-width: 799px)" />
+    <link rel="stylesheet" type="text/css" href="/css/desktop.css?2015.06.08-2" media="screen and (min-width: 800px)" />
+    <link rel="stylesheet" type="text/css" href="/css/print.css?2015.06.08-2"   media="print" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>

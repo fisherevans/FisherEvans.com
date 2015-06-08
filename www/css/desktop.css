@@ -133,7 +133,8 @@
 }
 
 .cookieCrumbs .cookieCrumb.separator {
-  font-size: 0.55em;
+  font-size: 1em;
+  line-height: 0.5em;
 }
 
 .section h1 {
@@ -189,7 +190,8 @@
   }
 
   .cookieCrumbs .cookieCrumb.separator {
-    font-size: 0.7em;
+    font-size: 1.5em;
+    line-height: 0.5em;
   }
 
   .section h1 {
