@@ -1,10 +1,15 @@
 <?php
-
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 
 $blogPostsPerPage = 4;
+
+if(isset($_SERVER['HTTPS']))
+  $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+else
+  $protocol = 'http';
+$url = $protocol . "://" . $_SERVER['HTTP_HOST'];
 
 //include cockpit
 include_once('lib/parsedown/Parsedown.php');
@@ -40,11 +45,16 @@ function getBlogPosts($filter, $page) {
   ];
 }
 
+function fixRelativeLinks($content) {
+  global $url;
+  return preg_replace('/(href|src)="\/([a-zA-Z0-9])/', '${1}="' . $url . '/${2}', $content);
+}
+
 $app->bind("/", function() use($app) {
-  $staticContent = collection('Static Content')->findOne(['name_slug'=>'about-page']);
+  $staticContent = collection('Static Content')->findOne(['name_slug'=>'about-me']);
   return $app->render('views/static_content.php with views/layout.php', [
     'title'=>'About',
-    'content'=>$staticContent['content'],
+    'staticContent'=>$staticContent,
     'currentPage'=>'about'
   ]);
 });
@@ -143,7 +153,7 @@ $app->bind("/resources", function() use($app) {
       'title'=>'Resources',
       'description'=>"Fisher Evans' favorite libraries, tools and frameworks. Resources that aid from game development to web services.",
       'currentPage'=>'resources',
-      'content'=>$staticContent['content']
+      'staticContent'=>$staticContent
   ]);
 });
 
@@ -153,7 +163,7 @@ $app->bind("/contact", function() use($app) {
       'title'=>'Contact',
       'description'=>"It's easy to connect with Fisher Evans: E-Mail, Twitter, LinkedIn, GitHub, the works!",
       'currentPage'=>'contact',
-      'content'=>$staticContent['content']
+      'staticContent'=>$staticContent
   ]);
 });
 
@@ -163,7 +173,7 @@ $app->bind("/credits", function() use($app) {
       'title'=>'Credits',
       'description'=>"I wouldn't have been able to make this site without a little help...",
       'currentPage'=>'',
-      'content'=>$staticContent['content']
+      'staticContent'=>$staticContent
   ]);
 });
 

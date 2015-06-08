@@ -12,7 +12,7 @@ function printPostRSS($post) {
   echo "      <link>http://fisherevans.com/blog/post/" . $post['title_slug'] . "</link>\n";
   echo "      <guid>http://fisherevans.com/blog/post/" . $post['title_slug'] . "</guid>\n";
   echo "      <pubDate>" . date("D, d M Y H:i:s O", strtotime($post['posted_date'])) . "</pubDate>\n";
-  echo "      <content:encoded><![CDATA[" . $parseDown->text($post['content']) . "]]></content:encoded>\n";
+  echo "      <content:encoded><![CDATA[" . fixRelativeLinks($parseDown->text($post['content'])) . "]]></content:encoded>\n";
   echo "    </item>\n";
 }
 ?>
