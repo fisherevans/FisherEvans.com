@@ -20,7 +20,7 @@ $pages = array();
 
 /* ##### STATIC PAGES ##### */
 
-$about = collection('Static Content')->findOne(['name_slug'=>'about-page']);
+$about = collection('Static Content')->findOne(['name_slug'=>'about-me']);
 $pages[] = [
     'loc'=>'',
     'lastmod'=>getDateString($about['modified']),
