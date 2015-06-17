@@ -14,42 +14,45 @@
         font-size: 20px;
 font-style: normal;
 margin-left: 20px;
-}.flaticon-arrow165:before {
+}.flaticon-500px5:before {
 	content: "\e000";
 }
-.flaticon-back57:before {
+.flaticon-arrow165:before {
 	content: "\e001";
 }
-.flaticon-calendar51:before {
+.flaticon-back57:before {
 	content: "\e002";
 }
-.flaticon-facebook29:before {
+.flaticon-calendar51:before {
 	content: "\e003";
 }
-.flaticon-fast44:before {
+.flaticon-facebook29:before {
 	content: "\e004";
 }
-.flaticon-github8:before {
+.flaticon-fast44:before {
 	content: "\e005";
 }
-.flaticon-gmail3:before {
+.flaticon-github8:before {
 	content: "\e006";
 }
-.flaticon-google110:before {
+.flaticon-gmail3:before {
 	content: "\e007";
 }
-.flaticon-linkedin12:before {
+.flaticon-google110:before {
 	content: "\e008";
 }
-.flaticon-magnifier13:before {
+.flaticon-linkedin12:before {
 	content: "\e009";
 }
-.flaticon-menu51:before {
+.flaticon-magnifier13:before {
 	content: "\e00a";
 }
-.flaticon-shoppingstore7:before {
+.flaticon-menu51:before {
 	content: "\e00b";
 }
-.flaticon-twitter13:before {
+.flaticon-shoppingstore7:before {
 	content: "\e00c";
+}
+.flaticon-twitter13:before {
+	content: "\e00d";
 }

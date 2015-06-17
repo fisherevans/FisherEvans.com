@@ -7,14 +7,13 @@
   else
     $title = 'Fisher Evans';
   function printNav($label, $link, $active, $newTab = false, $mobileOnly = false) {
-    global $url;
     global $currentPage;
     $mobileClass = $mobileOnly ? ' mobileOnly' : '';
     $activeClass = $active ? ' active' : '';
     $target = $newTab ? '_blank' : '_self';
     $title = $newTab ? 'Opens a new tab' : '';
     echo "        ";
-    echo "<a class='navElement fadeColors$activeClass$mobileClass' title='$title' target='$target' href='$url$link'>$label";
+    echo "<a class='navElement fadeColors$activeClass$mobileClass' title='$title' target='$target' href='$link'>$label";
     if($newTab)
       echo '<span class="flaticon-back57 newTabIcon"></span>';
     echo "<div class='arrowBox'><span class='flaticon-fast44 arrow'></span></div></a>\n";
@@ -72,12 +71,12 @@
       </div>
       <div class="navigation fadeMaxHeightBorder">
         <?php
-        printNav("Fisher Evans", "/",                              isset($currentPage) && $currentPage == "about");
-        printNav("Blog",         "/blog/recent/1",                 isset($currentPage) && $currentPage == "blog");
-        printNav("Projects",     "/projects",                      isset($currentPage) && $currentPage == "projects");
-        printNav("Resources",    "/resources",                     isset($currentPage) && $currentPage == "resources");
+        printNav("Fisher Evans", $url."/",                         isset($currentPage) && $currentPage == "about");
+        printNav("Blog",         $url."/blog/recent/1",            isset($currentPage) && $currentPage == "blog");
+        printNav("Projects",     $url."/projects",                 isset($currentPage) && $currentPage == "projects");
+        printNav("Resources",    $url."/resources",                isset($currentPage) && $currentPage == "resources");
         printNav("Resume",       "http://resume.fisherevans.com/", isset($currentPage) && $currentPage == "resume",  true);
-        printNav("Contact Me",   "/contact",                       isset($currentPage) && $currentPage == "contact", false, true);
+        printNav("Contact Me",   $url."/contact",                  isset($currentPage) && $currentPage == "contact", false, true);
         ?>
       </div>
       <a class="subscribe fadeColors" href="http://eepurl.com/bowcor" target="_blank">Subscribe to my blog</a>
@@ -88,6 +87,7 @@
         <a class="icon fadeColors flaticon-twitter13"   target="_blank" title="Twitter Feed"        href="https://twitter.com/FisherEvans"></a>
         <a class="icon fadeColors flaticon-facebook29"  target="_blank" title="Facebook Page"       href="https://www.facebook.com/fisherevans"></a>
         <a class="icon fadeColors flaticon-google110"   target="_blank" title="Google Plus Profile" href="https://plus.google.com/+FisherEvans/posts"></a>
+        <a class="icon fadeColors flaticon-500px5"      target="_blank" title="500px Profile"       href="https://500px.com/fisherevans"></a>
         <a class="icon fadeColors flaticon-magnifier13" target="_blank" title="Google Search Me"    href="http://lmgtfy.com/?q=Fisher+Evans+software+engineer"></a>
       </div>
       <a class="contact fadeColors" href="<?=$url?>/contact">Contact Me</a>
