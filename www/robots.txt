@@ -1,6 +1,4 @@
 User-Agent: *
-Disallow: 
-Allow: /
 Disallow: /cockpit
 Disallow: /views
 Disallow: /lib
