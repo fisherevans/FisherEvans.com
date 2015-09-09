@@ -6,7 +6,7 @@
   }
 
   body {
-    background-image: url('../img/right_bg.png');
+    background-image: url('/img/right_bg.png');
   }
 
   [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
@@ -134,7 +134,7 @@
     display: block;
     left: 0;
     top: 0;
-    background-image: url('../img/left_bg.png');
+    background-image: url('/img/left_bg.png');
     box-shadow: 0px 0px 15px #000;
     z-index: 100;
   }
@@ -146,7 +146,7 @@
 
   .navigation {
     display: block;
-    background-image: url('../img/left_bg.png');
+    background-image: url('/img/left_bg.png');
   }
 
   .navElement {

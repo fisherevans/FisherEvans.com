@@ -22,7 +22,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="icon" type="image/png" href="<?=$url?>/img/favicon.png?2015.06.08">
+    <link rel="icon" type="image/png" href="<?=$url?>/img/favicon.png?v2">
     <title><?=$title?></title>
     <!-- SEO -->
     <meta name="description" content="<?=$description?>">
@@ -35,15 +35,21 @@
     <!-- Twitter -->
     <meta name="twitter:title" content="<?=$title?>">
     <meta name="twitter:description"  content="<?=$description?>">
-    <!-- Third Party Resources -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900%7CRoboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css">
-    <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css">
     <!-- Styling -->
-    <link rel="stylesheet" type="text/css" href="/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/css/mobile.css" />
-    <link rel="stylesheet" type="text/css" href="/css/desktop.css" />
-    <link rel="stylesheet" type="text/css" href="/css/print.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900%7CRoboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
+    <?php
+      assets([
+          'lib/flaticon/flaticon.css',
+          'lib/highlight/styles/idea.css',
+          'css/base.css',
+          'css/mobile.css',
+          'css/desktop.css',
+          'css/print.css'
+      ],
+          'fisherevans.style',
+          [$cachetime=60*15]
+      );
+    ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -93,22 +99,16 @@
       <a class="contact fadeColors" href="<?=$url?>/contact">Contact Me</a>
     </div>
     <!-- Scripts -->
-    <script type="text/javascript" src="/lib/highlight/highlight.pack.js?2015.06.08"></script>
-    <script type="text/javascript" src="/lib/jquery/jquery-2.1.4.min.js?2015.06.08"></script>
-    <script>
-      $(document).ready(function() {
-        $('pre code').each(function(i, block) {
-          hljs.highlightBlock(block);
-        });
-        $('.navToggle').on('click', function(event) {
-          $('.sideBar').toggleClass('expanded');
-        });
-        $(window).on('resize', function(event) {
-          if($(window).width() > 800)
-            $('.navPane').removeClass('expanded');
-        });
-      });
-    </script>
+    <?php
+      assets([
+          'lib/highlight/highlight.pack.js',
+          'lib/jquery/jquery-2.1.4.min.js',
+          'js/script.js'
+      ],
+          'fisherevans.script',
+          [$cachetime=60*15]
+      );
+    ?>
     <script type="application/ld+json">
       { "@context" : "http://schema.org",
         "@type" : "Person",
