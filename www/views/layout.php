@@ -37,13 +37,13 @@
     <meta name="twitter:description"  content="<?=$description?>">
     <!-- Third Party Resources -->
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900%7CRoboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css?2015.06.08">
-    <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css?2015.06.08">
+    <link rel="stylesheet" type="text/css" href="/lib/flaticon/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="/lib/highlight/styles/idea.css">
     <!-- Styling -->
-    <link rel="stylesheet" type="text/css" href="/css/base.css?2015.06.08-2"    media="screen" />
-    <link rel="stylesheet" type="text/css" href="/css/mobile.css?2015.06.08-2"  media="screen and (max-width: 799px)" />
-    <link rel="stylesheet" type="text/css" href="/css/desktop.css?2015.06.08-2" media="screen and (min-width: 800px)" />
-    <link rel="stylesheet" type="text/css" href="/css/print.css?2015.06.08-2"   media="print" />
+    <link rel="stylesheet" type="text/css" href="/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/css/mobile.css" />
+    <link rel="stylesheet" type="text/css" href="/css/desktop.css" />
+    <link rel="stylesheet" type="text/css" href="/css/print.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
