@@ -1,5 +1,0 @@
-User-Agent: *
-Disallow: /cockpit
-Disallow: /views
-
-Sitemap: http://fisherevans.com/sitemap.xml
