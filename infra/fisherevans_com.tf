@@ -53,3 +53,15 @@ module "hosted-www" {
   keyPrefix = "hosted-content/www"
 }
 
+module "hosted-resume" {
+  source = "components/hosted_subdomain"
+  
+  hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
+  domain = "${var.rootDomain}"
+  subdomain = "resume"
+  sslCertArn = "${var.sslCertArn}"
+  
+  bucket = "${aws_s3_bucket.fisherevansBucket.id}"
+  keyPrefix = "hosted-content/resume"
+}
+
