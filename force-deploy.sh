@@ -1,3 +1,9 @@
 #/!bin/bash
 
-aws s3 sync src/ s3://fisherevans-com/hosted-content/www
+local="src/$1"
+if [ -z "$1" ] || [ ! -d "$local" ] ; then
+  echo "you must pass a source folder. ('$1' is invalid)"
+  exit 1
+fi
+
+aws s3 sync "$local" "s3://fisherevans-com/hosted-content/$1"

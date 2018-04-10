@@ -7,14 +7,16 @@ variable "keyPrefix" { }
 
 resource "aws_cloudfront_distribution" "distribution" {
   
+  enabled = true
+  aliases = [ "${var.subdomain}.${var.domain}" ]
+  default_root_object = "index.html"
+  price_class = "PriceClass_All"
+  
   origin {
     origin_id = "${var.subdomain}.${var.domain}-origin"
     domain_name = "${var.bucket}.s3.amazonaws.com"
     origin_path = "/${var.keyPrefix}"
   }
-  
-  enabled = true
-  aliases = [ "${var.subdomain}.${var.domain}" ]
   
   default_cache_behavior {
     allowed_methods = [ "GET", "HEAD" ]
@@ -30,7 +32,6 @@ resource "aws_cloudfront_distribution" "distribution" {
     max_ttl = 86400
   }
 
-  price_class = "PriceClass_All"
   restrictions {
     geo_restriction { restriction_type = "none" }
   }

@@ -14,6 +14,10 @@ resource "aws_route53_zone" "fisherevansHostedZone" {
 resource "aws_s3_bucket" "fisherevansBucket" {
   bucket = "fisherevans-com"
   acl    = "private"
+  website {
+    index_document = "index.html"
+    #error_document = "hosted-content/error.html"
+  }
 }
 
 data "aws_iam_policy_document" "hostedContentReadPolicy" {
