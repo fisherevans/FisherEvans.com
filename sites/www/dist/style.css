@@ -1,0 +1,55 @@
+* {
+  font-family: 'Lato', 'sans-serif';
+}
+
+body {
+  background-image: url('../img/bg.png');
+}
+
+.logo {
+  display: block;
+  margin: auto;
+  margin-top: 6%;
+  margin-bottom: 6%;
+  width: 20%;
+  max-width: 200px;
+}
+
+.title, .subtitle {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-weight: 300;
+}
+
+.title {
+  margin-top: 6%;
+  margin-bottom: 6%;
+  font-size: calc(16px + 2vw);
+  color: #e3eff9;
+}
+
+.subtitle {
+  margin-top: 2%;
+  font-size: calc(8px + .5vw);
+  color: #aaa;
+}
+
+a {
+  color: #006ECE;
+  text-decoration: none;
+  /* First we need to help some browsers along for this to work.
+     Just because a vendor prefix is there, doesn't mean it will
+     work in a browser made by that vendor either, it's just for
+     future-proofing purposes I guess. */
+  -o-transition: color .5s;
+  -ms-transition: color .5s;
+  -moz-transition: color .5s;
+  -webkit-transition: color .5s;
+  /* ...and now for the proper property */
+  transition: color .5s;
+}
+
+a:hover {
+  color: #7ab6e8;
+}
