@@ -148,8 +148,20 @@ body {
   }
 }
 
+.floatRight {
+  float: right;
+}
+
+.floatLeft {
+  float: left;
+}
+
 .clearFloats {
   clear: both;
+}
+
+.padLeft {
+  padding-left: 0.1in;
 }
 
 .bottomAlign {
@@ -252,7 +264,7 @@ body {
   display: block;
   position: relative;
   font-size: 0;
-  margin: 0.2in auto;
+  margin: 0.15in auto;
 }
 
 .groupLabel {
@@ -349,9 +361,15 @@ body {
   text-indent: 20pt;
   font-family: 'Roboto Slab', serif;
   color: #444;
-  font-size: 11pt;
+  font-size: 10pt;
   font-weight: 400;
-  line-height: 16pt;
+  line-height: 14pt;
+  padding-bottom: 0.1in;
+}
+
+.smaller {
+  font-size: 10pt;
+  line-height: 12pt;
 }
 
 .contentElement, .contentValue {
