@@ -26,7 +26,7 @@ resource "aws_cloudfront_distribution" "distribution" {
       query_string = false
       cookies { forward = "none" }
     }
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl = 0
     default_ttl = 30
     max_ttl = 86400
