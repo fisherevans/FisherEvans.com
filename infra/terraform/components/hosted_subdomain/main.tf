@@ -1,27 +1,27 @@
 variable "hostedZone" { }
 variable "domain" { }
-variable "subdomain" { }
+variable "domainPrefix" { }
 variable "sslCertArn" { }
 variable "bucket" { }
-variable "keyPrefix" { }
+variable "path" { }
 
 resource "aws_cloudfront_distribution" "distribution" {
   
   enabled = true
-  aliases = [ "${var.subdomain}.${var.domain}" ]
+  aliases = [ "${var.domainPrefix}${var.domain}" ]
   default_root_object = "index.html"
   price_class = "PriceClass_All"
   
   origin {
-    origin_id = "${var.subdomain}.${var.domain}-origin"
+    origin_id = "${var.domainPrefix}${var.domain}-origin"
     domain_name = "${var.bucket}.s3.amazonaws.com"
-    origin_path = "/${var.keyPrefix}"
+    origin_path = "${var.path}"
   }
   
   default_cache_behavior {
     allowed_methods = [ "GET", "HEAD" ]
     cached_methods = [ "GET", "HEAD" ]
-    target_origin_id = "${var.subdomain}.${var.domain}-origin"
+    target_origin_id = "${var.domainPrefix}${var.domain}-origin"
     forwarded_values {
       query_string = false
       cookies { forward = "none" }
@@ -44,7 +44,7 @@ resource "aws_cloudfront_distribution" "distribution" {
 }
 
 resource "aws_route53_record" "dnsRecord" {
-  name = "${var.subdomain}.${var.domain}"
+  name = "${var.domainPrefix}${var.domain}"
   zone_id = "${var.hostedZone}"
   type = "A"
   alias {

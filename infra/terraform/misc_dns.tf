@@ -1,3 +1,5 @@
+# Various DNS entries unrelated to websites
+
 resource "aws_route53_record" "googleMXRecords" {
   zone_id = "${aws_route53_zone.fisherevansHostedZone.zone_id}"
   name    = "fisherevans-mail"

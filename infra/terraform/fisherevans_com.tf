@@ -1,22 +1,41 @@
+################
+## VARIABLES
+################
 
 variable "region"     { default = "us-east-1" }
 variable "rootDomain" { default = "fisherevans.com" }
-variable "sslCertArn" { default = "arn:aws:acm:us-east-1:658675223305:certificate/93b48056-2f0e-43ce-a490-d700cbbea7a6" }
+variable "sslCertArn" { default = "arn:aws:acm:us-east-1:658675223305:certificate/f268ac93-863e-4b21-8d95-a3fab2ac96f9" }
+
+
+
+################
+## PROVIDERS
+################
 
 provider "aws" {
   region = "${var.region}"
 }
 
+
+
+################
+## RESOURCES
+################
+
+# Global DNS Entries
+
 resource "aws_route53_zone" "fisherevansHostedZone" {
    name = "${var.rootDomain}."
 }
+
+
+# Hosted Content Bucket
 
 resource "aws_s3_bucket" "fisherevansBucket" {
   bucket = "fisherevans-com"
   acl    = "private"
   website {
-    index_document = "index.html"
-    #error_document = "hosted-content/error.html"
+    redirect_all_requests_to = "www.fisherevans.com"
   }
 }
 
@@ -41,16 +60,31 @@ resource "aws_s3_bucket_policy" "publicReadPolicy" {
   policy = "${data.aws_iam_policy_document.hostedContentReadPolicy.json}"
 }
 
+
+# Hosted Content Entries
+
+# module "hosted-root" { # S3 website rules will redirect this distro to 'hosted-www'
+#   source = "components/hosted_subdomain"
+  
+#   hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
+#   domain = "${var.rootDomain}"
+#   domainPrefix = ""
+#   sslCertArn = "${var.sslCertArn}"
+  
+#   bucket = "${aws_s3_bucket.fisherevansBucket.id}"
+#   path = ""
+# }
+
 module "hosted-www" {
   source = "components/hosted_subdomain"
   
   hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
   domain = "${var.rootDomain}"
-  subdomain = "www"
+  domainPrefix = "www."
   sslCertArn = "${var.sslCertArn}"
   
   bucket = "${aws_s3_bucket.fisherevansBucket.id}"
-  keyPrefix = "hosted-content/www"
+  path = "/hosted-content/www"
 }
 
 module "hosted-resume" {
@@ -58,10 +92,9 @@ module "hosted-resume" {
   
   hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
   domain = "${var.rootDomain}"
-  subdomain = "resume"
+  domainPrefix = "resume."
   sslCertArn = "${var.sslCertArn}"
   
   bucket = "${aws_s3_bucket.fisherevansBucket.id}"
-  keyPrefix = "hosted-content/resume"
+  path = "/hosted-content/resume"
 }
-
