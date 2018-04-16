@@ -87,10 +87,11 @@ module "hosted-resume" {
 
 # Root Domain Redirect
 
-module "fisherevans-www-redirect" {
-  source = "components/redirect_domain"
-  
-  domain = "www.fisherevans.com"
-  redirectTo = "https://fisherevans.com"
-  hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"
+resource "aws_route53_record" "redirect-www" {
+  zone_id = "${aws_route53_zone.fisherevansHostedZone.zone_id}"
+  name    = "www.${var.rootDomain}"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [ "cap960m8.easyredirengine.com" ]
 }
+
