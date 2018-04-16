@@ -6,4 +6,4 @@ if [ -z "$1" ] || [ ! -d "$local" ] ; then
   exit 1
 fi
 
-aws s3 sync "$local" "s3://fisherevans-com/hosted-content/$1"
+aws s3 sync "$local" "s3://fisherevans-com-content/hosted-content/$1"

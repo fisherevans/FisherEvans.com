@@ -31,15 +31,12 @@ resource "aws_route53_zone" "fisherevansHostedZone" {
 
 # Hosted Content Bucket
 
-resource "aws_s3_bucket" "fisherevansBucket" {
-  bucket = "fisherevans-com"
+resource "aws_s3_bucket" "contentBucket" {
+  bucket = "fisherevans-com-content"
   acl    = "private"
-  website {
-    redirect_all_requests_to = "www.fisherevans.com"
-  }
 }
 
-data "aws_iam_policy_document" "hostedContentReadPolicy" {
+data "aws_iam_policy_document" "contentReadPolicy" {
   statement {
     sid = "AllowPublicRead"
     principals = {
@@ -50,41 +47,29 @@ data "aws_iam_policy_document" "hostedContentReadPolicy" {
       "s3:GetObject"
     ]
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.fisherevansBucket.id}/hosted-content/*"
+      "arn:aws:s3:::${aws_s3_bucket.contentBucket.id}/hosted-content/*"
     ]
   }
 }
 
-resource "aws_s3_bucket_policy" "publicReadPolicy" {
-  bucket = "${aws_s3_bucket.fisherevansBucket.id}"
-  policy = "${data.aws_iam_policy_document.hostedContentReadPolicy.json}"
+resource "aws_s3_bucket_policy" "contentPolicyAttachment" {
+  bucket = "${aws_s3_bucket.contentBucket.id}"
+  policy = "${data.aws_iam_policy_document.contentReadPolicy.json}"
 }
 
 
 # Hosted Content Entries
 
-# module "hosted-root" { # S3 website rules will redirect this distro to 'hosted-www'
-#   source = "components/hosted_subdomain"
-  
-#   hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
-#   domain = "${var.rootDomain}"
-#   domainPrefix = ""
-#   sslCertArn = "${var.sslCertArn}"
-  
-#   bucket = "${aws_s3_bucket.fisherevansBucket.id}"
-#   path = ""
-# }
-
-module "hosted-www" {
+module "hosted-personal" {
   source = "components/hosted_subdomain"
   
   hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
   domain = "${var.rootDomain}"
-  domainPrefix = "www."
+  domainPrefix = ""
   sslCertArn = "${var.sslCertArn}"
   
-  bucket = "${aws_s3_bucket.fisherevansBucket.id}"
-  path = "/hosted-content/www"
+  bucket = "${aws_s3_bucket.contentBucket.id}"
+  path = "/hosted-content/personal"
 }
 
 module "hosted-resume" {
@@ -95,6 +80,17 @@ module "hosted-resume" {
   domainPrefix = "resume."
   sslCertArn = "${var.sslCertArn}"
   
-  bucket = "${aws_s3_bucket.fisherevansBucket.id}"
+  bucket = "${aws_s3_bucket.contentBucket.id}"
   path = "/hosted-content/resume"
+}
+
+
+# Root Domain Redirect
+
+module "fisherevans-www-redirect" {
+  source = "components/redirect_domain"
+  
+  domain = "www.fisherevans.com"
+  redirectTo = "https://fisherevans.com"
+  hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"
 }

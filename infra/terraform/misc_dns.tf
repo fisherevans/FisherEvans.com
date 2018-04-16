@@ -2,7 +2,7 @@
 
 resource "aws_route53_record" "googleMXRecords" {
   zone_id = "${aws_route53_zone.fisherevansHostedZone.zone_id}"
-  name    = "fisherevans-mail"
+  name    = "${var.rootDomain}"
   type    = "MX"
   records = [
     "10 aspmx.l.google.com",
