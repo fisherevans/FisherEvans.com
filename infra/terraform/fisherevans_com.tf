@@ -70,6 +70,7 @@ module "hosted-personal" {
   
   bucket = "${aws_s3_bucket.contentBucket.id}"
   path = "/hosted-content/personal"
+  error404Path = "/404.html"
 }
 
 module "hosted-resume" {

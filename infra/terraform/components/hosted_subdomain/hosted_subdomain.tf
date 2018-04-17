@@ -4,6 +4,7 @@ variable "domainPrefix" { }
 variable "sslCertArn" { }
 variable "bucket" { }
 variable "path" { }
+variable "error404Path" { default = "/index.html" }
 
 resource "aws_cloudfront_distribution" "distribution" {
   
@@ -40,6 +41,12 @@ resource "aws_cloudfront_distribution" "distribution" {
     acm_certificate_arn = "${var.sslCertArn}"
     ssl_support_method = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
+  }
+  
+  custom_error_response {
+    error_code = 403
+    response_code = 404
+    response_page_path = "${var.error404Path}"
   }
 }
 
