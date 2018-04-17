@@ -85,13 +85,14 @@ module "hosted-resume" {
 }
 
 
-# Root Domain Redirect
+# www. Redirect
 
-resource "aws_route53_record" "redirect-www" {
-  zone_id = "${aws_route53_zone.fisherevansHostedZone.zone_id}"
-  name    = "www.${var.rootDomain}"
-  type    = "CNAME"
-  ttl     = "300"
-  records = [ "cap960m8.easyredirengine.com" ]
+module "redirect-www" {
+  source = "components/redirected-domain"
+
+  domain = "www.${var.rootDomain}"
+  redirectTo = "https://${var.rootDomain}"
+  hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
+  sslCertArn = "${var.sslCertArn}"
 }
 
