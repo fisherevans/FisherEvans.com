@@ -35,6 +35,10 @@ body {
   color: #888;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .page {
   display: block;
   position: relative;
@@ -331,7 +335,7 @@ body {
 .contentItem {
   display: block;
   position: relative;
-  margin: 0.15in 0.2in;
+  margin: 0.075in 0.2in;
 }
 
 .contentTitle {

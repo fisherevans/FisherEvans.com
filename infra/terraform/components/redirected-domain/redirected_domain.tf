@@ -27,7 +27,7 @@ resource "aws_lambda_function" "redirectFn" {
   filename = "components/redirected-domain/redirect-fn.zip"
   source_code_hash = "${base64sha256(file("components/redirected-domain/redirect-fn.zip"))}"
   handler = "redirect-fn.handler"
-  runtime = "nodejs6.10"
+  runtime = "nodejs8.10"
   role = "${aws_iam_role.redirectFnRole.arn}"
   environment = {
     variables = {
