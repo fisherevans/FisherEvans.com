@@ -19,5 +19,5 @@ resource "aws_route53_record" "homeARecord" {
   name    = "home.${var.rootDomain}"
   type    = "A"
   ttl     = "300"
-  records = [ "75.68.170.237" ]
+  records = [ "98.229.1.130" ]
 }
