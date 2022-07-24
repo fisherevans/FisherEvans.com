@@ -11,4 +11,4 @@ cd "$local"
 port=8000
 echo "Serving $local on http://localhost:$port"
 
-python -m SimpleHTTPServer "$port"
+python -m http.server "$port"
