@@ -25,11 +25,11 @@ EOF
 resource "aws_lambda_function" "redirectFn" {
   function_name = "${replace(var.domain, ".", "-")}-redirect-fn"
   filename = "components/redirected-domain/redirect-fn.zip"
-  source_code_hash = "${base64sha256(file("components/redirected-domain/redirect-fn.zip"))}"
+  source_code_hash = "${base64sha256(filebase64("components/redirected-domain/redirect-fn.zip"))}"
   handler = "redirect-fn.handler"
-  runtime = "nodejs8.10"
+  runtime = "nodejs16.x"
   role = "${aws_iam_role.redirectFnRole.arn}"
-  environment = {
+  environment {
     variables = {
       redirectBase = "${var.redirectTo}"
     }

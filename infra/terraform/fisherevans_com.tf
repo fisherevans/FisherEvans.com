@@ -39,7 +39,7 @@ resource "aws_s3_bucket" "contentBucket" {
 data "aws_iam_policy_document" "contentReadPolicy" {
   statement {
     sid = "AllowPublicRead"
-    principals = {
+    principals {
      type = "*"
      identifiers = ["*"]
     }
@@ -61,7 +61,7 @@ resource "aws_s3_bucket_policy" "contentPolicyAttachment" {
 # Hosted Content Entries
 
 module "hosted-personal" {
-  source = "components/hosted_subdomain"
+  source = "./components/hosted_subdomain"
   
   hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
   domain = "${var.rootDomain}"
@@ -74,7 +74,7 @@ module "hosted-personal" {
 }
 
 module "hosted-resume" {
-  source = "components/hosted_subdomain"
+  source = "./components/hosted_subdomain"
   
   hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
   domain = "${var.rootDomain}"
@@ -85,11 +85,23 @@ module "hosted-resume" {
   path = "/hosted-content/resume"
 }
 
+module "hosted-metamorph" {
+  source = "./components/hosted_subdomain"
+  
+  hostedZone = "${aws_route53_zone.fisherevansHostedZone.zone_id}"  
+  domain = "${var.rootDomain}"
+  domainPrefix = "metamorph."
+  sslCertArn = "${var.sslCertArn}"
+  
+  bucket = "${aws_s3_bucket.contentBucket.id}"
+  path = "/hosted-content/metamorph"
+}
+
 
 # www. Redirect
 
 module "redirect-www" {
-  source = "components/redirected-domain"
+  source = "./components/redirected-domain"
 
   domain = "www.${var.rootDomain}"
   redirectTo = "https://${var.rootDomain}"
