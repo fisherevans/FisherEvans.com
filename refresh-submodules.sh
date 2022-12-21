@@ -3,5 +3,6 @@
 git submodule update --remote --merge
 
 (cd submodules/metamorph && ./build.sh)
-mkdir sites/metamorph/dist
-mv submodules/metamorph/build ../../sites/metamorph/dist
+rm -rf sites/metamorph
+mkdir -p sites/metamorph
+mv submodules/metamorph/build sites/metamorph/dist
