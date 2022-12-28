@@ -8,7 +8,7 @@ Some small sites are maintained directly in this repository under the `sites` di
 
 ### Submodules
 
-Some sites are generated from git submodules (i.e. `metamorph`). The submodules are fetched and built; their production build files are then copied to the `sites` directory.
+Some sites are generated from git submodules (i.e. `metamorph`). The submodules are fetched and built; their production build files are then copied to the `sites` directory. These files are `.gitignore`'d.
 
 This process is automated by running `./refresh-submodules.sh`
 
