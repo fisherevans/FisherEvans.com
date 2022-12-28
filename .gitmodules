@@ -1,3 +1,6 @@
 [submodule "sites/metamorph"]
 	path = submodules/metamorph
 	url = git@github.com:fisherevans/metamorph.git
+[submodule "submodules/resume"]
+	path = submodules/resume
+	url = git@github.com:fisherevans/Resume.git

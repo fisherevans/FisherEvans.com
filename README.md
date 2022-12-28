@@ -12,6 +12,14 @@ Some sites are generated from git submodules (i.e. `metamorph`). The submodules 
 
 This process is automated by running `./refresh-submodules.sh`
 
+You can add new submodules via:
+
+```shell
+git submodule add <remote_url> submodules/<site_name>
+```
+
+And then add the relevent refresh code in `./refresh-submodules.sh`.
+
 ### Testing Locally
 
 You can `./serve-local.sh <site directory>` to serve static content locally. This is helpful for testing changes during developement.
