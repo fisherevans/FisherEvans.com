@@ -16,7 +16,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   origin {
     origin_id = "${var.domainPrefix}${var.domain}-origin"
     domain_name = "${var.bucket}.s3.amazonaws.com"
-    origin_path = "${var.path}"
+    origin_path = var.path
   }
   
   default_cache_behavior {
@@ -38,7 +38,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   }
   
   viewer_certificate {
-    acm_certificate_arn = "${var.sslCertArn}"
+    acm_certificate_arn = var.sslCertArn
     ssl_support_method = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }
@@ -46,17 +46,17 @@ resource "aws_cloudfront_distribution" "distribution" {
   custom_error_response {
     error_code = 403
     response_code = 404
-    response_page_path = "${var.error404Path}"
+    response_page_path = var.error404Path
   }
 }
 
 resource "aws_route53_record" "dnsRecord" {
   name = "${var.domainPrefix}${var.domain}"
-  zone_id = "${var.hostedZone}"
+  zone_id = var.hostedZone
   type = "A"
   alias {
-    name = "${aws_cloudfront_distribution.distribution.domain_name}"
-    zone_id = "${aws_cloudfront_distribution.distribution.hosted_zone_id}"
+    name = aws_cloudfront_distribution.distribution.domain_name
+    zone_id = aws_cloudfront_distribution.distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }
