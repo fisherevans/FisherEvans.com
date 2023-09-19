@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "main": "markdown-folder-to-html src"
+  },
+  "devDependencies": {
+    "markdown-folder-to-html": "^2.4.0"
+  }
+}

@@ -2,3 +2,4 @@
 sites/metamorph/dist/
 sites/resume/dist/
 .idea/
+**/node_modules/

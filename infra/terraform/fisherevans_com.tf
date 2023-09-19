@@ -125,6 +125,18 @@ module "hosted-metamorph" {
   path = "/hosted-content/metamorph"
 }
 
+module "hosted-ramblings" {
+  source = "./components/hosted_subdomain"
+  
+  hostedZone = aws_route53_zone.fisherevansHostedZone.zone_id
+  domain = var.rootDomain
+  domainPrefix = "ramblings."
+  sslCertArn = aws_acm_certificate.httpsCert.arn
+  
+  bucket = aws_s3_bucket.contentBucket.id
+  path = "/hosted-content/ramblings"
+}
+
 
 # www. Redirect
 
