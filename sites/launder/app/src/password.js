@@ -1,6 +1,7 @@
 export const hashCode = s => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)
 
 export const checkUsername = (username) => {
+    username = username.toLowerCase()
     const hash = hashCode(username)
     console.log("hash(" + username + ") = " + hash)
     if (hash == -1274295035) {
