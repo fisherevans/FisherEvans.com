@@ -137,6 +137,18 @@ module "hosted-ramblings" {
   path = "/hosted-content/ramblings"
 }
 
+module "hosted-launder" {
+  source = "./components/hosted_subdomain"
+  
+  hostedZone = aws_route53_zone.fisherevansHostedZone.zone_id
+  domain = var.rootDomain
+  domainPrefix = "launder."
+  sslCertArn = aws_acm_certificate.httpsCert.arn
+  
+  bucket = aws_s3_bucket.contentBucket.id
+  path = "/hosted-content/launder"
+}
+
 
 # www. Redirect
 
