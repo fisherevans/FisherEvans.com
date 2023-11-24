@@ -8,7 +8,7 @@ export const checkUsername = (username) => {
     if (hash == -1274295035) {
         return
     }
-    
+
     throw "Invalid credentials"
 }
 
@@ -17,7 +17,7 @@ export const checkPassword = (password) => {
 
     const hash = hashCode(password)
     console.log("hash(" + password + ") = " + hash)
-    if (hash == 3003444) {
+    if (hash == 3483864) {
         return
     }
 
