@@ -1,25 +1,28 @@
 export const hashCode = s => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)
 
 export const checkUsername = (username) => {
-    username = username.toLowerCase()
+    username = username.toLowerCase().trim()
+
     const hash = hashCode(username)
     console.log("hash(" + username + ") = " + hash)
     if (hash == -1274295035) {
         return
     }
+    
     throw "Invalid credentials"
 }
 
 export const checkPassword = (password) => {
-    if ("" === password) {
-        throw "Please enter a password"
-    }
+    password = password.toLowerCase().trim()
 
     const hash = hashCode(password)
     console.log("hash(" + password + ") = " + hash)
-
     if (hash == 3003444) {
         return
+    }
+
+    if ("" === password) {
+        throw "Please enter a password"
     }
 
     if (password.length < 8) {
