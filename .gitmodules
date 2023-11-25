@@ -4,3 +4,6 @@
 [submodule "submodules/resume"]
 	path = submodules/resume
 	url = git@github.com:fisherevans/Resume.git
+[submodule "submodules/stealing-from-santa"]
+	path = submodules/stealing-from-santa
+	url = git@github.com:fisherevans/stealing-from-santa.git
