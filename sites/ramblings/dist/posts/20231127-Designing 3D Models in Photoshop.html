@@ -489,19 +489,64 @@
       </a>
       <nav id="menu">
         <ul>
-<li><a class="active" href="index.html">index</a></li>
+<li><a class="" href="../index.html">index</a></li>
 <li class="heading"><span>posts</span></li>
 <ul>
-<li><a class="" href="posts/20230918-Pokemon: Rocket Edition - Learnsets.html">Pokemon: Rocket Edition   Learnsets</a></li>
-<li><a class="" href="posts/20231127-Designing 3D Models in Photoshop.html">Designing 3D Models in Photoshop</a></li>
+<li><a class="" href="20230918-Pokemon: Rocket Edition - Learnsets.html">Pokemon: Rocket Edition   Learnsets</a></li>
+<li><a class="active" href="20231127-Designing 3D Models in Photoshop.html">Designing 3D Models in Photoshop</a></li>
 </ul>
 </ul>
         <a id="homeLink" href="https://fisherevans.com">Return to fisherevans.com</a>
       </nav>
       <article id="main" class="content">
-        <h1 id="ramblings">Ramblings <a class="heading-anchor-permalink" href="#ramblings">#</a></h1>
-<p>This is just a place for me share things with the world. It is by no means a “blog”, and you shouldn’t expect any specific theme, post regularity, or a level of quality that you might otherwise assume. Just ramblings. Enjoy.</p>
-<p>- Fisher</p>
+        <h1 id="designing-3d-models-in-photoshop">Designing 3D Models in Photoshop <a class="heading-anchor-permalink" href="#designing-3d-models-in-photoshop">#</a></h1>
+<p>Since having a 3D printer, a common item I want to design and print are custom plaques, tags, and signs. Using traditional 3D modeling software works for this, but it’s tedious to create really good looking designs. It’s especially hard to iterate/tweak a “graphic” design in CAD software.</p>
+<p>So I developed a workflow that’s worked really well for me where I instead design a greyscale 2D image with image editing software, and use OpenSCAD to convert it into a 3D model for me to print. I’ve not seen this specific method documented very well online, so I thought I’d put together a little blog post detailing how it works.</p>
+<p>This method is inspired by those <a href="https://lithophanemaker.com">sites that make a lithoplane STL out of an image you upload</a>. I originally tried using these sites but ran into so many issues getting exactly what I wanted.</p>
+<h2 id="the-strategy">The Strategy <a class="heading-anchor-permalink" href="#the-strategy">#</a></h2>
+<p>The goal is create a thin print with images/text/logos “cut” out of the piece. We do this by creating a greyscale 2D image of the design, then using this image as a height-map to generate a 3d model (via the <a href="https://files.openscad.org/examples/Basics/surface.html">surface</a> function). This can work for both fully cut-through designs, or two-tone designs by swapping out the filliment half way through the print.</p>
+<h2 id="design">Design <a class="heading-anchor-permalink" href="#design">#</a></h2>
+<p>You can use any software you want to design the 2D image. I like <a href="https://www.photopea.com">Photopea</a>, which is a free Photoshop alternative. A fully cut through design is easy, make any fully black-and-white photo you want. But with this style, you need to follow stencil logic such that the black portion of your image is a single continuous body (resulting in a single object being printed).</p>
+<p><img src="./20231127/src-cutthrough.png" alt="Cut-through example"></p>
+<p>But if you’d like a more complex shape, and avoid those stencil lines (and get a sturdier piece), you can design a two-tone image, like so. The grey can be printed with one color filliment, the black another.</p>
+<p><img src="20231127/src-2tone-bw.png" alt="2 tone example"></p>
+<p>Depending on the depth of your piece, you can also bevel the edges to make the piece more readable from more angles - do this using <code>Precise</code> glows (not <code>Softer</code>).</p>
+<p><img src="./20231127/src-2tone-grad.png" alt="2tone bevel"></p>
+<p>Once we extrude a 3d model, this will make more sense.</p>
+<h3 id="modeling">Modeling <a class="heading-anchor-permalink" href="#modeling">#</a></h3>
+<p>Once we have our image saved, we can head over to OpenSCAD to create the model. We’ll use the <a href="https://files.openscad.org/examples/Basics/surface.html">surface</a> function in OpenSCAD to treat the image like a height map:</p>
+<ul>
+<li>White pixels <code>#ffffff</code> will be consider a height of <code>0</code></li>
+<li>Black pixels <code>#000000</code> will be considered a height of <code>1</code></li>
+<li>Greys will be somewhere in between, <code>#808080</code> is <code>0.5</code></li>
+</ul>
+<blockquote>
+<p>PS: I like <code>invert=true</code> because the black portion being what I print is more intuitive to me.</p>
+</blockquote>
+<p>The one caveat here is that <code>0</code> height portions of the image will still be drawn in the preview - but once brought into a slicer the <code>0</code> height will be ignored. Here’s an example OpenSCAD script:</p>
+<pre><code>src=&quot;/some-dir/src-2tone-grad.png&quot;;
+surface(file = src, center = true, convexity = 5, invert=true);
+</code></pre>
+<p>This will result in a model that is 800mm x 500mm with a height of 100mm (the black pixel height). I normally scale this in my slicer, as scaling it in OpenSCAD takes <em><strong>FOREVER</strong></em>.</p>
+<p><img src="20231127/preview-2tone.png" alt="preview 2 tone gradient"></p>
+<p>You can do this in the UI, but the preview window with the <code>surface</code> function can get really laggy. So I often use the CLI. To create a preview image:</p>
+<pre><code>/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -o preview.png model.scad
+</code></pre>
+<p>Then to render an STL:</p>
+<pre><code>/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -o render.stl model.scad
+</code></pre>
+<h3 id="slicing">Slicing <a class="heading-anchor-permalink" href="#slicing">#</a></h3>
+<p>I have a Prusa Mini, so I’m only familiar with the Prusa Slicer. Once the model is imported, I can adjust the dimensions to what I want, in this case, I’m slicing 80mmx50mm with a height of 5mm.</p>
+<p><img src="20231127/slicer-resize.png" alt="Slicer resize"></p>
+<p>Then we slice! Here’s the cut-through example:</p>
+<p><img src="20231127/sliced-cutthrough-top.png" alt="sliced cuth through top"></p>
+<p>Looks great! But from the side (or back) it’s difficult to read. Also, that O looks fragile.</p>
+<p><img src="20231127/sliced-cutthrough-side.png" alt="sliced cuth through side"></p>
+<p>Using the straight-up 2-tone helps though, plus makes it so you can’t even see the design from the back, and we don’t need to worry about the flow!</p>
+<p><img src="20231127/sliced-2tone-bw.png" alt="sliced 2 tone bw"></p>
+<p>But my favorite option is using the outer glow in the source image to make a bevel. It is the most readable from all angles, and looks great.</p>
+<p><img src="20231127/sliced-2tone-grad.png" alt="sliced 2 tone gradient"></p>
+<p>There you go!</p>
 
       </article>
     </div>
