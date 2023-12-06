@@ -81,7 +81,13 @@ const Home = (props) => {
                     Status
                 </div>
                 <div className="subtitle">
-                    No current services. Call Joe to initiate a new scheme.
+                    No current services. Call Joe to initiate a new scheme. You should have his business card somewhere...
+                </div>
+                <div className="subheader">
+                    News
+                </div>
+                <div className="subtitle">
+                    We've sent all of our valued customers a special holiday present! Check you mail boxes. Call our main office if you don't remember the pass code used for gifts we send you.
                 </div>
             </div>
         ):(

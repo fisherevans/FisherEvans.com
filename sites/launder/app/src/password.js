@@ -12,6 +12,23 @@ export const checkUsername = (username) => {
     throw "Invalid credentials"
 }
 
+const strLength = (str) => {
+    let count = 0;
+    let arr = [...str];
+
+    for (let c = 0; c < arr.length; c++) {
+        if (
+            arr[c] != '\u{200D}' &&
+            arr[c + 1] != '\u{200D}' &&
+            arr[c + 1] != '\u{fe0f}' &&
+            arr[c + 1] != '\u{20e3}'
+        ) {
+            count++;
+        }
+    }
+    return count;
+}
+
 export const checkPassword = (password) => {
     password = password.toLowerCase().trim()
 
@@ -25,20 +42,12 @@ export const checkPassword = (password) => {
         throw "Please enter a password"
     }
 
-    if (password.length < 8) {
-        throw "Passwords must be 8 characters or longer"
+    if (strLength(password) < 5) {
+        throw "Passwords must be 5 characters or longer"
     }
 
-    if (password.length > 15) {
-        throw "Passwords must be 14 characters or shorter"
-    }
-
-    if (!password.includes("31")) {
-        throw "Passwords must contain the day of the month"
-    }
-
-    if (password.match(/^[0-9]/)) {
-        throw "Passwords cannot start with a number"
+    if (strLength(password) > 15) {
+        throw "Passwords must be 15 characters or shorter"
     }
 
     const digits = [...password.matchAll(/\d/g)];
@@ -46,29 +55,37 @@ export const checkPassword = (password) => {
     for(const d of digits) {
         sum += parseInt(d[0]);
     }
-    console.log(sum)
-    if (sum !== 7) {
-        throw "All digits in the password must add up to 7"
+    //console.log(sum)
+    if (sum !== 16) {
+        throw "All digits in the password must add up to 16"
     }
 
-    if (!password.includes("💰")) {
-        throw "All passwords must contain the 💰 emoji"
+    if (!password.match(/[^0-9a-z]/)) {
+        throw "Passwords must contain a special character"
     }
 
-    if (digits.length != 4) {
-        throw "Passwords must have exactly 4 digits"
+    if (password.match(/^[0-9]/)) {
+        throw "Passwords cannot start with a number"
+    }
+
+    if (digits.length != 5) {
+        throw "Passwords must have exactly 5 digits"
     }
 
     if (!password.includes("rehsif")) {
         throw "Passowrd must contain your username, backwards"
     }
 
-    if (!password.match(/!$/)) {
-        throw "Passowrds are exciting, they need to end with an exclation mark (!)"
-    }
-
     if (!password.includes("12")) {
         throw "Passowrds must contain the current month number"
+    }
+
+    if (password.match(/[0-9]$/)) {
+        throw "Passwords cannot end with a number"
+    }
+
+    if (!password.includes("31")) {
+        throw "Passwords must contain the day of the month"
     }
 
     if (password.includes("11")) {
@@ -84,6 +101,14 @@ export const checkPassword = (password) => {
         if (parseInt(n) > 999) {
             throw "Passwords cannot contain whole numbers larger than 999"
         }
+    }
+
+    if (!password.includes("💰")) {
+        throw "All passwords must contain the 💰 emoji"
+    }
+
+    if (!password.match(/!$/)) {
+        throw "Passowrds are exciting, they need to end with an exclation mark (!)"
     }
 
     if (!password.match(/^\$\$r/)) {
