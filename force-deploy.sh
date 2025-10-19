@@ -6,4 +6,9 @@ if [ -z "$1" ] || [ ! -d "$local" ] ; then
   exit 1
 fi
 
-aws s3 sync "$local" "s3://fisherevans-com-content/hosted-content/$1" --delete
+args="--delete"
+if [ "$1" == "files" ] ; then
+  args=""
+fi
+
+aws s3 sync "$local" "s3://fisherevans-com-content/hosted-content/$1" $args

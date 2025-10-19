@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="In my career, I&rsquo;ve mostly used Google Calendar at work. I also use multiple Google calendars for personal events (personal, shared, family, etc.). I can share these calendars with my work account, but my personal events do not show up as &ldquo;Busy&rdquo; to my coworkers. So I often have to invite my work account too all of my events, or manually create duplicate &ldquo;Busy&rdquo; events in my work calendar. Then I found this article.">
+<title>Personal Calander Sync</title>
+
+<link rel='canonical' href='http://localhost:1313/posts/personal-calander-sync/'>
+
+<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="Personal Calander Sync">
+<meta property='og:description' content="In my career, I&rsquo;ve mostly used Google Calendar at work. I also use multiple Google calendars for personal events (personal, shared, family, etc.). I can share these calendars with my work account, but my personal events do not show up as &ldquo;Busy&rdquo; to my coworkers. So I often have to invite my work account too all of my events, or manually create duplicate &ldquo;Busy&rdquo; events in my work calendar. Then I found this article.">
+<meta property='og:url' content='http://localhost:1313/posts/personal-calander-sync/'>
+<meta property='og:site_name' content='Fisher Evans'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2024-03-18T14:53:43-04:00'/><meta property='article:modified_time' content='2024-03-18T14:53:43-04:00'/>
+<meta name="twitter:title" content="Personal Calander Sync">
+<meta name="twitter:description" content="In my career, I&rsquo;ve mostly used Google Calendar at work. I also use multiple Google calendars for personal events (personal, shared, family, etc.). I can share these calendars with my work account, but my personal events do not show up as &ldquo;Busy&rdquo; to my coworkers. So I often have to invite my work account too all of my events, or manually create duplicate &ldquo;Busy&rdquo; events in my work calendar. Then I found this article.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Fisher Evans</a></h1>
+            <h2 class="site-description">A dad with a computer</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/personal-calander-sync/">Personal Calander Sync</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 18, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>In my career, I&rsquo;ve mostly used Google Calendar at work. I also use multiple Google calendars for personal events (personal, shared, family, etc.). I can share these calendars with my work account, but my personal events do not show up as &ldquo;Busy&rdquo; to my coworkers. So I often have to invite my work account too all of my events, or manually create duplicate &ldquo;Busy&rdquo; events in my work calendar.</p>
+<p>Then I found <a class="link" href="https://janelloi.com/auto-sync-google-calendar/"  target="_blank" rel="noopener"
+    >this article</a>. Which links to this <a class="link" href="https://gist.github.com/ttrahan/a88febc0538315b05346f4e3b35997f2"  target="_blank" rel="noopener"
+    >Google Apps Script</a>. The process is exactly right, but the script I changed to support some more options.</p>
+<h2 id="goal">Goal</h2>
+<p>The goal is to automaticlaly create (and delete) busy blocks in my work calendar, with some time buffer to account for travel/context switching. Here&rsquo;s an example:</p>
+<p><img src="/20240318/example.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Example"
+	
+	
+></p>
+<p>The 1-2p event is from my personal calendar, as seen from my work account. The sync scrips has automatically creates a 12:40-2:20p event in my work calendar blocking it off from meeting invites.</p>
+<h2 id="process">Process</h2>
+<p>This process is an abreviated version of <a class="link" href="https://janelloi.com/auto-sync-google-calendar/"  target="_blank" rel="noopener"
+    >this article</a>. The only difference is the mention of multi-calendar support and different parameters to change.</p>
+<ol>
+<li>Share your personal calendars with your work account (no need to share event details)</li>
+<li>Get the Calendar ID for each of them (you can find them in the &ldquo;settings&rdquo; of the calander, by the &ldquo;Share&rdquo; section)</li>
+<li>Create a new <a class="link" href="https://script.google.com/home/projects/create"  target="_blank" rel="noopener"
+    >Google Apps Script</a>, and include <a class="link" href="#script" >this source code</a>, updating the paramaters as desired:
+<ul>
+<li>Set your external calendar IDs</li>
+<li>Set your buffer time (20 minutes means that a 8a-9a event will create a 7:40a-9:20a block in your work calander)</li>
+<li>Update your event details visibility, color, and title</li>
+<li>Configure how many days you want the script to look ahead (4 weeks by default)</li>
+</ul>
+</li>
+<li>You can then run the scipt manually to sync and verify it works.</li>
+<li>Then head to the &ldquo;Triggers&rdquo; section of your project. For each calendar you&rsquo;re syncing from, setup a new trigger to call the <code>sync</code> function. Source it from a calendar whenver it is updated. Use the same calendar IDs you added to your script parameters.</li>
+</ol>
+<p>That&rsquo;s it, all done!</p>
+<h2 id="script">Script</h2>
+<p>Here is my version of the script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sync</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">secondaryCalIds</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">secondaryCalIds</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;your@email.com&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">secondaryCalIds</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;c_32523rewsf43v345v54b54b454@group.calendar.google.com&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">primaryEventTitle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Personal Appointment&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">eventBufferMinutes</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">eventBufferMs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">eventBufferMinutes</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">60</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">visiblity</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CalendarApp</span>.<span style="color:#a6e22e">Visibility</span>.<span style="color:#a6e22e">PUBLIC</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CalendarApp</span>.<span style="color:#a6e22e">EventColor</span>.<span style="color:#a6e22e">YELLOW</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">today</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">endDate</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">endDate</span>.<span style="color:#a6e22e">setDate</span>(<span style="color:#a6e22e">today</span>.<span style="color:#a6e22e">getDate</span>() <span style="color:#f92672">+</span> <span style="color:#ae81ff">28</span>); <span style="color:#75715e">// how many days in advance to monitor and block off time
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">secondaryEvents</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">cid</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">secondaryCalIds</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">secondaryCal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CalendarApp</span>.<span style="color:#a6e22e">getCalendarById</span>(<span style="color:#a6e22e">secondaryCalIds</span>[<span style="color:#a6e22e">cid</span>]);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">srcEvents</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">secondaryCal</span>.<span style="color:#a6e22e">getEvents</span>(<span style="color:#a6e22e">today</span>, <span style="color:#a6e22e">endDate</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">secondaryEvents</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">secondaryEvents</span>.<span style="color:#a6e22e">concat</span>(<span style="color:#a6e22e">srcEvents</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Number of source events: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">srcEvents</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; (&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">secondaryCalIds</span>[<span style="color:#a6e22e">cid</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;)&#39;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// create filtered list of existing primary calendar events that were previously created from the secondary calendar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">primaryCal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CalendarApp</span>.<span style="color:#a6e22e">getDefaultCalendar</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">primaryEventsAll</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">primaryCal</span>.<span style="color:#a6e22e">getEvents</span>(<span style="color:#a6e22e">today</span>, <span style="color:#a6e22e">endDate</span>); <span style="color:#75715e">// all primary calendar events
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">primaryEvents</span> <span style="color:#f92672">=</span> []; <span style="color:#75715e">// to contain primary calendar events that were previously created from secondary calendar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">pev</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">primaryEventsAll</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">primaryEvent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">primaryEventsAll</span>[<span style="color:#a6e22e">pev</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">primaryEvent</span>.<span style="color:#a6e22e">getTitle</span>() <span style="color:#f92672">==</span> <span style="color:#a6e22e">primaryEventTitle</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">primaryEvents</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">primaryEvent</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Total number of target events: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">primaryEventsAll</span>.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Number of managed target events: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">primaryEvents</span>.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// process all events in secondary calendar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">statsCreated</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">statsDeleted</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">updatedPrimaryEventIds</span> <span style="color:#f92672">=</span> []; <span style="color:#75715e">// to contain primary calendar events that were updated from secondary calendar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">sev</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">secondaryEvents</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">secondaryEvent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">secondaryEvents</span>[<span style="color:#a6e22e">sev</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// include buffer around personal appoint (i.e. travel time)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">secondaryStart</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date(<span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getStartTime</span>().<span style="color:#a6e22e">getTime</span>() <span style="color:#f92672">-</span> <span style="color:#a6e22e">eventBufferMs</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">secondaryEnd</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date(<span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getEndTime</span>().<span style="color:#a6e22e">getTime</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">eventBufferMs</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// if the secondary event has already been blocked in the primary calendar, update it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">updated</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">existingId</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">primaryEvents</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">primaryEvent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">primaryEvents</span>[<span style="color:#a6e22e">existingId</span>];
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> ((<span style="color:#a6e22e">primaryEvent</span>.<span style="color:#a6e22e">getStartTime</span>().<span style="color:#a6e22e">getTime</span>() <span style="color:#f92672">==</span> <span style="color:#a6e22e">secondaryStart</span>.<span style="color:#a6e22e">getTime</span>()) <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">primaryEvent</span>.<span style="color:#a6e22e">getEndTime</span>().<span style="color:#a6e22e">getTime</span>() <span style="color:#f92672">==</span> <span style="color:#a6e22e">secondaryEnd</span>.<span style="color:#a6e22e">getTime</span>())) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">primaryEvent</span>.<span style="color:#a6e22e">setDescription</span>(<span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getTitle</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\n\n&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getDescription</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">primaryEvent</span>.<span style="color:#a6e22e">setVisibility</span>(<span style="color:#a6e22e">visiblity</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">primaryEvent</span>.<span style="color:#a6e22e">setColor</span>(<span style="color:#a6e22e">color</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">updatedPrimaryEventIds</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">primaryEvent</span>.<span style="color:#a6e22e">getId</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;EVENT UPDATED - id: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">primaryEvent</span>.<span style="color:#a6e22e">getId</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; (&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getTitle</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;)&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">updated</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">updated</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// skip all day, multi-day, or weekend events
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">startDay</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getStartTime</span>().<span style="color:#a6e22e">getDay</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">endDay</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getEndTime</span>().<span style="color:#a6e22e">getDay</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">isAllDayEvent</span>() <span style="color:#75715e">/*|| startDay != endDay */</span><span style="color:#f92672">||</span> <span style="color:#a6e22e">startDay</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">startDay</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">6</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// create a new event based on the secondary event
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">newEvent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">primaryCal</span>.<span style="color:#a6e22e">createEvent</span>(<span style="color:#a6e22e">primaryEventTitle</span>, <span style="color:#a6e22e">secondaryStart</span>, <span style="color:#a6e22e">secondaryEnd</span>, {<span style="color:#a6e22e">description</span><span style="color:#f92672">:</span><span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getTitle</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\n\n&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getDescription</span>()});
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">newEvent</span>.<span style="color:#a6e22e">setVisibility</span>(<span style="color:#a6e22e">visiblity</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">newEvent</span>.<span style="color:#a6e22e">setColor</span>(<span style="color:#a6e22e">color</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">newEvent</span>.<span style="color:#a6e22e">removeAllReminders</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">statsCreated</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">statsCreated</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;EVENT CREATED - id: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">newEvent</span>.<span style="color:#a6e22e">getId</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; (&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">secondaryEvent</span>.<span style="color:#a6e22e">getTitle</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;)&#39;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// if a primary event previously created no longer exists in the secondary calendar, delete it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">pev</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">primaryEvents</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">updatedPrimaryEventIds</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">primaryEvents</span>[<span style="color:#a6e22e">pev</span>].<span style="color:#a6e22e">getId</span>()) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pevIdToDelete</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">primaryEvents</span>[<span style="color:#a6e22e">pev</span>].<span style="color:#a6e22e">getId</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">pevIdToDelete</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; deleted&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;EVENT DELETED - id: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">pevIdToDelete</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">statsDeleted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">statsDeleted</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Events created: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">statsCreated</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Events updated: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">updatedPrimaryEventIds</span>.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Events deleted: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">statsDeleted</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Fisher Evans
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.2">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

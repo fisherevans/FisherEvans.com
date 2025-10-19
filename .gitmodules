@@ -7,3 +7,6 @@
 [submodule "submodules/stealing-from-santa"]
 	path = submodules/stealing-from-santa
 	url = git@github.com:fisherevans/stealing-from-santa.git
+[submodule "sites/home/themes/hugo-theme-stack"]
+	path = sites/home/themes/hugo-theme-stack
+	url = https://github.com/CaiJimmy/hugo-theme-stack/

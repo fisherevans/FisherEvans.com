@@ -1,0 +1,4 @@
+baseURL = 'https://fisherevans.com/'
+languageCode = 'en-us'
+title = 'Fisher Evans'
+theme = 'hugo-theme-stack'

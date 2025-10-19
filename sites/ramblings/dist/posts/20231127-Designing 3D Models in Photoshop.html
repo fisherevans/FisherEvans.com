@@ -494,6 +494,7 @@
 <ul>
 <li><a class="" href="20230918-Pokemon: Rocket Edition - Learnsets.html">Pokemon: Rocket Edition   Learnsets</a></li>
 <li><a class="active" href="20231127-Designing 3D Models in Photoshop.html">Designing 3D Models in Photoshop</a></li>
+<li><a class="" href="20240318-Personal Calendar Sync.html">Personal Calendar Sync</a></li>
 </ul>
 </ul>
         <a id="homeLink" href="https://fisherevans.com">Return to fisherevans.com</a>
@@ -507,11 +508,11 @@
 <p>The goal is create a thin print with images/text/logos “cut” out of the piece. We do this by creating a greyscale 2D image of the design, then using this image as a height-map to generate a 3d model (via the <a href="https://files.openscad.org/examples/Basics/surface.html">surface</a> function). This can work for both fully cut-through designs, or two-tone designs by swapping out the filliment half way through the print.</p>
 <h2 id="design">Design <a class="heading-anchor-permalink" href="#design">#</a></h2>
 <p>You can use any software you want to design the 2D image. I like <a href="https://www.photopea.com">Photopea</a>, which is a free Photoshop alternative. A fully cut through design is easy, make any fully black-and-white photo you want. But with this style, you need to follow stencil logic such that the black portion of your image is a single continuous body (resulting in a single object being printed).</p>
-<p><img src="./20231127/src-cutthrough.png" alt="Cut-through example"></p>
+<p><img src="20231127/src-cutthrough.png" alt="Cut-through example"></p>
 <p>But if you’d like a more complex shape, and avoid those stencil lines (and get a sturdier piece), you can design a two-tone image, like so. The grey can be printed with one color filliment, the black another.</p>
 <p><img src="20231127/src-2tone-bw.png" alt="2 tone example"></p>
 <p>Depending on the depth of your piece, you can also bevel the edges to make the piece more readable from more angles - do this using <code>Precise</code> glows (not <code>Softer</code>).</p>
-<p><img src="./20231127/src-2tone-grad.png" alt="2tone bevel"></p>
+<p><img src="20231127/src-2tone-grad.png" alt="2tone bevel"></p>
 <p>Once we extrude a 3d model, this will make more sense.</p>
 <h3 id="modeling">Modeling <a class="heading-anchor-permalink" href="#modeling">#</a></h3>
 <p>Once we have our image saved, we can head over to OpenSCAD to create the model. We’ll use the <a href="https://files.openscad.org/examples/Basics/surface.html">surface</a> function in OpenSCAD to treat the image like a height map:</p>

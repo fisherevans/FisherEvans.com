@@ -161,6 +161,18 @@ module "hosted-sfs" {
   path = "/hosted-content/stealing-from-santa"
 }
 
+module "hosted-files" {
+  source = "./components/hosted_subdomain"
+  
+  hostedZone = aws_route53_zone.fisherevansHostedZone.zone_id
+  domain = var.rootDomain
+  domainPrefix = "files."
+  sslCertArn = aws_acm_certificate.httpsCert.arn
+  
+  bucket = aws_s3_bucket.contentBucket.id
+  path = "/hosted-content/files"
+}
+
 
 # www. Redirect
 

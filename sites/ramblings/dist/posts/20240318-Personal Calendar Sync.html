@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /*! ADAPTED
+    Typeplate : Starter Kit
+    URL ........... http://typeplate.com
+    Version ....... 3.0.2
+    Github ........ https://github.com/typeplate/starter-kit
+    Authors ....... Dennis Gaebel (@gryghostvisuals) & Zachary Kain (@zakkain)
+    License ....... Creative Commmons Attribution 3.0
+    License URL ... https://github.com/typeplate/starter-kit/blob/master/license.txt
+    */
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        text-rendering: optimizeLegibility;
+        line-height: 1;
+        margin-top: 0;
+        color: #222;
+      }
+
+      blockquote + figcaption cite {
+        display: block;
+        font-size: inherit;
+        text-align: right;
+      }
+
+      body {
+        word-wrap: break-word;
+      }
+
+      pre code {
+        word-wrap: normal;
+      }
+
+      body {
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+        color: #444;
+      }
+
+      h1 {
+        font-size: 2em;
+        /* 2*16 = 32 */
+      }
+
+      h2 {
+        font-size: 1.5em;
+        /* 1.5*16 = 24 */
+      }
+
+      h3 {
+        font-size: 1.17em;
+        /* 1.17*16 = 18.72 */
+      }
+
+      h4 {
+        font-size: 1em;
+        /* 1*16 = 16 */
+      }
+
+      h5 {
+        font-size: 0.83em;
+        /* 0.83*16 = 13.28 */
+      }
+
+      h6 {
+        font-size: 0.75em;
+        /* 0.75*16 = 12 */
+      }
+
+      h1 {
+        margin: 2.42424rem 0 1.454544rem;
+      }
+
+      h2 {
+        margin: 2.0202rem 0 1.21212rem;
+      }
+
+      h3 {
+        margin: 1.61616rem 0 1rem;
+      }
+
+      h4 {
+        margin: 1.21212rem 0 1;
+      }
+
+      h5 {
+        margin: 0.80808rem 0;
+      }
+
+      h6 {
+        margin: 0.70707rem 0;
+      }
+
+      p {
+        margin: auto auto 1.5rem;
+      }
+
+      small {
+        font-size: 65%;
+      }
+
+      input,
+      abbr,
+      acronym,
+      blockquote,
+      code,
+      kbd,
+      q,
+      samp,
+      var {
+        -webkit-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+      }
+
+      pre {
+        white-space: pre;
+      }
+
+      pre code {
+        white-space: -moz-pre-wrap;
+        white-space: pre-wrap;
+      }
+
+      code {
+        white-space: pre;
+        font-family: SF Mono, Consolas, Dejavu Sans Mono, Menlo, monospace;
+      }
+
+      abbr {
+        -webkit-font-variant: small-caps;
+        -moz-font-variant: small-caps;
+        -ms-font-variant: small-caps;
+        font-variant: small-caps;
+        font-weight: 600;
+        text-transform: lowercase;
+        color: gray;
+      }
+
+      abbr[title]:hover {
+        cursor: help;
+      }
+
+      /* FROM http://purecss.io/layouts/side-menu/  adapted to remove pure classes*/
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        color: #444;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: auto;
+      }
+
+      code,
+      pre {
+        background-color: #f5f5f5;
+        color: #444;
+        border-radius: 2px;
+        text-shadow: 0px 1px 0px white;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+      }
+
+      pre code {
+        border: none;
+        box-shadow: none;
+      }
+
+      pre {
+        padding: 0.5em;
+      }
+
+      code {
+        display: inline-block;
+        padding: 0 0.5em;
+        line-height: 1.4;
+        font-size: 0.9em;
+      }
+
+      table {
+        border-spacing: 0;
+        margin-bottom: 1.5rem;
+      }
+
+      table th,
+      table td {
+        padding: 0.3em 0.7em;
+      }
+
+      table th {
+        background-color: #f4f4f4;
+        border-bottom: 2px solid #444;
+      }
+
+      table td {
+        border: 1px solid #f5f5f5;
+      }
+
+      /* Add transition to containers so they can push in and out. */
+
+      #layout,
+      #menu,
+      .menu-link {
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        -ms-transition: all 0.2s ease-out;
+        -o-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+      }
+
+      /* This is the parent `<div>` that contains the menu and the content area. */
+
+      #layout {
+        position: relative;
+        padding-left: 0;
+      }
+
+      #layout.active #menu {
+        left: min(max(30%, 250px), 500px);
+        width: 30%;
+        min-width: 250px;
+        max-width: 500px;
+      }
+
+      #layout.active .menu-link {
+        left: 250px;
+      }
+
+      /* The content `<div>` is where all your content goes. */
+
+      .content {
+        margin: 50px auto;
+        padding: 0 2em;
+        max-width: 80ex;
+        line-height: 1.6em;
+      }
+
+      /*
+      The `#menu` `<div>` is the parent `<div>` that contains the menu that
+      appears on the left side of the page.
+      */
+
+      #menu {
+        margin-left: calc(-1 * min(max(30%, 250px), 500px));
+        /* "#menu" width */
+        width: min(max(30%, 250px), 500px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1000;
+        /* so the menu or its navicon stays above all content */
+        background: #f4f4f4;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        font-size: 0.9em;
+      }
+
+      @media print {
+        #menu,
+        .menu-link {
+          display: none !important;
+        }
+      }
+
+      a,
+      a * {
+        text-decoration: none;
+        color: #2483cc;
+      }
+
+      a:visited {
+        text-decoration: none;
+        color: #2483cc;
+      }
+
+      /* All anchors inside the menu should be styled like this. */
+
+      #menu a {
+        display: block;
+        padding: 0.5em 0.5em;
+      }
+
+      #menu a:first-letter {
+        text-transform: capitalize;
+      }
+
+      #menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 1em 0.5em;
+      }
+
+      #menu ul ul {
+        margin-top: 0.5em;
+        margin-left: 0.5em;
+        border-left: 4px solid rgba(255, 255, 255, 0.5);
+      }
+
+      /* Change color of the anchor links on hover/focus. */
+
+      #menu li a:hover,
+      #menu li a:focus {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      /* This styles the selected menu item `<li>`. */
+
+      #menu li a.active {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      /* This styles a link within a selected menu item `<li>`. */
+
+      #menu li a.active {
+        color: #222;
+      }
+
+      /* This styles the menu heading. */
+
+      #menu li.heading {
+        font-size: 0.9em;
+        text-transform: uppercase;
+        color: #000;
+      }
+
+      #menu li.heading > * {
+        padding: 0.5em;
+        display: block;
+      }
+
+      #menu li.heading a {
+        color: #0c68af;
+      }
+
+      /* -- Dynamic Button For Responsive Menu -------------------------------------*/
+
+      /*
+      `.menu-link` represents the responsive menu toggle that shows/hides on
+      small screens.
+      */
+
+      .menu-link {
+        position: fixed;
+        display: block;
+        /* show this only on small screens */
+        top: 0;
+        left: 0;
+        /* "#menu width" */
+        font-size: 10px;
+        /* change this value to increase/decrease button size */
+        z-index: 10;
+        width: 2em;
+        height: auto;
+        padding: 1.6em 1.2em;
+        border-radius: 0 2px 2px 0;
+      }
+
+      .menu-link:hover {
+        background: #f4f4f4;
+      }
+
+      .menu-link span {
+        position: relative;
+        display: block;
+      }
+
+      .menu-link span,
+      .menu-link span:before,
+      .menu-link span:after {
+        background-color: #555;
+        width: 100%;
+        height: 0.2em;
+        border-radius: 1em;
+      }
+
+      .menu-link span:before,
+      .menu-link span:after {
+        position: absolute;
+        margin-top: -0.6em;
+        content: " ";
+      }
+
+      .menu-link span:after {
+        margin-top: 0.6em;
+      }
+
+      /* Hides the menu at `48em`, but modify this based on your app's needs. */
+
+      @media (min-width: 48em) {
+        .header,
+        .content {
+          padding-left: 2em;
+          padding-right: 2em;
+        }
+
+        #layout {
+          padding-left: min(max(30%, 250px), 500px);
+          /* left col width "#menu" */
+          left: 0;
+        }
+        #menu {
+          left: min(max(30%, 250px), 500px);
+        }
+
+        .menu-link {
+          position: fixed;
+          left: 250px;
+          display: none;
+        }
+
+        #layout.active .menu-link {
+          left: 250px;
+        }
+      }
+
+      @media (max-width: 48em) {
+        /* Only apply this when the window is small. Otherwise, the following case results in extra padding on the left:
+         * Make the window small.
+         * Tap the menu to trigger the active state.
+         * Make the window large again.
+         */
+        #layout.active {
+          position: relative;
+          left: 250px;
+        }
+      }
+
+      /* Heading anchors and permalinks */
+      h1[id],
+      h2[id],
+      h3[id],
+      h4[id],
+      h5[id],
+      h6[id] {
+        position: relative;
+      }
+      .heading-anchor-permalink {
+        /* Position the permalink to the left of the title */
+        position: absolute;
+        right: 100%;
+        /* Add some spacing as padding to not lose the hover */
+        padding-right: 0.6rem;
+        /* Make it only visible on heading hover, see below */
+        opacity: 0;
+      }
+      h1[id]:hover .heading-anchor-permalink,
+      h2[id]:hover .heading-anchor-permalink,
+      h3[id]:hover .heading-anchor-permalink,
+      h4[id]:hover .heading-anchor-permalink,
+      h5[id]:hover .heading-anchor-permalink,
+      h6[id]:hover .heading-anchor-permalink {
+        opacity: 0.5;
+      }
+
+      #homeLink {
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - 20px) !important;
+        padding: 20px 10px !important;
+        margin: 0;
+        text-transform: lowercase;
+        text-align: center;
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="layout">
+      <!-- Menu toggle -->
+      <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+      </a>
+      <nav id="menu">
+        <ul>
+<li><a class="" href="../index.html">index</a></li>
+<li class="heading"><span>posts</span></li>
+<ul>
+<li><a class="" href="20230918-Pokemon: Rocket Edition - Learnsets.html">Pokemon: Rocket Edition   Learnsets</a></li>
+<li><a class="" href="20231127-Designing 3D Models in Photoshop.html">Designing 3D Models in Photoshop</a></li>
+<li><a class="active" href="20240318-Personal Calendar Sync.html">Personal Calendar Sync</a></li>
+</ul>
+</ul>
+        <a id="homeLink" href="https://fisherevans.com">Return to fisherevans.com</a>
+      </nav>
+      <article id="main" class="content">
+        <h1 id="personal-calander-sync">Personal Calander Sync <a class="heading-anchor-permalink" href="#personal-calander-sync">#</a></h1>
+<p>In my career, I’ve mostly used Google Calendar at work. I also use multiple Google calendars for personal events (personal, shared, family, etc.). I can share these calendars with my work account, but my personal events do not show up as “Busy” to my coworkers. So I often have to invite my work account too all of my events, or manually create duplicate “Busy” events in my work calendar.</p>
+<p>Then I found <a href="https://janelloi.com/auto-sync-google-calendar/">this article</a>. Which links to this <a href="https://gist.github.com/ttrahan/a88febc0538315b05346f4e3b35997f2">Google Apps Script</a>. The process is exactly right, but the script I changed to support some more options.</p>
+<h2 id="goal">Goal <a class="heading-anchor-permalink" href="#goal">#</a></h2>
+<p>The goal is to automaticlaly create (and delete) busy blocks in my work calendar, with some time buffer to account for travel/context switching. Here’s an example:</p>
+<p><img src="20240318/example.png" alt="Example"></p>
+<p>The 1-2p event is from my personal calendar, as seen from my work account. The sync scrips has automatically creates a 12:40-2:20p event in my work calendar blocking it off from meeting invites.</p>
+<h2 id="process">Process <a class="heading-anchor-permalink" href="#process">#</a></h2>
+<p>This process is an abreviated version of <a href="https://janelloi.com/auto-sync-google-calendar/">this article</a>. The only difference is the mention of multi-calendar support and different parameters to change.</p>
+<ol>
+<li>Share your personal calendars with your work account (no need to share event details)</li>
+<li>Get the Calendar ID for each of them (you can find them in the “settings” of the calander, by the “Share” section)</li>
+<li>Create a new <a href="https://script.google.com/home/projects/create">Google Apps Script</a>, and include <a href="#script">this source code</a>, updating the paramaters as desired:
+<ul>
+<li>Set your external calendar IDs</li>
+<li>Set your buffer time (20 minutes means that a 8a-9a event will create a 7:40a-9:20a block in your work calander)</li>
+<li>Update your event details visibility, color, and title</li>
+<li>Configure how many days you want the script to look ahead (4 weeks by default)</li>
+</ul>
+</li>
+<li>You can then run the scipt manually to sync and verify it works.</li>
+<li>Then head to the “Triggers” section of your project. For each calendar you’re syncing from, setup a new trigger to call the <code>sync</code> function. Source it from a calendar whenver it is updated. Use the same calendar IDs you added to your script parameters.</li>
+</ol>
+<p>That’s it, all done!</p>
+<h2 id="script">Script <a class="heading-anchor-permalink" href="#script">#</a></h2>
+<p>Here is my version of the script:</p>
+<pre><code class="language-javascript">function sync() {
+  var secondaryCalIds = [];
+  secondaryCalIds.push(&quot;your@email.com&quot;);
+  secondaryCalIds.push(&quot;c_32523rewsf43v345v54b54b454@group.calendar.google.com&quot;);
+  var primaryEventTitle = &quot;Personal Appointment&quot;;
+  var eventBufferMinutes = 20;
+  var eventBufferMs = eventBufferMinutes * 60 * 1000;
+  var visiblity = CalendarApp.Visibility.PUBLIC;
+  var color = CalendarApp.EventColor.YELLOW;
+
+  var today = new Date();
+  var endDate = new Date();
+  endDate.setDate(today.getDate() + 28); // how many days in advance to monitor and block off time
+  var secondaryEvents = [];
+  for (cid in secondaryCalIds) {
+    var secondaryCal = CalendarApp.getCalendarById(secondaryCalIds[cid]);
+    var srcEvents = secondaryCal.getEvents(today, endDate)
+    var secondaryEvents = secondaryEvents.concat(srcEvents);
+    Logger.log('Number of source events: ' + srcEvents.length + ' (' + secondaryCalIds[cid] + ')');
+  }
+
+  // create filtered list of existing primary calendar events that were previously created from the secondary calendar
+  var primaryCal = CalendarApp.getDefaultCalendar();
+  var primaryEventsAll = primaryCal.getEvents(today, endDate); // all primary calendar events
+  var primaryEvents = []; // to contain primary calendar events that were previously created from secondary calendar
+  for (pev in primaryEventsAll) {
+    var primaryEvent = primaryEventsAll[pev];
+    if (primaryEvent.getTitle() == primaryEventTitle) {
+      primaryEvents.push(primaryEvent);
+    }
+  }
+  Logger.log('Total number of target events: ' + primaryEventsAll.length);
+  Logger.log('Number of managed target events: ' + primaryEvents.length);
+
+  // process all events in secondary calendar
+  var statsCreated = 0, statsDeleted = 0;
+  var updatedPrimaryEventIds = []; // to contain primary calendar events that were updated from secondary calendar
+  for (sev in secondaryEvents) {
+    secondaryEvent = secondaryEvents[sev];
+
+    // include buffer around personal appoint (i.e. travel time)
+    var secondaryStart = new Date(secondaryEvent.getStartTime().getTime() - eventBufferMs);
+    var secondaryEnd = new Date(secondaryEvent.getEndTime().getTime() + eventBufferMs);
+
+    // if the secondary event has already been blocked in the primary calendar, update it
+    updated = false;
+    for (existingId in primaryEvents) {
+      var primaryEvent = primaryEvents[existingId];
+      if ((primaryEvent.getStartTime().getTime() == secondaryStart.getTime()) &amp;&amp; (primaryEvent.getEndTime().getTime() == secondaryEnd.getTime())) {
+        primaryEvent.setDescription(secondaryEvent.getTitle() + '\n\n' + secondaryEvent.getDescription());
+        primaryEvent.setVisibility(visiblity);
+        primaryEvent.setColor(color);
+        updatedPrimaryEventIds.push(primaryEvent.getId());
+        Logger.log('EVENT UPDATED - id: ' + primaryEvent.getId() + ' (' + secondaryEvent.getTitle() + ')');
+        updated = true;
+        break;
+      }
+    }
+    if(updated) {
+      continue;
+    }
+
+    // skip all day, multi-day, or weekend events
+    var startDay = secondaryEvent.getStartTime().getDay();
+    var endDay = secondaryEvent.getEndTime().getDay();
+    if(secondaryEvent.isAllDayEvent() /*|| startDay != endDay */|| startDay == 0 || startDay == 6) {
+      continue;
+    }
+
+    // create a new event based on the secondary event
+    var newEvent = primaryCal.createEvent(primaryEventTitle, secondaryStart, secondaryEnd, {description:secondaryEvent.getTitle() + '\n\n' + secondaryEvent.getDescription()});
+    newEvent.setVisibility(visiblity);
+    newEvent.setColor(color);
+    newEvent.removeAllReminders();
+    statsCreated = statsCreated + 1;
+    Logger.log('EVENT CREATED - id: ' + newEvent.getId() + ' (' + secondaryEvent.getTitle() + ')');
+  }
+
+  // if a primary event previously created no longer exists in the secondary calendar, delete it
+  for (pev in primaryEvents) {
+    if (updatedPrimaryEventIds.indexOf(primaryEvents[pev].getId()) == -1) {
+      var pevIdToDelete = primaryEvents[pev].getId();
+      Logger.log(pevIdToDelete + ' deleted');
+    Logger.log('EVENT DELETED - id: ' + pevIdToDelete + '');
+      statsDeleted = statsDeleted + 1;
+    }
+  }
+
+  Logger.log('Events created: ' + statsCreated);
+  Logger.log('Events updated: ' + updatedPrimaryEventIds.length);
+  Logger.log('Events deleted: ' + statsDeleted);
+}
+</code></pre>
+
+      </article>
+    </div>
+    <script>
+      // Load contents.json if you need it
+    </script>
+    <script>
+      // FROM http://purecss.io/js/ui.js
+      (function(window, document) {
+        var layout = document.getElementById("layout"),
+          menu = document.getElementById("menu"),
+          menuLink = document.getElementById("menuLink");
+
+        function toggleClass(element, className) {
+          var classes = element.className.split(/\s+/),
+            length = classes.length,
+            i = 0;
+
+          for (; i < length; i++) {
+            if (classes[i] === className) {
+              classes.splice(i, 1);
+              break;
+            }
+          }
+          // The className is not found
+          if (length === classes.length) {
+            classes.push(className);
+          }
+
+          element.className = classes.join(" ");
+        }
+
+        menuLink.onclick = function(e) {
+          var active = "active";
+
+          e.preventDefault();
+          toggleClass(layout, active);
+          toggleClass(menu, active);
+          toggleClass(menuLink, active);
+        };
+      })(this, this.document);
+    </script>
+  </body>
+</html>
