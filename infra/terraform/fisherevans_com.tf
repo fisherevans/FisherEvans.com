@@ -173,6 +173,18 @@ module "hosted-files" {
   path = "/hosted-content/files"
 }
 
+module "hosted-upsidefrown" {
+  source = "./components/hosted_subdomain"
+  
+  hostedZone = aws_route53_zone.fisherevansHostedZone.zone_id
+  domain = var.rootDomain
+  domainPrefix = "upsidefrown."
+  sslCertArn = aws_acm_certificate.httpsCert.arn
+  
+  bucket = aws_s3_bucket.contentBucket.id
+  path = "/hosted-content/upsidefrown"
+}
+
 
 # www. Redirect
 

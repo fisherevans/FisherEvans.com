@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upside Frown</title>
+    <meta name="description" content="Stock charts that always go up! Because perspective is everything.">
+    <meta property="og:title" content="Upside Frown - Every Day is a Green Day">
+    <meta property="og:description" content="Stock charts that always go up! Because perspective is everything.">
+    <meta property="og:url" content="https://upsidefrown.fisherevans.com">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <style>
+        :root {
+            --bg-dark: #0a0f0d;
+            --bg-card: #0f1613;
+            --green-primary: #00ff88;
+            --green-secondary: #00cc6a;
+            --green-glow: rgba(0, 255, 136, 0.3);
+            --green-dark: #003d21;
+            --text-primary: #e8fff2;
+            --text-secondary: #7a9989;
+            --text-muted: #4a6858;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 204, 106, 0.06) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(0, 255, 136, 0.02) 100px,
+                    rgba(0, 255, 136, 0.02) 101px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .logo {
+            font-family: 'Dela Gothic One', cursive;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.1em;
+        }
+
+        .logo-part {
+            background: linear-gradient(180deg, #00ff88 0%, #00dd77 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.4));
+        }
+
+        .logo .flip {
+            display: inline-block;
+            transform: rotate(180deg);
+            background: linear-gradient(180deg, #00aa55 0%, #008844 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(0, 170, 85, 0.3));
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        /* Search Section */
+        .search-section {
+            width: 100%;
+            max-width: 500px;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .search-input {
+            flex: 1;
+            background: var(--bg-card);
+            border: 2px solid var(--green-dark);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            font-size: 1.25rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            box-shadow: 0 0 30px var(--green-glow);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-secondary) 100%);
+            border: none;
+            border-radius: 16px;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--bg-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px var(--green-glow);
+        }
+
+        .search-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Chart Section */
+        .chart-section {
+            display: none;
+            width: 100%;
+            max-width: 900px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .chart-section.visible {
+            display: block;
+        }
+
+        .chart-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .range-selector {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            padding: 0.5rem;
+            border-radius: 12px;
+        }
+
+        .range-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .range-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .range-btn.active {
+            background: var(--green-dark);
+            color: var(--green-primary);
+        }
+
+        .chart-wrapper {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid var(--green-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 255, 136, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .capture-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--green-dark);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .capture-branding {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .capture-logo {
+            font-family: 'Dela Gothic One', cursive;
+            font-size: 1.5rem;
+            color: #00ff88;
+        }
+
+        .capture-flip {
+            display: inline-block;
+            transform: rotate(180deg);
+            color: #00aa55;
+        }
+
+        .capture-url {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .capture-ticker-info {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .capture-symbol {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--green-primary);
+            line-height: 1;
+        }
+
+        .capture-range {
+            font-size: 0.75rem;
+            color: var(--green-primary);
+            background: var(--green-dark);
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .capture-price {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-left: 0.25rem;
+            line-height: 1;
+        }
+
+        .capture-change {
+            font-size: 1rem;
+            color: var(--green-primary);
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .capture-abs-change {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+        }
+
+        #stockChart {
+            transition: transform 0.5s ease;
+        }
+
+        .flipped-notice {
+            display: none;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .flipped-notice.visible {
+            display: block;
+        }
+
+        /* Actions */
+        .actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            border: 2px solid var(--green-dark);
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .action-btn:hover {
+            border-color: var(--green-primary);
+            box-shadow: 0 0 20px var(--green-glow);
+        }
+
+        .action-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .back-btn:hover {
+            color: var(--green-primary);
+        }
+
+        /* Loading */
+        .loading {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 3rem;
+        }
+
+        .loading.visible {
+            display: flex;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--green-dark);
+            border-top-color: var(--green-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Error */
+        .error-message {
+            display: none;
+            background: rgba(255, 100, 100, 0.1);
+            border: 1px solid rgba(255, 100, 100, 0.3);
+            color: #ff8888;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--green-primary);
+            color: var(--bg-dark);
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer a:hover {
+            color: var(--green-primary);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+
+            .ticker-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .range-selector {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .range-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            .chart-wrapper {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="logo"><span class="logo-part">UPSIDE</span><span class="flip">FROWN</span></h1>
+            <p class="tagline">Every day is a green day</p>
+        </header>
+
+        <!-- Landing: Search -->
+        <section class="search-section" id="searchSection">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="tickerInput" 
+                    placeholder="Enter stock ticker (e.g. AAPL)"
+                    maxlength="10"
+                    autocomplete="off"
+                >
+                <button class="search-btn" id="searchBtn">Go!</button>
+            </div>
+            <div class="error-message" id="searchError"></div>
+        </section>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Optimizing your perspective...</p>
+        </div>
+
+        <!-- Chart View -->
+        <section class="chart-section" id="chartSection">
+            <div class="chart-top-bar">
+                <button class="back-btn" id="backBtn">
+                    ← Back to search
+                </button>
+
+                <div class="range-selector">
+                    <button class="range-btn active" data-range="1d">1D</button>
+                    <button class="range-btn" data-range="5d">1W</button>
+                    <button class="range-btn" data-range="1mo">1M</button>
+                    <button class="range-btn" data-range="6mo">6M</button>
+                    <button class="range-btn" data-range="1y">1Y</button>
+                    <button class="range-btn" data-range="5y">5Y</button>
+                </div>
+            </div>
+
+            <div class="chart-wrapper" id="chartWrapper">
+                <!-- Capture header for image export -->
+                <div class="capture-header" id="captureHeader">
+                    <div class="capture-branding">
+                        <span class="capture-logo">UPSIDE<span class="capture-flip">FROWN</span></span>
+                        <span class="capture-url">upsidefrown.fisherevans.com</span>
+                    </div>
+                    <div class="capture-ticker-info">
+                        <span class="capture-symbol" id="captureSymbol">AAPL</span>
+                        <span class="capture-range" id="captureRange">1D</span>
+                        <span class="capture-price" id="capturePrice">$0.00</span>
+                        <span class="capture-change" id="captureChange">▲ 0.00%</span>
+                        <span class="capture-abs-change" id="captureAbsChange">(+$0.00)</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="stockChart"></canvas>
+                </div>
+                <div class="flipped-notice" id="flippedNotice">
+                    perspective adjusted for optimal vibes
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="action-btn" id="copyImageBtn">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5-7l-3 3.72L9 13l-3 4h12l-4-5z"/></svg>
+                    Copy Image
+                </button>
+                <button class="action-btn" id="copyLinkBtn">
+                    <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                    Copy Link
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <div class="toast" id="toast">Copied!</div>
+
+    <footer class="footer">
+        Vibe coded with 🙃 by <a href="https://fisherevans.com" target="_blank">Fisher Evans</a>
+    </footer>
+
+    <script>
+        // State
+        let chart = null;
+        let currentTicker = '';
+        let currentRange = '1d';
+        let isFlipped = false;
+
+        // Elements
+        const searchSection = document.getElementById('searchSection');
+        const chartSection = document.getElementById('chartSection');
+        const loading = document.getElementById('loading');
+        const tickerInput = document.getElementById('tickerInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchError = document.getElementById('searchError');
+        const backBtn = document.getElementById('backBtn');
+        const rangeBtns = document.querySelectorAll('.range-btn');
+        const flippedNotice = document.getElementById('flippedNotice');
+        const captureSymbol = document.getElementById('captureSymbol');
+        const captureRange = document.getElementById('captureRange');
+        const capturePrice = document.getElementById('capturePrice');
+        const captureChange = document.getElementById('captureChange');
+        const captureAbsChange = document.getElementById('captureAbsChange');
+        
+        // Range display names
+        const rangeLabels = {
+            '1d': '1D',
+            '5d': '1W', 
+            '1mo': '1M',
+            '6mo': '6M',
+            '1y': '1Y',
+            '5y': '5Y'
+        };
+        const copyImageBtn = document.getElementById('copyImageBtn');
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        const toast = document.getElementById('toast');
+        const chartWrapper = document.getElementById('chartWrapper');
+
+        // Initialize from URL params
+        function init() {
+            const params = new URLSearchParams(window.location.search);
+            const ticker = params.get('ticker');
+            const range = params.get('range') || '1d';
+
+            if (ticker) {
+                currentTicker = ticker.toUpperCase();
+                currentRange = range;
+                loadStock(currentTicker, currentRange);
+            }
+        }
+
+        // Update URL
+        function updateURL(ticker, range) {
+            const url = new URL(window.location);
+            url.searchParams.set('ticker', ticker.toLowerCase());
+            url.searchParams.set('range', range);
+            window.history.pushState({}, '', url);
+        }
+
+        // Show/hide sections
+        function showSearch() {
+            searchSection.style.display = 'block';
+            chartSection.classList.remove('visible');
+            loading.classList.remove('visible');
+            document.title = 'Upside Frown';
+            window.history.pushState({}, '', window.location.pathname);
+        }
+
+        function showLoading() {
+            searchSection.style.display = 'none';
+            chartSection.classList.remove('visible');
+            loading.classList.add('visible');
+        }
+
+        function showChart() {
+            searchSection.style.display = 'none';
+            loading.classList.remove('visible');
+            chartSection.classList.add('visible');
+        }
+
+        function showError(message) {
+            searchError.textContent = message;
+            searchError.classList.add('visible');
+            setTimeout(() => searchError.classList.remove('visible'), 5000);
+        }
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('visible');
+            setTimeout(() => toast.classList.remove('visible'), 2000);
+        }
+
+        // Fetch stock data
+        async function fetchStockData(ticker, range) {
+            // Determine interval based on range
+            const intervals = {
+                '1d': '5m',
+                '5d': '15m',
+                '1mo': '1h',
+                '6mo': '1d',
+                '1y': '1d',
+                '5y': '1wk'
+            };
+            
+            const interval = intervals[range] || '1d';
+            
+            // Use a CORS proxy for Yahoo Finance
+            const baseUrl = 'https://upsidefrown-worker.fisher-546.workers.dev/api/yahoo/chart/';
+            const url = `${baseUrl}${encodeURIComponent(ticker)}?interval=${encodeURIComponent(interval)}&range=${encodeURIComponent(range)}`;
+            
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Failed to fetch stock data');
+            
+            const data = await response.json();
+            
+            if (data.chart.error) {
+                throw new Error(data.chart.error.description || 'Invalid ticker symbol');
+            }
+            
+            return data.chart.result[0];
+        }
+
+        // Process and display data
+        async function loadStock(ticker, range) {
+            showLoading();
+            searchError.classList.remove('visible');
+
+            try {
+                const data = await fetchStockData(ticker, range);
+                
+                const timestamps = data.timestamp;
+                const quotes = data.indicators.quote[0];
+                
+                // Get prices
+                const prices = quotes.close.map((price, i) => ({
+                    x: new Date(timestamps[i] * 1000),
+                    y: price
+                })).filter(p => p.y !== null);
+                
+                if (prices.length === 0) {
+                    throw new Error('No price data available');
+                }
+
+                // Calculate change
+                const firstPrice = prices[0].y;
+                const lastPrice = prices[prices.length - 1].y;
+                const priceChange = lastPrice - firstPrice;
+                const percentChange = (priceChange / firstPrice) * 100;
+                
+                // Determine if we need to flip (stock is down)
+                isFlipped = priceChange < 0;
+                
+                // Update display
+                flippedNotice.classList.toggle('visible', isFlipped);
+                
+                // Update page title
+                document.title = `Upside Frown - ${ticker}`;
+                
+                // Update capture header - use down arrow if flipped (but still green)
+                const arrow = isFlipped ? '▼' : '▲';
+                const absChangeSign = priceChange >= 0 ? '+' : '-';
+                captureSymbol.textContent = ticker;
+                captureRange.textContent = rangeLabels[range] || range.toUpperCase();
+                capturePrice.textContent = `$${lastPrice.toFixed(2)}`;
+                captureChange.textContent = `${arrow} ${Math.abs(percentChange).toFixed(2)}%`;
+                captureAbsChange.textContent = `(${absChangeSign}$${Math.abs(priceChange).toFixed(2)})`;
+                
+                // Update range buttons
+                rangeBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.range === range);
+                });
+                
+                // Draw chart
+                drawChart(prices, isFlipped);
+                
+                currentTicker = ticker;
+                currentRange = range;
+                updateURL(ticker, range);
+                showChart();
+                
+            } catch (error) {
+                console.error('Error loading stock:', error);
+                showSearch();
+                showError(error.message || 'Failed to load stock data. Check the ticker symbol.');
+            }
+        }
+
+        // Format date labels based on range - keep them short and clean
+        function formatDateLabel(date, range) {
+            const d = new Date(date);
+            if (range === '1d') {
+                // Just time like "9:30" or "14:00"
+                return d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: false });
+            } else if (range === '5d') {
+                // Day + time like "Mon 9a" or "Wed 2p"
+                const day = d.toLocaleDateString([], { weekday: 'short' });
+                const hour = d.getHours();
+                const ampm = hour < 12 ? 'a' : 'p';
+                const h = hour % 12 || 12;
+                return `${day} ${h}${ampm}`;
+            } else if (range === '1mo' || range === '6mo') {
+                // Like "Nov 20" or "Dec 5"
+                return d.toLocaleDateString([], { month: 'short', day: 'numeric' });
+            } else {
+                // Like "Nov '24"
+                return d.toLocaleDateString([], { month: 'short', year: '2-digit' });
+            }
+        }
+        
+        // Round price to nice increments
+        function nicePrice(value) {
+            if (value >= 1000) return '$' + Math.round(value);
+            if (value >= 100) return '$' + Math.round(value);
+            if (value >= 10) return '$' + (Math.round(value * 2) / 2).toFixed(value % 1 === 0 ? 0 : 2);
+            return '$' + value.toFixed(2);
+        }
+
+        // Draw chart
+        function drawChart(prices, flip) {
+            const canvas = document.getElementById('stockChart');
+            const ctx = canvas.getContext('2d');
+            
+            if (chart) {
+                chart.destroy();
+            }
+
+            // Create labels array (evenly spaced, no time gaps)
+            const labels = prices.map((p, i) => i);
+            
+            // If flipped, we invert the y-values around the midpoint
+            let displayPrices = prices.map(p => p.y);
+            const minY = Math.min(...displayPrices);
+            const maxY = Math.max(...displayPrices);
+            
+            if (flip) {
+                displayPrices = displayPrices.map(y => maxY + minY - y);
+            }
+
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(0, 255, 136, 0.3)');
+            gradient.addColorStop(1, 'rgba(0, 255, 136, 0)');
+
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: displayPrices,
+                        borderColor: '#00ff88',
+                        borderWidth: 2.5,
+                        backgroundColor: gradient,
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointHoverBackgroundColor: '#00ff88',
+                        pointHoverBorderColor: '#fff',
+                        pointHoverBorderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 22, 19, 0.95)',
+                            titleColor: '#00ff88',
+                            bodyColor: '#e8fff2',
+                            borderColor: '#00ff88',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                title: function(context) {
+                                    const idx = context[0].dataIndex;
+                                    const date = prices[idx].x;
+                                    return date.toLocaleString();
+                                },
+                                label: function(context) {
+                                    // Show the original price, not the flipped one
+                                    const originalPrice = prices[context.dataIndex].y;
+                                    return `$${originalPrice.toFixed(2)}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'category',
+                            grid: {
+                                color: 'rgba(0, 255, 136, 0.08)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#00ff88',
+                                font: {
+                                    family: "'JetBrains Mono', monospace",
+                                    size: 11,
+                                    weight: '600'
+                                },
+                                maxTicksLimit: 5,
+                                callback: function(value, index) {
+                                    // Show date labels at regular intervals
+                                    const totalPoints = prices.length;
+                                    const step = Math.ceil(totalPoints / 5);
+                                    if (index % step === 0) {
+                                        return formatDateLabel(prices[index].x, currentRange);
+                                    }
+                                    return '';
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(0, 255, 136, 0.08)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#00ff88',
+                                font: {
+                                    family: "'JetBrains Mono', monospace",
+                                    size: 11,
+                                    weight: '600'
+                                },
+                                maxTicksLimit: 6,
+                                callback: function(value) {
+                                    // Show original values on Y axis, use whole dollars
+                                    let displayVal = flip ? (maxY + minY - value) : value;
+                                    return '$' + Math.round(displayVal);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Event Listeners
+        searchBtn.addEventListener('click', () => {
+            const ticker = tickerInput.value.trim().toUpperCase();
+            if (ticker) {
+                loadStock(ticker, '1d');
+            }
+        });
+
+        tickerInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const ticker = tickerInput.value.trim().toUpperCase();
+                if (ticker) {
+                    loadStock(ticker, '1d');
+                }
+            }
+        });
+
+        backBtn.addEventListener('click', showSearch);
+
+        rangeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const range = btn.dataset.range;
+                if (range !== currentRange) {
+                    loadStock(currentTicker, range);
+                }
+            });
+        });
+
+        // Copy image
+        copyImageBtn.addEventListener('click', async () => {
+            try {
+                const canvas = await html2canvas(chartWrapper, {
+                    backgroundColor: '#0a0f0d',
+                    scale: 2
+                });
+                
+                canvas.toBlob(async (blob) => {
+                    try {
+                        await navigator.clipboard.write([
+                            new ClipboardItem({ 'image/png': blob })
+                        ]);
+                        showToast('Image copied to clipboard!');
+                    } catch (err) {
+                        // Fallback: download image
+                        const link = document.createElement('a');
+                        link.download = `${currentTicker}-upsidefrown.png`;
+                        link.href = canvas.toDataURL();
+                        link.click();
+                        showToast('Image downloaded!');
+                    }
+                });
+            } catch (err) {
+                showToast('Failed to capture image');
+            }
+        });
+
+        // Copy link
+        copyLinkBtn.addEventListener('click', async () => {
+            const url = window.location.href;
+            try {
+                await navigator.clipboard.writeText(url);
+                showToast('Link copied to clipboard!');
+            } catch (err) {
+                showToast('Failed to copy link');
+            }
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', () => {
+            const params = new URLSearchParams(window.location.search);
+            const ticker = params.get('ticker');
+            if (ticker) {
+                loadStock(ticker, params.get('range') || '1d');
+            } else {
+                showSearch();
+            }
+        });
+
+        // Initialize
+        init();
+    </script>
+</body>
+</html>
+
